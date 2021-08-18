@@ -11,15 +11,15 @@ import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Component;
 import org.springframework.web.multipart.MultipartFile;
 
-import com.tour.entity.Asset;
-import com.tour.entity.Tourpackage;
-import com.tour.pojo.AssetPojo;
-import com.tour.response.AssetListResponse;
-import com.tour.response.AssetResponse;
-import com.tour.response.ResponseMessagePojo;
 import com.tour.service.AssetService;
 import com.tour.service.TourpackageService;
 import com.tour.util.ObjectMapperUtils;
+import com.tourcoreservice.entity.Asset;
+import com.tourcoreservice.entity.Tourpackage;
+import com.tourcoreservice.generic.pojo.ResponseMessagePojo;
+import com.tourcoreservice.tourpackage.pojo.AssetPojo;
+import com.tourcoreservice.tourpackage.response.AssetListResponse;
+import com.tourcoreservice.tourpackage.response.AssetResponse;
 
 @Component
 public class AssetFacade {

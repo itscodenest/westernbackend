@@ -12,10 +12,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.tour.facade.IterneryFacade;
-import com.tour.pojo.AssetPojo;
-import com.tour.pojo.IterneryPojo;
-import com.tour.response.IterneryPojoListResponse;
-import com.tour.response.IterneryPojoResponse;
+import com.tourcoreservice.tourpackage.pojo.AssetPojo;
+import com.tourcoreservice.tourpackage.pojo.IterneryPojo;
+import com.tourcoreservice.tourpackage.response.IterneryPojoListResponse;
+import com.tourcoreservice.tourpackage.response.IterneryPojoResponse;
 
 @CrossOrigin(origins = "http://localhost:4200", maxAge = 3600)
 @RestController

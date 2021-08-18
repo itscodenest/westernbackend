@@ -7,13 +7,13 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Component;
 
-import com.tour.entity.Place;
-import com.tour.pojo.PlacePojo;
-import com.tour.response.PlaceListResponse;
-import com.tour.response.PlaceResponce;
-import com.tour.response.ResponseMessagePojo;
 import com.tour.service.PlaceService;
 import com.tour.util.ObjectMapperUtils;
+import com.tourcoreservice.entity.Place;
+import com.tourcoreservice.generic.pojo.ResponseMessagePojo;
+import com.tourcoreservice.tourpackage.pojo.PlacePojo;
+import com.tourcoreservice.tourpackage.response.PlaceListResponse;
+import com.tourcoreservice.tourpackage.response.PlaceResponce;
 
 @Component
 public class PlaceFacede {

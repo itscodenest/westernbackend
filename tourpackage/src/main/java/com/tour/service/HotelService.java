@@ -5,8 +5,8 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.tour.entity.Hotel;
 import com.tour.repository.HotelRepository;
+import com.tourcoreservice.entity.Hotel;
 
 @Service
 public class HotelService {

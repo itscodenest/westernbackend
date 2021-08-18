@@ -5,8 +5,8 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.tour.entity.BudgetPackageSuggest;
 import com.tour.repository.BudgetPackageSuggestRepository;
+import com.tourcoreservice.entity.BudgetPackageSuggest;
 
 @Service
 public class BudgetPackageSuggestService {

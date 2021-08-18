@@ -1,7 +1,5 @@
 package com.tour.controller;
 
-import java.util.Set;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -13,13 +11,12 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.tour.entity.Asset;
 import com.tour.facade.HotelFacade;
-import com.tour.pojo.AssetPojo;
-import com.tour.pojo.HotelPojo;
-import com.tour.pojo.HotelUpdatePojo;
-import com.tour.response.HotelListResponse;
-import com.tour.response.HotelResponse;
+import com.tourcoreservice.tourpackage.pojo.AssetPojo;
+import com.tourcoreservice.tourpackage.pojo.HotelPojo;
+import com.tourcoreservice.tourpackage.pojo.HotelUpdatePojo;
+import com.tourcoreservice.tourpackage.response.HotelListResponse;
+import com.tourcoreservice.tourpackage.response.HotelResponse;
 
 @CrossOrigin(origins = "http://localhost:4200", maxAge = 3600)
 @RestController

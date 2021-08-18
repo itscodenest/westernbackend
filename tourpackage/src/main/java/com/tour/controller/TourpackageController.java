@@ -16,20 +16,18 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.multipart.MultipartFile;
 
-import com.tour.entity.Asset;
 import com.tour.facade.Tourpackagefacade;
-import com.tour.pojo.AssetPojo;
-import com.tour.pojo.FacilityPojo;
-import com.tour.pojo.InclusionPojo;
-import com.tour.pojo.IterneryPojo;
-import com.tour.pojo.PricePojo;
-import com.tour.pojo.TourPackageIterneryPojo;
-import com.tour.pojo.TourPackageUpdatePojo;
-import com.tour.pojo.TourpackagePojo;
-import com.tour.response.PackageIdResponse;
-import com.tour.response.TourPackageDetailedListResponse;
-import com.tour.response.TourpackageListResponse;
-import com.tour.response.TourpackageResponse;
+import com.tourcoreservice.entity.Asset;
+import com.tourcoreservice.tourpackage.pojo.FacilityPojo;
+import com.tourcoreservice.tourpackage.pojo.InclusionPojo;
+import com.tourcoreservice.tourpackage.pojo.IterneryPojo;
+import com.tourcoreservice.tourpackage.pojo.PricePojo;
+import com.tourcoreservice.tourpackage.pojo.TourPackageUpdatePojo;
+import com.tourcoreservice.tourpackage.pojo.TourpackagePojo;
+import com.tourcoreservice.tourpackage.response.PackageIdResponse;
+import com.tourcoreservice.tourpackage.response.TourPackageDetailedListResponse;
+import com.tourcoreservice.tourpackage.response.TourpackageListResponse;
+import com.tourcoreservice.tourpackage.response.TourpackageResponse;
 
 @CrossOrigin(origins = "http://localhost:4200", maxAge = 3600)
 @RestController

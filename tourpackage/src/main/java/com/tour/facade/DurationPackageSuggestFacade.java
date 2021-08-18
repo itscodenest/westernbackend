@@ -7,13 +7,13 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Component;
 
-import com.tour.entity.DurationPackageSuggest;
-import com.tour.pojo.DurationPackageSuggestPojo;
-import com.tour.response.DurationPackageSuggestResponse;
-import com.tour.response.DurationSuggestPackageListResponse;
-import com.tour.response.ResponseMessagePojo;
 import com.tour.service.DurationPackageSuggestService;
 import com.tour.util.ObjectMapperUtils;
+import com.tourcoreservice.entity.DurationPackageSuggest;
+import com.tourcoreservice.generic.pojo.ResponseMessagePojo;
+import com.tourcoreservice.tourpackage.pojo.DurationPackageSuggestPojo;
+import com.tourcoreservice.tourpackage.response.DurationPackageSuggestResponse;
+import com.tourcoreservice.tourpackage.response.DurationSuggestPackageListResponse;
 
 @Component
 public class DurationPackageSuggestFacade {

@@ -7,13 +7,13 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Component;
 
-import com.tour.entity.PackageSuggest;
-import com.tour.pojo.PackageSuggestPojo;
-import com.tour.response.PackageSuggestPojoListResponse;
-import com.tour.response.PackageSuggestPojoResponse;
-import com.tour.response.ResponseMessagePojo;
 import com.tour.service.PackageSuggestService;
 import com.tour.util.ObjectMapperUtils;
+import com.tourcoreservice.entity.PackageSuggest;
+import com.tourcoreservice.generic.pojo.ResponseMessagePojo;
+import com.tourcoreservice.tourpackage.pojo.PackageSuggestPojo;
+import com.tourcoreservice.tourpackage.response.PackageSuggestPojoListResponse;
+import com.tourcoreservice.tourpackage.response.PackageSuggestPojoResponse;
 
 @Component
 public class PackageSuggestFacade {

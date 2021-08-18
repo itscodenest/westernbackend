@@ -15,9 +15,9 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.tour.facade.AssetFacade;
-import com.tour.pojo.AssetPojo;
-import com.tour.response.AssetListResponse;
-import com.tour.response.AssetResponse;
+import com.tourcoreservice.tourpackage.pojo.AssetPojo;
+import com.tourcoreservice.tourpackage.response.AssetListResponse;
+import com.tourcoreservice.tourpackage.response.AssetResponse;
 
 @CrossOrigin(origins = "http://localhost:4200", maxAge = 3600)
 @RestController
@@ -39,8 +39,8 @@ public class AssetController {
 	}
 
 	@PostMapping("/{packageid}")
-	public AssetResponse create(MultipartFile file,@PathVariable("packageid") long packageId) throws IOException {
-		return assetFacade.saveAsset(file,packageId); 
+	public AssetResponse create(MultipartFile file, @PathVariable("packageid") long packageId) throws IOException {
+		return assetFacade.saveAsset(file, packageId);
 	}
 
 	@PutMapping("/{id}")
@@ -51,8 +51,8 @@ public class AssetController {
 	}
 
 	@DeleteMapping("/{id}/{packageid}")
-	public void delete(@PathVariable long id,@PathVariable long packageid) {
-		assetFacade.deleteAsset(id,packageid);
+	public void delete(@PathVariable long id, @PathVariable long packageid) {
+		assetFacade.deleteAsset(id, packageid);
 	}
-	
+
 }

@@ -5,8 +5,8 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.tour.entity.IndianPackageSuggest;
 import com.tour.repository.IndianPackageSuggestRepository;
+import com.tourcoreservice.entity.IndianPackageSuggest;
 
 @Service
 public class IndianPackageSuggestService {

@@ -12,9 +12,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.tour.facade.PlaceFacede;
-import com.tour.pojo.PlacePojo;
-import com.tour.response.PlaceListResponse;
-import com.tour.response.PlaceResponce;
+import com.tourcoreservice.tourpackage.pojo.PlacePojo;
+import com.tourcoreservice.tourpackage.response.PlaceListResponse;
+import com.tourcoreservice.tourpackage.response.PlaceResponce;
 
 @CrossOrigin(origins = "http://localhost:4200", maxAge = 3600)
 @RestController

@@ -10,10 +10,11 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+
 import com.tour.facade.SeasonPackageSuggestFacade;
-import com.tour.pojo.SeasonPackageSuggestPojo;
-import com.tour.response.SeasonPackageSuggestListResponse;
-import com.tour.response.SeasonPackageSuggestResponse;
+import com.tourcoreservice.tourpackage.pojo.SeasonPackageSuggestPojo;
+import com.tourcoreservice.tourpackage.response.SeasonPackageSuggestListResponse;
+import com.tourcoreservice.tourpackage.response.SeasonPackageSuggestResponse;
 
 @CrossOrigin(origins = "http://localhost:4200", maxAge = 3600)
 @RestController

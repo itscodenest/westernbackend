@@ -13,9 +13,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.tour.facade.BudgetPackageSuggestFacade;
-import com.tour.pojo.BudgetPackageSuggestPojo;
-import com.tour.response.BudgetPackageSuggestPojoListResponse;
-import com.tour.response.BudgetPackageSuggestPojoResponse;
+import com.tourcoreservice.tourpackage.pojo.BudgetPackageSuggestPojo;
+import com.tourcoreservice.tourpackage.response.BudgetPackageSuggestPojoListResponse;
+import com.tourcoreservice.tourpackage.response.BudgetPackageSuggestPojoResponse;
 
 @CrossOrigin(origins = "http://localhost:4200", maxAge = 3600)
 @RestController

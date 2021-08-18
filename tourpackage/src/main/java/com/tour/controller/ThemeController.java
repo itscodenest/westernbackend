@@ -10,10 +10,11 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+
 import com.tour.facade.ThemeFacade;
-import com.tour.pojo.ThemePojo;
-import com.tour.response.ThemeListResponse;
-import com.tour.response.ThemeResponse;
+import com.tourcoreservice.tourpackage.pojo.ThemePojo;
+import com.tourcoreservice.tourpackage.response.ThemeListResponse;
+import com.tourcoreservice.tourpackage.response.ThemeResponse;
 
 @CrossOrigin(origins = "http://localhost:4200", maxAge = 3600)
 @RestController

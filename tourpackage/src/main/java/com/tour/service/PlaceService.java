@@ -5,8 +5,8 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.tour.entity.Place;
 import com.tour.repository.PlaceRepositoty;
+import com.tourcoreservice.entity.Place;
 
 @Service
 public class PlaceService {

@@ -7,13 +7,13 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Component;
 
-import com.tour.entity.Category;
-import com.tour.pojo.CategoryPojo;
-import com.tour.response.CategoryListResponse;
-import com.tour.response.CategoryResponse;
-import com.tour.response.ResponseMessagePojo;
 import com.tour.service.CategoryService;
 import com.tour.util.ObjectMapperUtils;
+import com.tourcoreservice.entity.Category;
+import com.tourcoreservice.generic.pojo.ResponseMessagePojo;
+import com.tourcoreservice.tourpackage.pojo.CategoryPojo;
+import com.tourcoreservice.tourpackage.response.CategoryListResponse;
+import com.tourcoreservice.tourpackage.response.CategoryResponse;
 
 @Component
 public class CategoryFacade {

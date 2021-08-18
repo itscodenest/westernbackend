@@ -4,17 +4,13 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
-import com.tour.entity.InterNatPackageSuggest;
-import com.tour.entity.Iternery;
-import com.tour.entity.PackageSuggest;
-import com.tour.pojo.InterNatPackageSuggestPojo;
-import com.tour.pojo.IterneryPojo;
-import com.tour.pojo.PackageSuggestPojo;
-import com.tour.response.InterNatPackageSuggestListResponse;
-import com.tour.response.InterNatPackageSuggestResponse;
-import com.tour.response.IterneryPojoListResponse;
+
 import com.tour.service.InterNatPackageSuggestService;
 import com.tour.util.ObjectMapperUtils;
+import com.tourcoreservice.entity.InterNatPackageSuggest;
+import com.tourcoreservice.tourpackage.pojo.InterNatPackageSuggestPojo;
+import com.tourcoreservice.tourpackage.response.InterNatPackageSuggestListResponse;
+import com.tourcoreservice.tourpackage.response.InterNatPackageSuggestResponse;
 
 @Component
 public class InterNatPackageSuggestFacade {

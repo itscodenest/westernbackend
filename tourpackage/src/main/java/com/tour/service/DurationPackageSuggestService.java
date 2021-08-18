@@ -5,8 +5,8 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.tour.entity.DurationPackageSuggest;
 import com.tour.repository.DurationPackageSuggestRepository;
+import com.tourcoreservice.entity.DurationPackageSuggest;
 
 @Service
 public class DurationPackageSuggestService {

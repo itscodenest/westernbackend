@@ -10,13 +10,11 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+
 import com.tour.facade.DurationPackageSuggestFacade;
-import com.tour.pojo.DurationPackageSuggestPojo;
-import com.tour.pojo.PackageSuggestPojo;
-import com.tour.response.DurationSuggestPackageListResponse;
-import com.tour.response.DurationPackageSuggestResponse;
-import com.tour.response.PackageSuggestPojoListResponse;
-import com.tour.response.PackageSuggestPojoResponse;
+import com.tourcoreservice.tourpackage.pojo.DurationPackageSuggestPojo;
+import com.tourcoreservice.tourpackage.response.DurationPackageSuggestResponse;
+import com.tourcoreservice.tourpackage.response.DurationSuggestPackageListResponse;
 
 @CrossOrigin(origins = "http://localhost:4200", maxAge = 3600)
 @RestController

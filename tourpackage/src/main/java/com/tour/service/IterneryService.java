@@ -1,13 +1,12 @@
 package com.tour.service;
 
 import java.util.List;
-import java.util.Set;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.tour.entity.Iternery;
 import com.tour.repository.IterneryRepository;
+import com.tourcoreservice.entity.Iternery;
 
 @Service
 public class IterneryService {
