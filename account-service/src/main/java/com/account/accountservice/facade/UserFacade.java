@@ -7,6 +7,7 @@ import java.util.Set;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.HttpStatus;
+import org.springframework.stereotype.Component;
 
 import com.account.accountservice.service.UserService;
 import com.tourcoreservice.account.pojo.UserPojo;
@@ -18,6 +19,7 @@ import com.tourcoreservice.entity.User;
 import com.tourcoreservice.generic.pojo.ResponseMessagePojo;
 import com.tourcoreservice.util.ObjectMapperUtils;
 
+@Component
 public class UserFacade {
 
 	@Autowired
