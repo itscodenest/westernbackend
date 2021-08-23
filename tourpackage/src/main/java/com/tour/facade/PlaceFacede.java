@@ -20,7 +20,7 @@ public class PlaceFacede {
 
 	@Autowired
 	PlaceService placeService;
-	
+
 	public PlaceListResponse listAllPlaces() {
 		PlaceListResponse placeListResponse = new PlaceListResponse();
 		List<Place> PlaceEntity = placeService.listAllPlace();
@@ -35,19 +35,17 @@ public class PlaceFacede {
 		PlacePojo placePojo = ObjectMapperUtils.map(placeEntity, PlacePojo.class);
 		placeResponce.setPlacePojo(placePojo);
 		return placeResponce;
-		
+
 	}
-	
-	public PlaceResponce savePlace(PlacePojo placepojo)
-	{
+
+	public PlaceResponce savePlace(PlacePojo placepojo) {
 		Place placeEntity = ObjectMapperUtils.map(placepojo, Place.class);
 		Place placeserviceEntity = placeService.savePlace(placeEntity);
 		PlacePojo placeservicePojo = ObjectMapperUtils.map(placeserviceEntity, PlacePojo.class);
-		return createDeleteUpdateResponse(placeservicePojo,"Created successfully");
+		return createDeleteUpdateResponse(placeservicePojo, "Created successfully");
 	}
-	
 
-	public  PlaceResponce updatePlace(PlacePojo placepojo) {
+	public PlaceResponce updatePlace(PlacePojo placepojo) {
 		PlaceResponce placeResponce = new PlaceResponce();
 		Place placeEntity = ObjectMapperUtils.map(placepojo, Place.class);
 		Place placeserviceEntity = placeService.UpdatePlace(placeEntity);
@@ -55,16 +53,16 @@ public class PlaceFacede {
 		placeResponce.setPlacePojo(placeservicePojo);
 		return placeResponce;
 	}
-	
+
 	public void deletePlace(long id) {
 		placeService.deletePlace(id);
-		
+
 	}
-	
+
 	private PlaceResponce createDeleteUpdateResponse(PlacePojo placeservicePojo, String message) {
-		PlaceResponce placeResponce = new PlaceResponce();	
-		List<ResponseMessagePojo> successMessaages=new ArrayList<>();
-		ResponseMessagePojo  responseMessagePojo= new ResponseMessagePojo();
+		PlaceResponce placeResponce = new PlaceResponce();
+		List<ResponseMessagePojo> successMessaages = new ArrayList<>();
+		ResponseMessagePojo responseMessagePojo = new ResponseMessagePojo();
 		responseMessagePojo.setSuccessMessage(message);
 		responseMessagePojo.setStatus(HttpStatus.OK);
 		successMessaages.add(responseMessagePojo);
