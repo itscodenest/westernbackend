@@ -13,9 +13,9 @@ import javax.persistence.Table;
 public class OauthCode {
 
 	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name = "ID", columnDefinition = "bigint unsigned")
-	private Integer id;
+	@GeneratedValue(strategy = GenerationType.AUTO)
+	private long id;
+
 
 	@Column(name = "code")
 	private String code;
@@ -23,14 +23,6 @@ public class OauthCode {
 	@Lob
 	@Column(name = "authentication", columnDefinition = "mediumblob")
 	private byte[] authentication;
-
-	public Integer getId() {
-		return id;
-	}
-
-	public void setId(Integer id) {
-		this.id = id;
-	}
 
 	public String getCode() {
 		return code;
@@ -46,6 +38,10 @@ public class OauthCode {
 
 	public void setAuthentication(byte[] authentication) {
 		this.authentication = authentication;
+	}
+
+	public void setId(long id) {
+		this.id = id;
 	}
 
 }

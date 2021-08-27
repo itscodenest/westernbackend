@@ -11,11 +11,9 @@ import javax.persistence.Table;
 @Entity
 @Table(name = "oauth_refresh_token")
 public class OauthRefreshToken {
-
 	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name = "ID", columnDefinition = "bigint unsigned")
-	private Integer id;
+	@GeneratedValue(strategy = GenerationType.AUTO)
+	private long id;
 
 	@Column(name = "token_id")
 	private String tokenId;
@@ -28,13 +26,6 @@ public class OauthRefreshToken {
 	@Column(name = "authentication", columnDefinition = "mediumblob")
 	private byte[] authentication;
 
-	public Integer getId() {
-		return id;
-	}
-
-	public void setId(Integer id) {
-		this.id = id;
-	}
 
 	public String getTokenId() {
 		return tokenId;
@@ -50,6 +41,10 @@ public class OauthRefreshToken {
 
 	public void setToken(byte[] token) {
 		this.token = token;
+	}
+
+	public void setId(long id) {
+		this.id = id;
 	}
 
 	public byte[] getAuthentication() {

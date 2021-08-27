@@ -1,0 +1,96 @@
+version: '3.7'
+
+services:
+      
+    docker-mysql:
+       image: mysql:5.7
+       environment:
+          MYSQL_ROOT_PASSWORD: admin
+          MYSQL_DATABASE: western
+       ports:
+         - "3307:3306"
+       networks:
+        - config-network
+
+    config-server:
+      image: westerndocker/westerntravellers-config-server:0.0.1-SNAPSHOT
+      mem_limit: 700m
+      ports:
+        - "8888:8888"
+      networks:
+        - config-network
+ 
+    registry-service:
+      image: westerndocker/westerntravellers-registry-service:0.0.1-SNAPSHOT
+      mem_limit: 700m
+      ports:
+        - "8761:8761"
+      networks:
+        - config-network
+      depends_on:
+        - config-server
+      restart: always
+      environment:
+        SPRING_CLOUD_CONFIG_URI: http://config-server:8888
+       
+        
+        
+    account-service:
+      image: account-service:0.0.1-SNAPSHOT
+      mem_limit: 700m
+      ports:
+        - "8082:8082"
+      networks:
+        - config-network
+      depends_on:
+        - registry-service
+        - config-server
+        - docker-mysql
+      environment:
+        SPRING_CLOUD_CONFIG_URI: http://config-server:8888
+        SPRING_DATASOURCE_URL: jdbc:mysql://docker-mysql:3306/western
+        SPRING_DATASOURCE_USERNAME: "root"
+        SPRING_DATASOURCE_PASSWORD: "admin"
+        
+    tour-auth-service:
+      image: westerndocker/westerntravellers-tour-auth-service:0.0.1-SNAPSHOT
+      mem_limit: 700m
+      ports:
+        - "8081:8081"
+      networks:
+        - config-network
+      depends_on:
+        - registry-service
+        - config-server
+        - docker-mysql
+      environment:
+        SPRING_CLOUD_CONFIG_URI: http://config-server:8888
+        SPRING_DATASOURCE_URL: jdbc:mysql://docker-mysql:3306/western
+        SPRING_DATASOURCE_USERNAME: "root"
+        SPRING_DATASOURCE_PASSWORD: "admin"
+        
+    tour-package:
+      image: tour-package:0.0.1-SNAPSHOT
+      mem_limit: 700m
+      ports:
+        - "8085:8085"
+      networks:
+        - config-network
+      depends_on:
+        - registry-service
+        - config-server
+        - docker-mysql
+        - tour-auth-service
+        - account-service
+      environment:
+        SPRING_CLOUD_CONFIG_URI: http://config-server:8888
+        SPRING_DATASOURCE_URL: jdbc:mysql://docker-mysql:3306/western
+        SPRING_DATASOURCE_USERNAME: "root"
+        SPRING_DATASOURCE_PASSWORD: "admin"
+        
+        
+networks:
+  config-network:
+  
+
+  

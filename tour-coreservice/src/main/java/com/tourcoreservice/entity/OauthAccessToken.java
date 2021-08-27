@@ -13,9 +13,9 @@ import javax.persistence.Table;
 public class OauthAccessToken {
 
 	@Id
-	@Column(name = "ID")
 	@GeneratedValue(strategy = GenerationType.AUTO)
-	private Integer id;
+	private long id;
+
 
 	@Column(name = "token_id")
 	private String tokenId;
@@ -40,11 +40,12 @@ public class OauthAccessToken {
 	@Column(name = "refresh_token")
 	private String refreshToken;
 
-	public Integer getId() {
+
+	public long getId() {
 		return id;
 	}
 
-	public void setId(Integer id) {
+	public void setId(long id) {
 		this.id = id;
 	}
 

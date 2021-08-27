@@ -12,8 +12,8 @@ import org.springframework.security.oauth2.provider.ClientRegistrationException;
 import org.springframework.security.oauth2.provider.client.BaseClientDetails;
 import org.springframework.stereotype.Service;
 
-import com.tour.authservice.entity.OauthClientDetails;
 import com.tour.authservice.repository.AuthClientRepository;
+import com.tourcoreservice.entity.OauthClientDetails;
 
 @Service
 public class AuthClientDetailsService implements ClientDetailsService {

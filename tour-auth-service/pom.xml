@@ -20,7 +20,11 @@
 		<maven-jar-plugin.version>3.1.1</maven-jar-plugin.version>
 	</properties>
 	<dependencies>
-
+		<dependency>
+			<groupId>com.tourcoreservice</groupId>
+			<artifactId>tour-coreservice</artifactId>
+			<version>0.0.1-SNAPSHOT</version>
+		</dependency>
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-web</artifactId>
@@ -60,7 +64,10 @@
 			<artifactId>spring-security-jwt</artifactId>
 			<version>1.0.0.RELEASE</version>
 		</dependency>
-
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-oauth2-client</artifactId>
+		</dependency>
 		<dependency>
 			<groupId>mysql</groupId>
 			<artifactId>mysql-connector-java</artifactId>
@@ -89,6 +96,12 @@
 			<plugin>
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-maven-plugin</artifactId>
+				<configuration>
+					<image>
+						<name>westerndocker/westerntravellers-${project.artifactId}:${project.version}</name>
+					</image>
+					<pullPolicy>IF_NOT_PRESENT</pullPolicy>
+				</configuration>
 			</plugin>
 		</plugins>
 	</build>

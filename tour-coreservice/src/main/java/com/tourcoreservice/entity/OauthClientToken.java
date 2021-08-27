@@ -11,11 +11,9 @@ import javax.persistence.Table;
 @Entity
 @Table(name = "oauth_client_token")
 public class OauthClientToken {
-
 	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name = "ID", columnDefinition = "bigint unsigned")
-	private Integer id;
+	@GeneratedValue(strategy = GenerationType.AUTO)
+	private long id;
 
 	@Column(name = "token_id")
 	private String tokenId;
@@ -33,11 +31,11 @@ public class OauthClientToken {
 	@Column(name = "client_id")
 	private String clientId;
 
-	public Integer getId() {
+	public long getId() {
 		return id;
 	}
 
-	public void setId(Integer id) {
+	public void setId(long id) {
 		this.id = id;
 	}
 

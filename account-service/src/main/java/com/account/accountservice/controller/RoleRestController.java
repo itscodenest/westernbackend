@@ -16,7 +16,6 @@ import com.tourcoreservice.account.pojo.RolePojo;
 import com.tourcoreservice.account.response.RolePojoListResponse;
 import com.tourcoreservice.account.response.RolePojoResponse;
 
-@CrossOrigin("http://localhost:4200")
 @RestController
 @RequestMapping("/role")
 public class RoleRestController {

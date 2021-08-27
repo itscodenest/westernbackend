@@ -15,7 +15,6 @@ import com.tourcoreservice.account.pojo.PrivilegePojo;
 import com.tourcoreservice.account.response.PrivilegePojoListResponse;
 import com.tourcoreservice.account.response.PrivilegePojoResponse;
 
-@CrossOrigin("http://localhost:4200")
 @RestController
 @RequestMapping("/privilege")
 public class PivilegeRestController {

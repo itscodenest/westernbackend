@@ -11,11 +11,13 @@ import org.springframework.util.CollectionUtils;
 
 import com.account.accountservice.service.PrivilegeService;
 import com.account.accountservice.service.RoleService;
+import com.account.accountservice.service.UserService;
 import com.tourcoreservice.account.pojo.RolePojo;
 import com.tourcoreservice.account.response.RolePojoListResponse;
 import com.tourcoreservice.account.response.RolePojoResponse;
 import com.tourcoreservice.entity.Privilege;
 import com.tourcoreservice.entity.Role;
+import com.tourcoreservice.entity.User;
 import com.tourcoreservice.generic.pojo.ResponseMessagePojo;
 import com.tourcoreservice.util.ObjectMapperUtils;
 
@@ -24,6 +26,9 @@ public class RoleFacade {
 
 	@Autowired
 	RoleService roleService;
+	
+	@Autowired
+	UserService userService;
 
 	@Value("${created.success}")
 	private String createdSuccess;
@@ -73,7 +78,7 @@ public class RoleFacade {
 		RolePojoResponse response = new RolePojoResponse();
 		ResponseMessagePojo responseMessagePojo = new ResponseMessagePojo();
 		List<ResponseMessagePojo> successMessaages = new ArrayList<ResponseMessagePojo>();
-		responseMessagePojo.setMessage(createdSuccess);
+		responseMessagePojo.setMessage(message);
 		responseMessagePojo.setStatus(HttpStatus.OK);
 		successMessaages.add(responseMessagePojo);
 		response.setRolePojo(rolePojo);
@@ -83,6 +88,9 @@ public class RoleFacade {
 
 	public RolePojoResponse delete(long id) {
 		Role role = roleService.findRoleById(id);
+	    for (User user : role.getUsers()) {
+	    	userService.deleteUsersRoles(user);
+		}
 		roleService.delete(role);
 		return createUpdateDeleteRespnse(deleteSuccess, null);
 	}

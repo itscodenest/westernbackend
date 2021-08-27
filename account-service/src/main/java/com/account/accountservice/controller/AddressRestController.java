@@ -18,7 +18,6 @@ import com.tourcoreservice.account.response.AddressPojoResponse;
 import com.tourcoreservice.account.response.UserPojoListResponse;
 import com.tourcoreservice.account.response.UserPojoResponse;
 
-@CrossOrigin("http://localhost:4200")
 @RestController
 @RequestMapping("/address")
 public class AddressRestController {
