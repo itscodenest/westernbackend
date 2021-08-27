@@ -39,4 +39,9 @@ public class UserService {
 		userRespository.save(user);
 	}
 
+	public void deleteUsersRoles(User user) {
+		user.getRoles().removeAll(user.getRoles());
+		userRespository.save(user);
+	}
+
 }

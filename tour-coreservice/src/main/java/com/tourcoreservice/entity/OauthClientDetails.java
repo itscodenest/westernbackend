@@ -23,9 +23,9 @@ import org.springframework.util.StringUtils;
 public class OauthClientDetails implements ClientDetails {
 
 	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name = "ID", columnDefinition = "bigint unsigned")
-	private Integer id;
+	@GeneratedValue(strategy = GenerationType.AUTO)
+	private long id;
+
 
 	@Column(name = "client_id")
 	private String clientId;
@@ -80,6 +80,8 @@ public class OauthClientDetails implements ClientDetails {
 
 	@Transient
 	private String ownerEmail;
+	
+	
 
 	@Override
 	public String getClientId() {
@@ -158,5 +160,14 @@ public class OauthClientDetails implements ClientDetails {
 		// TODO Auto-generated method stub
 		return null;
 	}
+
+	public long getId() {
+		return id;
+	}
+
+	public void setId(long id) {
+		this.id = id;
+	}
+	
 
 }

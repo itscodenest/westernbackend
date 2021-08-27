@@ -18,7 +18,6 @@ import com.tourcoreservice.account.response.EmployeePojoListResponse;
 import com.tourcoreservice.account.response.EmployeePojoResponse;
 
 
-@CrossOrigin("http://localhost:4200")
 @RestController
 @RequestMapping("/employee")
 public class EmployeeRestController {

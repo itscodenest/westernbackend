@@ -16,7 +16,6 @@ import com.tourcoreservice.account.pojo.UserPojo;
 import com.tourcoreservice.account.response.UserPojoListResponse;
 import com.tourcoreservice.account.response.UserPojoResponse;
 
-@CrossOrigin(origins = "http://localhost:4200", maxAge = 3600)
 @RestController
 @RequestMapping("/user")
 public class UserRestController {

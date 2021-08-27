@@ -28,7 +28,7 @@ public class Role {
 
 	private String code;
 
-	@ManyToMany(targetEntity = User.class, mappedBy = "roles", cascade = CascadeType.ALL)
+	@ManyToMany(targetEntity = User.class, mappedBy = "roles", cascade = CascadeType.DETACH)
 	private List<User> users;
 
 	@ManyToMany(cascade = CascadeType.DETACH, fetch = FetchType.EAGER)

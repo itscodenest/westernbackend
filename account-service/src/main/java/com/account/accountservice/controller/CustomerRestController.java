@@ -16,7 +16,6 @@ import com.tourcoreservice.account.pojo.CustomerPojo;
 import com.tourcoreservice.account.response.CustomerPojoListResponse;
 import com.tourcoreservice.account.response.CustomerPojoResponse;
 
-@CrossOrigin("http://localhost:4200")
 @RestController
 @RequestMapping("/customer")
 public class CustomerRestController {

@@ -38,6 +38,12 @@
 			<plugin>
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-maven-plugin</artifactId>
+				<configuration>
+
+					<image>
+	                  <name>westerndocker/westerntravellers-${project.artifactId}:${project.version}</name>					</image>
+					<pullPolicy>IF_NOT_PRESENT</pullPolicy>
+				</configuration>
 			</plugin>
 		</plugins>
 	</build>
@@ -49,7 +55,7 @@
 <module>../tour-auth-service</module>
 <module>../account-service</module>
 <module>../tour-coreservice</module>
-<module>../tourpackage</module>
+<module>../tour-package</module>
 <module>../Activity</module>
 
 	</modules>

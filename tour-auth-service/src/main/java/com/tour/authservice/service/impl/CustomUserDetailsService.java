@@ -10,9 +10,9 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 
-import com.tour.authservice.entity.Role;
-import com.tour.authservice.entity.User;
 import com.tour.authservice.repository.UserRepository;
+import com.tourcoreservice.entity.Role;
+import com.tourcoreservice.entity.User;
 
 
 @Service
