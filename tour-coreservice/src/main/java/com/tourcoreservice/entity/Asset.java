@@ -16,7 +16,7 @@ import org.springframework.web.multipart.MultipartFile;
 @Entity
 public class Asset {
 	@Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
 	private long id;
 	private String imagename;
 	private String filetype;

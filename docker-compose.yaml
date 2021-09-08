@@ -15,6 +15,7 @@ services:
     config-server:
       image: westerndocker/westerntravellers-config-server:0.0.1-SNAPSHOT
       mem_limit: 700m
+      restart: always
       ports:
         - "8888:8888"
       networks:
@@ -23,23 +24,55 @@ services:
     registry-service:
       image: westerndocker/westerntravellers-registry-service:0.0.1-SNAPSHOT
       mem_limit: 700m
+      restart: always
       ports:
         - "8761:8761"
       networks:
         - config-network
       depends_on:
         - config-server
-      restart: always
+      healthcheck:
+        test: curl --fail http://registry-service:8888 || exit 1
+        interval: 10s
+        retries: 3
+        start_period: 5s
+        timeout: 10s
       environment:
         SPRING_CLOUD_CONFIG_URI: http://config-server:8888
-       
+           
+    gateway-service:
+      image: westerndocker/westerntravellers-gateway-service:0.0.1-SNAPSHOT
+      mem_limit: 700m
+      restart: always
+      ports:
+        - "8080:8080"
+      healthcheck:
+        test: curl --fail http://gateway-service:8080 || exit 1
+        interval: 10s
+        retries: 3
+        start_period: 5s
+        timeout: 10s
+      networks:
+        - config-network
+      depends_on:
+        - registry-service
+        - config-server
+      environment:
+        SPRING_CLOUD_CONFIG_URI: http://config-server:8888
         
-        
+     
     account-service:
       image: account-service:0.0.1-SNAPSHOT
       mem_limit: 700m
+      restart: always
       ports:
         - "8082:8082"
+      healthcheck:
+        test: curl --fail http://account-service:8082 || exit 1
+        interval: 10s
+        retries: 3
+        start_period: 5s
+        timeout: 10s
       networks:
         - config-network
       depends_on:
@@ -55,8 +88,15 @@ services:
     tour-auth-service:
       image: westerndocker/westerntravellers-tour-auth-service:0.0.1-SNAPSHOT
       mem_limit: 700m
+      restart: always
       ports:
         - "8081:8081"
+      healthcheck:
+        test: curl --fail http://tour-auth-service:8081 || exit 1
+        interval: 10s
+        retries: 3
+        start_period: 5s
+        timeout: 10s
       networks:
         - config-network
       depends_on:
@@ -72,14 +112,22 @@ services:
     tour-package:
       image: tour-package:0.0.1-SNAPSHOT
       mem_limit: 700m
+      restart: always
       ports:
         - "8085:8085"
+      healthcheck:
+        test: curl --fail http://tour-package:8085 || exit 1
+        interval: 10s
+        retries: 3
+        start_period: 5s
+        timeout: 10s
       networks:
         - config-network
       depends_on:
         - registry-service
         - config-server
         - docker-mysql
+        - gateway-service
         - tour-auth-service
         - account-service
       environment:
@@ -87,7 +135,6 @@ services:
         SPRING_DATASOURCE_URL: jdbc:mysql://docker-mysql:3306/western
         SPRING_DATASOURCE_USERNAME: "root"
         SPRING_DATASOURCE_PASSWORD: "admin"
-        
         
 networks:
   config-network:

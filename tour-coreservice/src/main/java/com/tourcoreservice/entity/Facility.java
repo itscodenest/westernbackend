@@ -14,7 +14,7 @@ import javax.persistence.ManyToMany;
 @Entity
 public class Facility {
 	@Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
 	private long id;
 	private boolean isflight;
 	private boolean ismeal;

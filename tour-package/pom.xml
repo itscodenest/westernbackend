@@ -12,7 +12,7 @@
 	<packaging>jar</packaging>
 	<groupId>com.tour</groupId>
 	<artifactId>tour-package</artifactId>
-	<version>0.0.1-SNAPSHOT</version>
+	<version>0.0.1</version>
 	<name>tour-package</name>
 	<description>project for creating tour packages</description>
 	<properties>

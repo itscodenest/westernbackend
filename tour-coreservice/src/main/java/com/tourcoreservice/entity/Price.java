@@ -9,7 +9,7 @@ import javax.persistence.ManyToOne;
 @Entity
 public class Price {
 	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private long id;
 	private boolean isonestar;
 	private boolean istwostar;

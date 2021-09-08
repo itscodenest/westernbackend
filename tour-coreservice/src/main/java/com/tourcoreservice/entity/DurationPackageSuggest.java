@@ -12,7 +12,7 @@ import javax.persistence.OneToOne;
 public class DurationPackageSuggest {
 
 	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private long id;
 	private String name;
 	private String duration;

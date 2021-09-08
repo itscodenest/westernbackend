@@ -20,7 +20,7 @@ import javax.persistence.OneToMany;
 public class Iternery {
 	
 	@Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
 	private long id;
 	@Id
 	private long day;

@@ -15,7 +15,7 @@ import javax.persistence.OneToMany;
 @Entity
 public class Theme {
 	@Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
 	private long id;
 	@Column(unique=true)
 	private String name;
