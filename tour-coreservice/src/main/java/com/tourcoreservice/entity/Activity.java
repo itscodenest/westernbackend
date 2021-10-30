@@ -1,32 +1,37 @@
 package com.tourcoreservice.entity;
 
+import java.util.Set;
+
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.Lob;
+import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
+
 @Entity
 public class Activity {
 
 	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private long id;
 
 	private String name;
 
 	private String duration;
 
-	@ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.DETACH)
+	@ManyToMany(fetch = FetchType.LAZY, cascade = CascadeType.DETACH)
 	@JoinTable(name = "activity_places")
-	private Place place;
+	private Set<Place> places;
 
 	@ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.DETACH)
-	@JoinTable(name = "activity_themes")
+	@JoinColumn(name = "theme_id")
 	private Theme theme;
 
 	private String pricecategory;
@@ -49,12 +54,16 @@ public class Activity {
 	private String additionalinfo;
 
 	@OneToOne(fetch = FetchType.LAZY, cascade = CascadeType.PERSIST)
-	@JoinTable(name = "activity_facilities")
+	@JoinColumn(name = "facility_id")
 	private Facility facility;
 
 	@OneToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-	@JoinTable(name = "activity_prices")
+	@JoinColumn(name = "price_id")
 	private Price price;
+
+	@ManyToMany(fetch = FetchType.LAZY, cascade = CascadeType.DETACH)
+	@JoinTable(name = "activities_assets")
+	private Set<Asset> images;
 
 	public Activity() {
 
@@ -124,14 +133,6 @@ public class Activity {
 		this.additionalinfo = additionalinfo;
 	}
 
-	public Place getPlace() {
-		return place;
-	}
-
-	public void setPlace(Place place) {
-		this.place = place;
-	}
-
 	public Theme getTheme() {
 		return theme;
 	}
@@ -178,6 +179,22 @@ public class Activity {
 
 	public void setPrice(Price price) {
 		this.price = price;
+	}
+
+	public Set<Place> getPlaces() {
+		return places;
+	}
+
+	public void setPlaces(Set<Place> places) {
+		this.places = places;
+	}
+
+	public Set<Asset> getImages() {
+		return images;
+	}
+
+	public void setImages(Set<Asset> images) {
+		this.images = images;
 	}
 	
 

@@ -1,7 +1,6 @@
 package com.tour.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -12,9 +11,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.tour.facade.IndianPackageSuggestFacade;
-import com.tourcoreservice.tourpackage.pojo.IndianPackageSuggestPojo;
-import com.tourcoreservice.tourpackage.response.IndianPackageSuggestListResponse;
-import com.tourcoreservice.tourpackage.response.IndianPackageSuggestResponse;
+import com.tourcoreservice.pojo.tourpackage.IndianPackageSuggestPojo;
+import com.tourcoreservice.response.tourpackage.IndianPackageSuggestPojoListResponse;
+import com.tourcoreservice.response.tourpackage.IndianPackageSuggestPojoResponse;
 
 @RestController
 @RequestMapping("/IndianPackagesuggest")
@@ -24,12 +23,12 @@ public class IndianPackageSuggestController {
 	IndianPackageSuggestFacade indianPackageSuggestFacade;
 	
 	@PostMapping
-	public IndianPackageSuggestResponse create(@RequestBody IndianPackageSuggestPojo packageSuggestPojo) {
+	public IndianPackageSuggestPojoResponse create(@RequestBody IndianPackageSuggestPojo packageSuggestPojo) {
 		return indianPackageSuggestFacade.create(packageSuggestPojo);
 	}
 	
 	@GetMapping
-	public IndianPackageSuggestListResponse getall() {
+	public IndianPackageSuggestPojoListResponse getall() {
 		return indianPackageSuggestFacade.getAll();
 	}
 	
@@ -39,7 +38,7 @@ public class IndianPackageSuggestController {
 	}
 	
 	@PutMapping("/{id}")
-	public IndianPackageSuggestResponse update(@RequestBody IndianPackageSuggestPojo packageSuggestPojo, @PathVariable("id") long id) {
+	public IndianPackageSuggestPojoResponse update(@RequestBody IndianPackageSuggestPojo packageSuggestPojo, @PathVariable("id") long id) {
 		packageSuggestPojo.setId(id);
 		return indianPackageSuggestFacade.update(packageSuggestPojo);
 	}

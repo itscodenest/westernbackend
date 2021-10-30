@@ -16,7 +16,7 @@ import javax.persistence.OneToOne;
 public class PackageSuggest {
 
 	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private long id;
 	private String name;
 	@OneToOne(cascade = CascadeType.DETACH, fetch = FetchType.LAZY)

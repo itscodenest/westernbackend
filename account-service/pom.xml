@@ -12,7 +12,7 @@
 	<packaging>jar</packaging>
 	<groupId>com.account</groupId>
 	<artifactId>account-service</artifactId>
-	<version>0.0.1-SNAPSHOT</version>
+	<version>0.0.1</version>
 	<name>account-service</name>
 	<description>account-service</description>
 	<properties>
@@ -74,6 +74,11 @@
 			<scope>test</scope>
 		</dependency>
 		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-devtools</artifactId>
+		</dependency>
+
+		<dependency>
 			<groupId>org.springframework.security</groupId>
 			<artifactId>spring-security-test</artifactId>
 			<scope>test</scope>
@@ -107,9 +112,9 @@
 				<artifactId>maven-compiler-plugin</artifactId>
 				<configuration>
 					<image>
-						<name>westerndocker/westerntravellers-${project.artifactId}:${project.version}</name>
+						<name>westerndocker/westernrepo:${project.artifactId}</name>
 					</image>
-                  <pullPolicy>IF_NOT_PRESENT</pullPolicy>
+					<pullPolicy>IF_NOT_PRESENT</pullPolicy>
 				</configuration>
 			</plugin>
 		</plugins>

@@ -11,7 +11,7 @@
 	</parent>
 	<groupId>gateway-service</groupId>
 	<artifactId>gateway-service</artifactId>
-	<version>0.0.1-SNAPSHOT</version>
+	<version>0.0.1</version>
 	<name>gateway-service</name>
 	<description>gateway-service</description>
 	<properties>
@@ -92,7 +92,7 @@
 				<artifactId>spring-boot-maven-plugin</artifactId>
 				<configuration>
 					<image>
-						<name>westerndocker/westerntravellers-${project.artifactId}:${project.version}</name>
+						<name>westerndocker/westernrepo:${project.artifactId}</name>
 					</image>
                   <pullPolicy>IF_NOT_PRESENT</pullPolicy>
 				</configuration>

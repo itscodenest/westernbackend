@@ -21,7 +21,7 @@ import javax.persistence.OneToOne;
 @Entity
 public class Tourpackage {
 	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private long id;
 	
 	private String name;

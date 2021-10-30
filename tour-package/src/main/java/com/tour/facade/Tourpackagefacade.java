@@ -1,6 +1,7 @@
 package com.tour.facade;
 
 import java.io.IOException;
+import java.net.URISyntaxException;
 import java.util.ArrayList;
 import java.util.Base64;
 import java.util.HashSet;
@@ -14,6 +15,7 @@ import org.springframework.stereotype.Component;
 import org.springframework.util.ObjectUtils;
 import org.springframework.web.multipart.MultipartFile;
 
+import com.google.cloud.storage.Bucket;
 import com.tour.service.AssetService;
 import com.tour.service.IterneryService;
 import com.tour.service.TourpackageService;
@@ -25,17 +27,17 @@ import com.tourcoreservice.entity.Place;
 import com.tourcoreservice.entity.Price;
 import com.tourcoreservice.entity.Theme;
 import com.tourcoreservice.entity.Tourpackage;
-import com.tourcoreservice.tourpackage.pojo.FacilityPojo;
-import com.tourcoreservice.tourpackage.pojo.InclusionPojo;
-import com.tourcoreservice.tourpackage.pojo.IterneryPojo;
-import com.tourcoreservice.tourpackage.pojo.PricePojo;
-import com.tourcoreservice.tourpackage.pojo.TourPackagePartialPojo;
-import com.tourcoreservice.tourpackage.pojo.TourPackageUpdatePojo;
-import com.tourcoreservice.tourpackage.pojo.TourpackagePojo;
-import com.tourcoreservice.tourpackage.response.PackageIdResponse;
-import com.tourcoreservice.tourpackage.response.TourPackageDetailedListResponse;
-import com.tourcoreservice.tourpackage.response.TourpackageListResponse;
-import com.tourcoreservice.tourpackage.response.TourpackageResponse;
+import com.tourcoreservice.pojo.tourpackage.FacilityPojo;
+import com.tourcoreservice.pojo.tourpackage.InclusionPojo;
+import com.tourcoreservice.pojo.tourpackage.IterneryPojo;
+import com.tourcoreservice.pojo.tourpackage.PricePojo;
+import com.tourcoreservice.pojo.tourpackage.TourPackagePartialPojo;
+import com.tourcoreservice.pojo.tourpackage.TourPackageUpdatePojo;
+import com.tourcoreservice.pojo.tourpackage.TourpackagePojo;
+import com.tourcoreservice.response.tourpackage.PackageIdPojoResponse;
+import com.tourcoreservice.response.tourpackage.TourPackageDetailedPojoListResponse;
+import com.tourcoreservice.response.tourpackage.TourpackagePojoListResponse;
+import com.tourcoreservice.response.tourpackage.TourpackagePojoResponse;
 
 @Component
 public class Tourpackagefacade {
@@ -49,8 +51,8 @@ public class Tourpackagefacade {
 	@Autowired
 	IterneryService iterneryService;
 
-	public TourpackageListResponse listAllPackage() {
-		TourpackageListResponse tourpackageListResponse = new TourpackageListResponse();
+	public TourpackagePojoListResponse listAllPackage() {
+		TourpackagePojoListResponse tourpackageListResponse = new TourpackagePojoListResponse();
 		List<Tourpackage> tourpackageEntity = tourPackageService.listAllPackage();
 		List<TourPackagePartialPojo> tourPackagePojo = ObjectMapperUtils.mapAll(tourpackageEntity,
 				TourPackagePartialPojo.class);
@@ -58,8 +60,8 @@ public class Tourpackagefacade {
 		return tourpackageListResponse;
 	}
 
-	public TourpackageResponse getPackage(long id) {
-		TourpackageResponse tourpackageResponse = new TourpackageResponse();
+	public TourpackagePojoResponse getPackage(long id) {
+		TourpackagePojoResponse tourpackageResponse = new TourpackagePojoResponse();
 		Tourpackage tourpackageEntity = tourPackageService.getPackageById(id);
 		TourpackagePojo tourpackagePojo = ObjectMapperUtils.map(tourpackageEntity, TourpackagePojo.class);
 		tourpackageResponse.setTourpackagePojo(tourpackagePojo);
@@ -67,8 +69,8 @@ public class Tourpackagefacade {
 
 	}
 
-	public PackageIdResponse savePackageMainDetails(TourpackagePojo tourPackagePojo) {
-		PackageIdResponse packageIdResponse = new PackageIdResponse();
+	public PackageIdPojoResponse savePackageMainDetails(TourpackagePojo tourPackagePojo) {
+		PackageIdPojoResponse packageIdResponse = new PackageIdPojoResponse();
 		Tourpackage tourpackage = ObjectMapperUtils.map(tourPackagePojo, Tourpackage.class);
 		Tourpackage tourpackageEntity = tourPackageService.savePackage(tourpackage);
 		TourpackagePojo tourpackagePojo = ObjectMapperUtils.map(tourpackageEntity, TourpackagePojo.class);
@@ -76,8 +78,8 @@ public class Tourpackagefacade {
 		return packageIdResponse;
 	}
 
-	public TourpackageResponse updatePakage(TourPackageUpdatePojo pack) {
-		TourpackageResponse tourpackageResponse = new TourpackageResponse();
+	public TourpackagePojoResponse updatePakage(TourPackageUpdatePojo pack) {
+		TourpackagePojoResponse tourpackageResponse = new TourpackagePojoResponse();
 		Tourpackage existingtourpackage = tourPackageService.getPackageById(pack.getId());
 		Facility facility = existingtourpackage.getFacility();
 		Theme theme = existingtourpackage.getTheme();
@@ -140,8 +142,8 @@ public class Tourpackagefacade {
 	}
 
 	// price
-	public PackageIdResponse createPrice(long id, PricePojo pricePojo) {
-		PackageIdResponse packageIdResponse = new PackageIdResponse();
+	public PackageIdPojoResponse createPrice(long id, PricePojo pricePojo) {
+		PackageIdPojoResponse packageIdResponse = new PackageIdPojoResponse();
 		Tourpackage tourpackage = tourPackageService.getPackageById(id);
 		Price price = ObjectMapperUtils.map(pricePojo, Price.class);
 		price = tourPackageService.savePrice(price);
@@ -152,8 +154,8 @@ public class Tourpackagefacade {
 
 	}
 
-	public PackageIdResponse createFacility(long id, FacilityPojo facilityPojo) {
-		PackageIdResponse packageIdResponse = new PackageIdResponse();
+	public PackageIdPojoResponse createFacility(long id, FacilityPojo facilityPojo) {
+		PackageIdPojoResponse packageIdResponse = new PackageIdPojoResponse();
 		Tourpackage tourpackage = tourPackageService.getPackageById(id);
 		Facility facility = ObjectMapperUtils.map(facilityPojo, Facility.class);
 		facility = tourPackageService.saveFacity(facility);
@@ -163,8 +165,8 @@ public class Tourpackagefacade {
 		return packageIdResponse;
 	}
 
-	public PackageIdResponse createInclusion(long id, InclusionPojo inclusionPojo) {
-		PackageIdResponse packageIdResponse = new PackageIdResponse();
+	public PackageIdPojoResponse createInclusion(long id, InclusionPojo inclusionPojo) {
+		PackageIdPojoResponse packageIdResponse = new PackageIdPojoResponse();
 		Tourpackage tourpackage = tourPackageService.getPackageById(id);
 		// Inclusion inclusion = ObjectMapperUtils.map(inclusionPojo, Inclusion.class);
 		tourpackage.setInclusion(inclusionPojo.getInclusion());
@@ -175,16 +177,19 @@ public class Tourpackagefacade {
 		return packageIdResponse;
 	}
 
-	public PackageIdResponse createImage(long id, MultipartFile file) throws IOException {
-		PackageIdResponse packageIdResponse = new PackageIdResponse();
+	public PackageIdPojoResponse createImage(long id, MultipartFile file) throws IOException, URISyntaxException {
+		PackageIdPojoResponse packageIdResponse = new PackageIdPojoResponse();
 		Tourpackage tourpackage = tourPackageService.getPackageById(id);
 		Asset asset = new Asset();
 		asset.setFiletype(file.getContentType());
 		asset.setFilesize(String.valueOf(file.getSize()));
 		asset.setImagename(file.getName());
-		byte[] fileContent = Base64.getEncoder().encode(file.getBytes());
-		String encodedString = Base64.getEncoder().encodeToString(fileContent);
-		asset.setBase64(encodedString);
+		
+		Gcs googleCloudStorage = new Gcs("src/main/resources/apt-footing-323918-bffa896f7493.json", "tour-package");
+		// Bucket require globally unique names, so you'll probably need to change this
+		Bucket bucket = googleCloudStorage.getBucket("western-bucket");
+		String gcsurl = googleCloudStorage.uploadFile(file);
+		asset.setGcsurl(gcsurl);
 		Set<Asset> assetset = new HashSet<Asset>();
 		assetset.add(asset);
 		tourpackage.setImages(assetset);
@@ -213,8 +218,8 @@ public class Tourpackagefacade {
 		return iterneriesPojoList;
 	}
 
-	public TourPackageDetailedListResponse listAllDetailedPackages() {
-		TourPackageDetailedListResponse tourpackageListResponse = new TourPackageDetailedListResponse();
+	public TourPackageDetailedPojoListResponse listAllDetailedPackages() {
+		TourPackageDetailedPojoListResponse tourpackageListResponse = new TourPackageDetailedPojoListResponse();
 		List<Tourpackage> tourpackageEntity = tourPackageService.listAllPackage();
 		List<TourpackagePojo> tourPackagePojo = ObjectMapperUtils.mapAll(tourpackageEntity, TourpackagePojo.class);
 		tourpackageListResponse.setTourpackagePojo(tourPackagePojo);

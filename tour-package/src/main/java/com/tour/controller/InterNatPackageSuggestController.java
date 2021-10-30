@@ -1,7 +1,6 @@
 package com.tour.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -12,9 +11,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.tour.facade.InterNatPackageSuggestFacade;
-import com.tourcoreservice.tourpackage.pojo.InterNatPackageSuggestPojo;
-import com.tourcoreservice.tourpackage.response.InterNatPackageSuggestListResponse;
-import com.tourcoreservice.tourpackage.response.InterNatPackageSuggestResponse;
+import com.tourcoreservice.pojo.tourpackage.InterNatPackageSuggestPojo;
+import com.tourcoreservice.response.tourpackage.InterNatPackageSuggestPojoListResponse;
+import com.tourcoreservice.response.tourpackage.InterNatPackageSuggestPojoResponse;
 
 @RestController
 @RequestMapping("/InterNatPackagesuggest")
@@ -24,12 +23,12 @@ public class InterNatPackageSuggestController {
 	InterNatPackageSuggestFacade interNatPackageSuggestFacade ;
 
 	@PostMapping
-	public InterNatPackageSuggestResponse create(@RequestBody InterNatPackageSuggestPojo packageSuggestPojo) {
+	public InterNatPackageSuggestPojoResponse create(@RequestBody InterNatPackageSuggestPojo packageSuggestPojo) {
 		return interNatPackageSuggestFacade.create(packageSuggestPojo);
 	}
 	
 	@GetMapping
-	public InterNatPackageSuggestListResponse getall() {
+	public InterNatPackageSuggestPojoListResponse getall() {
 		return interNatPackageSuggestFacade.getAll();
 	}
 	
@@ -39,7 +38,7 @@ public class InterNatPackageSuggestController {
 	}
 	
 	@PutMapping("/{id}")
-	public InterNatPackageSuggestResponse update(@RequestBody InterNatPackageSuggestPojo packageSuggestPojo, @PathVariable("id") long id) {
+	public InterNatPackageSuggestPojoResponse update(@RequestBody InterNatPackageSuggestPojo packageSuggestPojo, @PathVariable("id") long id) {
 		packageSuggestPojo.setId(id);
 		return interNatPackageSuggestFacade.update(packageSuggestPojo);
 	}

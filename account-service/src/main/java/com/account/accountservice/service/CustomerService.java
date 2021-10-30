@@ -19,8 +19,8 @@ public class CustomerService {
 		return customerRespository.save(customer);
 	}
 
-	public List<User> getAll() {
-		return customerRespository.findAll();
+	public List<User> findAllCustomers(String roleCustomer) {
+		return customerRespository.findAllCustomers(roleCustomer);
 	}
 
 	public User findById(long id) {

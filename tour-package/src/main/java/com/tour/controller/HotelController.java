@@ -1,7 +1,6 @@
 package com.tour.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -12,12 +11,11 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.tour.facade.HotelFacade;
-import com.tourcoreservice.tourpackage.pojo.AssetPojo;
-import com.tourcoreservice.tourpackage.pojo.HotelPojo;
-import com.tourcoreservice.tourpackage.pojo.HotelUpdatePojo;
-import com.tourcoreservice.tourpackage.response.HotelListResponse;
-import com.tourcoreservice.tourpackage.response.HotelResponse;
-
+import com.tourcoreservice.pojo.tourpackage.AssetPojo;
+import com.tourcoreservice.pojo.tourpackage.HotelPojo;
+import com.tourcoreservice.pojo.tourpackage.HotelUpdatePojo;
+import com.tourcoreservice.response.tourpackage.HotelPojoListResponse;
+import com.tourcoreservice.response.tourpackage.HotelPojoResponse;
 @RestController
 @RequestMapping("/hotel")
 public class HotelController {
@@ -26,23 +24,23 @@ public class HotelController {
 	  HotelFacade hotelFacade;
 
 	@GetMapping
-	public HotelListResponse getAll() {
+	public HotelPojoListResponse getAll() {
 		return hotelFacade.listAllHotel();
 	}
 
 	@GetMapping("/{id}")
-	public HotelResponse get(@PathVariable long id) {
+	public HotelPojoResponse get(@PathVariable long id) {
 		return hotelFacade.getHotel(id);
 
 	}
 
 	@PostMapping
-	public HotelResponse create(@RequestBody HotelPojo hotel) {
+	public HotelPojoResponse create(@RequestBody HotelPojo hotel) {
 		return hotelFacade.saveHotel(hotel);
 	}
 
 	@PutMapping("/{id}")
-	public HotelResponse update(@RequestBody HotelUpdatePojo hotel, @PathVariable long id) {
+	public HotelPojoResponse update(@RequestBody HotelUpdatePojo hotel, @PathVariable long id) {
 		hotel.setId(id);
 		return hotelFacade.updateHotel(hotel);
 

@@ -11,10 +11,12 @@ import javax.persistence.Id;
 import javax.persistence.JoinTable;
 import javax.persistence.Lob;
 import javax.persistence.ManyToMany;
+import javax.persistence.OneToOne;
+import javax.persistence.Transient;
 @Entity
 public class Facility {
 	@Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
 	private long id;
 	private boolean isflight;
 	private boolean ismeal;
@@ -27,6 +29,11 @@ public class Facility {
 	@ManyToMany(fetch = FetchType.LAZY,cascade=CascadeType.DETACH)
 	@JoinTable(name= "facilities_categories")
 	private Set<Category> categories;
+	
+	@OneToOne(fetch=FetchType.LAZY,mappedBy="facility")
+	@Transient
+	private Activity activity;
+	
 	
 	public boolean isIsflight() {
 		

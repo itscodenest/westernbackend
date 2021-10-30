@@ -10,10 +10,10 @@ import org.springframework.stereotype.Component;
 import com.tour.service.DurationPackageSuggestService;
 import com.tour.util.ObjectMapperUtils;
 import com.tourcoreservice.entity.DurationPackageSuggest;
-import com.tourcoreservice.generic.pojo.ResponseMessagePojo;
-import com.tourcoreservice.tourpackage.pojo.DurationPackageSuggestPojo;
-import com.tourcoreservice.tourpackage.response.DurationPackageSuggestResponse;
-import com.tourcoreservice.tourpackage.response.DurationSuggestPackageListResponse;
+import com.tourcoreservice.pojo.generic.ResponseMessagePojo;
+import com.tourcoreservice.pojo.tourpackage.DurationPackageSuggestPojo;
+import com.tourcoreservice.response.tourpackage.DurationPackageSuggestPojoResponse;
+import com.tourcoreservice.response.tourpackage.DurationSuggestPackagePojoListResponse;
 
 @Component
 public class DurationPackageSuggestFacade {
@@ -21,15 +21,15 @@ public class DurationPackageSuggestFacade {
 	@Autowired
 	DurationPackageSuggestService durationService;
 
-	public DurationPackageSuggestResponse create(DurationPackageSuggestPojo durationPojo) {
+	public DurationPackageSuggestPojoResponse create(DurationPackageSuggestPojo durationPojo) {
 		DurationPackageSuggest duration = ObjectMapperUtils.map(durationPojo, DurationPackageSuggest.class);
 		duration = durationService.create(duration);
 		durationPojo = ObjectMapperUtils.map(duration, DurationPackageSuggestPojo.class);
 		return createDeleteUpdateResponse(durationPojo, "Created successfully");
 	}
 
-	private DurationPackageSuggestResponse createDeleteUpdateResponse(DurationPackageSuggestPojo durationPojo, String message) {
-		DurationPackageSuggestResponse durationPojoResponse = new DurationPackageSuggestResponse();
+	private DurationPackageSuggestPojoResponse createDeleteUpdateResponse(DurationPackageSuggestPojo durationPojo, String message) {
+		DurationPackageSuggestPojoResponse durationPojoResponse = new DurationPackageSuggestPojoResponse();
 		List<ResponseMessagePojo> successMessaages = new ArrayList<>();
 		ResponseMessagePojo responseMessagePojo = new ResponseMessagePojo();
 		responseMessagePojo.setSuccessMessage(message);
@@ -40,16 +40,16 @@ public class DurationPackageSuggestFacade {
 		return durationPojoResponse;
 	}
 
-	public DurationPackageSuggestResponse get(long id) {
-		DurationPackageSuggestResponse durationPojoResponse = new DurationPackageSuggestResponse();
+	public DurationPackageSuggestPojoResponse get(long id) {
+		DurationPackageSuggestPojoResponse durationPojoResponse = new DurationPackageSuggestPojoResponse();
 		DurationPackageSuggest duration = durationService.getById(id);
 		DurationPackageSuggestPojo durationPojo = ObjectMapperUtils.map(duration, DurationPackageSuggestPojo.class);
 		durationPojoResponse.setDurationPojo(durationPojo);
 		return durationPojoResponse;
 	}
 
-	public DurationSuggestPackageListResponse listAll() {
-		DurationSuggestPackageListResponse durationPojoListResponse = new DurationSuggestPackageListResponse();
+	public DurationSuggestPackagePojoListResponse listAll() {
+		DurationSuggestPackagePojoListResponse durationPojoListResponse = new DurationSuggestPackagePojoListResponse();
 		List<DurationPackageSuggest> duration = durationService.listAll();
 		List<DurationPackageSuggestPojo> durationPojo = ObjectMapperUtils.mapAll(duration,
 				DurationPackageSuggestPojo.class);
@@ -57,13 +57,13 @@ public class DurationPackageSuggestFacade {
 		return durationPojoListResponse;
 	}
 
-	public DurationPackageSuggestResponse delete(long id) {
+	public DurationPackageSuggestPojoResponse delete(long id) {
 		durationService.delete(id);
 		return createDeleteUpdateResponse(null, "Deleted successfully");
 
 	}
 
-	public DurationPackageSuggestResponse update(DurationPackageSuggestPojo durationPojo) {
+	public DurationPackageSuggestPojoResponse update(DurationPackageSuggestPojo durationPojo) {
 		DurationPackageSuggest duration = durationService.getById(durationPojo.getId());
 		ObjectMapperUtils.map(durationPojo, duration);
 		duration = durationService.Update(duration);

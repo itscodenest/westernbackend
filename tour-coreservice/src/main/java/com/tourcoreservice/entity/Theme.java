@@ -11,17 +11,23 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
+import javax.persistence.Transient;
 
 @Entity
 public class Theme {
 	@Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
 	private long id;
 	@Column(unique=true)
 	private String name;
 //	private String type;
 	@OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
 	private Set<Tourpackage> tourpackage;
+	
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "theme")
+    @Transient
+    private Set<Activity> activities;
+	
 
 	public long getId() {
 		return id;

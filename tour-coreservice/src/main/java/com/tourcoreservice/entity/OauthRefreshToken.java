@@ -12,8 +12,8 @@ import javax.persistence.Table;
 @Table(name = "oauth_refresh_token")
 public class OauthRefreshToken {
 	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
-	private long id;
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private Long id;
 
 	@Column(name = "token_id")
 	private String tokenId;

@@ -10,10 +10,10 @@ import org.springframework.stereotype.Component;
 import com.tour.service.CategoryService;
 import com.tour.util.ObjectMapperUtils;
 import com.tourcoreservice.entity.Category;
-import com.tourcoreservice.generic.pojo.ResponseMessagePojo;
-import com.tourcoreservice.tourpackage.pojo.CategoryPojo;
-import com.tourcoreservice.tourpackage.response.CategoryListResponse;
-import com.tourcoreservice.tourpackage.response.CategoryResponse;
+import com.tourcoreservice.pojo.generic.ResponseMessagePojo;
+import com.tourcoreservice.pojo.tourpackage.CategoryPojo;
+import com.tourcoreservice.response.tourpackage.CategoryPojoListResponse;
+import com.tourcoreservice.response.tourpackage.CategoryPojoResponse;
 
 @Component
 public class CategoryFacade {
@@ -21,16 +21,16 @@ public class CategoryFacade {
 	@Autowired
 	private CategoryService categoryService;
 	
-	public  CategoryListResponse listAllCategories() {
-		CategoryListResponse categoryListResponse = new CategoryListResponse();
+	public  CategoryPojoListResponse listAllCategories() {
+		CategoryPojoListResponse categoryListResponse = new CategoryPojoListResponse();
 		List<Category> categoriesEntity = categoryService.listAllPlace();
 		List<CategoryPojo> categoryPojo = ObjectMapperUtils.mapAll(categoriesEntity, CategoryPojo.class);
 		categoryListResponse.setCategoryPojo(categoryPojo);
 		return categoryListResponse;
 	}
 
-	public CategoryResponse getCategory(long id) {
-		CategoryResponse categoryResponse = new CategoryResponse();
+	public CategoryPojoResponse getCategory(long id) {
+		CategoryPojoResponse categoryResponse = new CategoryPojoResponse();
 		Category categoriesEntity = categoryService.getCategoryById(id);
 		CategoryPojo categoryPojo = ObjectMapperUtils.map(categoriesEntity, CategoryPojo.class);
 		categoryResponse.setCategoryPojo(categoryPojo);
@@ -38,7 +38,7 @@ public class CategoryFacade {
 		
 	}
 	
-	public CategoryResponse saveCategory(CategoryPojo category)
+	public CategoryPojoResponse saveCategory(CategoryPojo category)
 	{
 		Category categoriesEntity = ObjectMapperUtils.map(category, Category.class);
 		Category categoryServiceEntity = categoryService.saveCategory(categoriesEntity);
@@ -47,7 +47,7 @@ public class CategoryFacade {
 	}
 	
 	
-	public  CategoryResponse updateCategory(CategoryPojo category) {
+	public  CategoryPojoResponse updateCategory(CategoryPojo category) {
 		
 		Category categoriesEntity = ObjectMapperUtils.map(category, Category.class);
 		Category categoryserviceEntity = categoryService.UpdateCategory(categoriesEntity);
@@ -55,13 +55,13 @@ public class CategoryFacade {
 		return createDeleteUpdateResponse(categoryPojo,"Updated successfully");
 	} 
 	
-	public CategoryResponse deleteCategory(long id) {
+	public CategoryPojoResponse deleteCategory(long id) {
 		categoryService.deleteCategory(id);
 		return createDeleteUpdateResponse(null,"Deleted successfully");
 	}
 	
-	private CategoryResponse createDeleteUpdateResponse(CategoryPojo categoryPojo, String message) {
-		CategoryResponse categoryResponse = new CategoryResponse();	
+	private CategoryPojoResponse createDeleteUpdateResponse(CategoryPojo categoryPojo, String message) {
+		CategoryPojoResponse categoryResponse = new CategoryPojoResponse();	
 		List<ResponseMessagePojo> successMessaages=new ArrayList<>();
 		ResponseMessagePojo  responseMessagePojo= new ResponseMessagePojo();
 		responseMessagePojo.setSuccessMessage(message);

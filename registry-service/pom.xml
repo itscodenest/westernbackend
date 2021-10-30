@@ -11,7 +11,7 @@
 	</parent>
 	<groupId>com.registry</groupId>
 	<artifactId>registry-service</artifactId>
-	<version>0.0.1-SNAPSHOT</version>
+	<version>0.0.1</version>
 	<name>registry-service</name>
 	<description>Demo project for Spring Boot</description>
 	<properties>
@@ -60,7 +60,7 @@
 				<artifactId>spring-boot-maven-plugin</artifactId>
 				<configuration>
 					<image>
-						<name>westerndocker/westerntravellers-${project.artifactId}:${project.version}</name>
+						<name>westerndocker/westernrepo:${project.artifactId}</name>
 					</image>
                   <pullPolicy>IF_NOT_PRESENT</pullPolicy>
 				</configuration>

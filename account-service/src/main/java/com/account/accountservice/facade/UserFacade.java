@@ -10,13 +10,13 @@ import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Component;
 
 import com.account.accountservice.service.UserService;
-import com.tourcoreservice.account.pojo.UserPojo;
-import com.tourcoreservice.account.response.UserPojoListResponse;
-import com.tourcoreservice.account.response.UserPojoResponse;
 import com.tourcoreservice.entity.Address;
 import com.tourcoreservice.entity.Role;
 import com.tourcoreservice.entity.User;
-import com.tourcoreservice.generic.pojo.ResponseMessagePojo;
+import com.tourcoreservice.pojo.account.UserPojo;
+import com.tourcoreservice.pojo.generic.ResponseMessagePojo;
+import com.tourcoreservice.response.account.UserPojoListResponse;
+import com.tourcoreservice.response.account.UserPojoResponse;
 import com.tourcoreservice.util.ObjectMapperUtils;
 
 @Component

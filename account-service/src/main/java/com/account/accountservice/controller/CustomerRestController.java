@@ -12,9 +12,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.account.accountservice.facade.CustomerFacade;
-import com.tourcoreservice.account.pojo.CustomerPojo;
-import com.tourcoreservice.account.response.CustomerPojoListResponse;
-import com.tourcoreservice.account.response.CustomerPojoResponse;
+import com.tourcoreservice.pojo.account.CustomerPojo;
+import com.tourcoreservice.response.account.CustomerPojoListResponse;
+import com.tourcoreservice.response.account.CustomerPojoResponse;
 
 @RestController
 @RequestMapping("/customer")
@@ -46,7 +46,7 @@ public class CustomerRestController {
 
 	}
 	
-	@GetMapping("{customerid")
+	@GetMapping("/{customerid}")
 	public CustomerPojoResponse getCustomerById(@PathVariable("customerid") long customerId) {
 		return customerFacade.getCustomerById(customerId);
 		

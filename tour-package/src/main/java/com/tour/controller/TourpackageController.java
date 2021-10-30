@@ -1,11 +1,11 @@
 package com.tour.controller;
 
 import java.io.IOException;
+import java.net.URISyntaxException;
 import java.util.List;
 import java.util.Set;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -13,21 +13,22 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.tour.facade.Tourpackagefacade;
 import com.tourcoreservice.entity.Asset;
-import com.tourcoreservice.tourpackage.pojo.FacilityPojo;
-import com.tourcoreservice.tourpackage.pojo.InclusionPojo;
-import com.tourcoreservice.tourpackage.pojo.IterneryPojo;
-import com.tourcoreservice.tourpackage.pojo.PricePojo;
-import com.tourcoreservice.tourpackage.pojo.TourPackageUpdatePojo;
-import com.tourcoreservice.tourpackage.pojo.TourpackagePojo;
-import com.tourcoreservice.tourpackage.response.PackageIdResponse;
-import com.tourcoreservice.tourpackage.response.TourPackageDetailedListResponse;
-import com.tourcoreservice.tourpackage.response.TourpackageListResponse;
-import com.tourcoreservice.tourpackage.response.TourpackageResponse;
+import com.tourcoreservice.pojo.tourpackage.FacilityPojo;
+import com.tourcoreservice.pojo.tourpackage.InclusionPojo;
+import com.tourcoreservice.pojo.tourpackage.IterneryPojo;
+import com.tourcoreservice.pojo.tourpackage.PricePojo;
+import com.tourcoreservice.pojo.tourpackage.TourPackageUpdatePojo;
+import com.tourcoreservice.pojo.tourpackage.TourpackagePojo;
+import com.tourcoreservice.response.tourpackage.PackageIdPojoResponse;
+import com.tourcoreservice.response.tourpackage.TourPackageDetailedPojoListResponse;
+import com.tourcoreservice.response.tourpackage.TourpackagePojoListResponse;
+import com.tourcoreservice.response.tourpackage.TourpackagePojoResponse;
 
 @RestController
 @RequestMapping("/package")
@@ -37,17 +38,17 @@ public class TourpackageController {
 	Tourpackagefacade tourPackageFacade;
 	
 	@GetMapping
-	public  TourpackageListResponse allPackages() {
+	public  TourpackagePojoListResponse allPackages() {
         return tourPackageFacade.listAllPackage();
     }
 	@GetMapping("/detailed")
-	public TourPackageDetailedListResponse allDetailedPackages() {
+	public TourPackageDetailedPojoListResponse allDetailedPackages() {
 		return tourPackageFacade.listAllDetailedPackages();
 	}
 	
 	 
 	@GetMapping("/{id}")
-    public TourpackageResponse getpackge(@PathVariable long id) {
+    public TourpackagePojoResponse getpackge(@PathVariable long id) {
         return tourPackageFacade.getPackage(id);
         
     }
@@ -56,11 +57,11 @@ public class TourpackageController {
         return tourPackageFacade.getPackImage(id); 
     }
     @PostMapping
-    public PackageIdResponse create(@RequestBody TourpackagePojo tourPackagePojo) {
+    public PackageIdPojoResponse create(@RequestBody TourpackagePojo tourPackagePojo) {
     	return tourPackageFacade.savePackageMainDetails(tourPackagePojo);
     }
     @PutMapping("/{id}")
-    public TourpackageResponse update(@RequestBody TourPackageUpdatePojo pack, @PathVariable long id) {
+    public TourpackagePojoResponse update(@RequestBody TourPackageUpdatePojo pack, @PathVariable long id) {
     	pack.setId(id);
     	return tourPackageFacade.updatePakage(pack);
        
@@ -73,17 +74,17 @@ public class TourpackageController {
     //price
     
     @PostMapping("/price/{id}")
-    public PackageIdResponse craetePrice(@PathVariable long id,@RequestBody PricePojo pricePojo) {
+    public PackageIdPojoResponse craetePrice(@PathVariable long id,@RequestBody PricePojo pricePojo) {
     	return tourPackageFacade.createPrice(id,pricePojo);
     } 
     
     @PostMapping("/facilty/{id}")
-    public PackageIdResponse createFacity(@PathVariable long id,@RequestBody FacilityPojo  facilityPojo) {
+    public PackageIdPojoResponse createFacity(@PathVariable long id,@RequestBody FacilityPojo  facilityPojo) {
     	return tourPackageFacade.createFacility(id,facilityPojo);
     }
     
     @PostMapping("/inclusion/{id}")
-    public PackageIdResponse createInclusion(@PathVariable long id,@RequestBody InclusionPojo inclusionPojo) {
+    public PackageIdPojoResponse createInclusion(@PathVariable long id,@RequestBody InclusionPojo inclusionPojo) {
     	return tourPackageFacade.createInclusion(id,inclusionPojo);
     }
 //    @PostMapping("/maindeatails/{id}")
@@ -91,7 +92,7 @@ public class TourpackageController {
 //    	
 //    }
     @PostMapping("/image/{id}")
-    public PackageIdResponse createImage(@PathVariable long id,MultipartFile file) throws IOException {
+    public PackageIdPojoResponse createImage(@PathVariable long id,@RequestParam("file") MultipartFile file) throws IOException, URISyntaxException {
     	return tourPackageFacade.createImage(id,file);
     }
     @GetMapping("/iterneries/{packageid}")
