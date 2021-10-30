@@ -1,7 +1,6 @@
 package com.tour.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -12,9 +11,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.tour.facade.ThemeFacade;
-import com.tourcoreservice.tourpackage.pojo.ThemePojo;
-import com.tourcoreservice.tourpackage.response.ThemeListResponse;
-import com.tourcoreservice.tourpackage.response.ThemeResponse;
+import com.tourcoreservice.pojo.tourpackage.ThemePojo;
+import com.tourcoreservice.response.tourpackage.ThemePojoListResponse;
+import com.tourcoreservice.response.tourpackage.ThemePojoResponse;
 
 @RestController
 @RequestMapping("/theme")
@@ -24,20 +23,20 @@ public class ThemeController {
 	ThemeFacade themeFacade;
 	
 	@GetMapping
-	public  ThemeListResponse allTheme() {
+	public  ThemePojoListResponse allTheme() {
         return themeFacade.listAllThemes();
     }
 	@GetMapping("/{id}")
-    public ThemeResponse getTheme(@PathVariable long id) {
+    public ThemePojoResponse getTheme(@PathVariable long id) {
         return themeFacade.getTheme(id);
         
     }
     @PostMapping
-    public ThemeResponse create(@RequestBody ThemePojo theme) {
+    public ThemePojoResponse create(@RequestBody ThemePojo theme) {
     	return themeFacade.saveTheme(theme);
     }
     @PutMapping("/{id}")
-    public ThemeResponse update(@RequestBody ThemePojo theme, @PathVariable long id) {
+    public ThemePojoResponse update(@RequestBody ThemePojo theme, @PathVariable long id) {
     	theme.setId(id);
     	return themeFacade.updateTheme(theme);
        

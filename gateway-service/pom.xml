@@ -92,7 +92,7 @@
 				<artifactId>spring-boot-maven-plugin</artifactId>
 				<configuration>
 					<image>
-						<name>westerndocker/westerntravellers-${project.artifactId}:${project.version}</name>
+						<name>westerndocker/westernrepo:${project.artifactId}</name>
 					</image>
                   <pullPolicy>IF_NOT_PRESENT</pullPolicy>
 				</configuration>

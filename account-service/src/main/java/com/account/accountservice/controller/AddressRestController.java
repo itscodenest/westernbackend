@@ -11,12 +11,12 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import com.account.accountservice.facade.AddressFacade;
-import com.tourcoreservice.account.pojo.AddressPojo;
-import com.tourcoreservice.account.pojo.UserPojo;
-import com.tourcoreservice.account.response.AddressPojoListResponse;
-import com.tourcoreservice.account.response.AddressPojoResponse;
-import com.tourcoreservice.account.response.UserPojoListResponse;
-import com.tourcoreservice.account.response.UserPojoResponse;
+import com.tourcoreservice.pojo.account.AddressPojo;
+import com.tourcoreservice.pojo.account.UserPojo;
+import com.tourcoreservice.response.account.AddressPojoListResponse;
+import com.tourcoreservice.response.account.AddressPojoResponse;
+import com.tourcoreservice.response.account.UserPojoListResponse;
+import com.tourcoreservice.response.account.UserPojoResponse;
 
 @RestController
 @RequestMapping("/address")

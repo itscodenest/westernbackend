@@ -19,8 +19,8 @@ public class EmployeeService {
 		return employeeRepository.save(employee);
 	}
 
-	public List<User> getAll() {
-		return employeeRepository.findAll();
+	public List<User> findAllEmployees(String roleEmployee) {
+		return employeeRepository.findEmployees(roleEmployee);
 	}
 
 	public User findById(long id) {

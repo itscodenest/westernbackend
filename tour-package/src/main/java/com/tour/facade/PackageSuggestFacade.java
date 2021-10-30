@@ -10,10 +10,10 @@ import org.springframework.stereotype.Component;
 import com.tour.service.PackageSuggestService;
 import com.tour.util.ObjectMapperUtils;
 import com.tourcoreservice.entity.PackageSuggest;
-import com.tourcoreservice.generic.pojo.ResponseMessagePojo;
-import com.tourcoreservice.tourpackage.pojo.PackageSuggestPojo;
-import com.tourcoreservice.tourpackage.response.PackageSuggestPojoListResponse;
-import com.tourcoreservice.tourpackage.response.PackageSuggestPojoResponse;
+import com.tourcoreservice.pojo.generic.ResponseMessagePojo;
+import com.tourcoreservice.pojo.tourpackage.PackageSuggestPojo;
+import com.tourcoreservice.response.tourpackage.PackageSuggestPojoListResponse;
+import com.tourcoreservice.response.tourpackage.PackageSuggestPojoResponse;
 
 @Component
 public class PackageSuggestFacade {

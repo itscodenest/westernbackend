@@ -7,17 +7,19 @@ import java.util.Set;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.HttpStatus;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Component;
 
 import com.account.accountservice.service.CustomerService;
-import com.tourcoreservice.account.pojo.CustomerPojo;
-import com.tourcoreservice.account.response.CustomerPojoListResponse;
-import com.tourcoreservice.account.response.CustomerPojoResponse;
 import com.tourcoreservice.entity.Address;
 import com.tourcoreservice.entity.Customer;
 import com.tourcoreservice.entity.Role;
 import com.tourcoreservice.entity.User;
-import com.tourcoreservice.generic.pojo.ResponseMessagePojo;
+import com.tourcoreservice.pojo.account.CustomerPojo;
+import com.tourcoreservice.pojo.account.EmployeePojo;
+import com.tourcoreservice.pojo.generic.ResponseMessagePojo;
+import com.tourcoreservice.response.account.CustomerPojoListResponse;
+import com.tourcoreservice.response.account.CustomerPojoResponse;
 import com.tourcoreservice.util.ObjectMapperUtils;
 
 @Component
@@ -35,8 +37,17 @@ public class CustomerFacade {
 	@Value("${customer.delete.success}")
 	private String customerDeleteSuccessfully;
 
+	@Autowired
+	private PasswordEncoder passwordEncoder;
+
+	@Value("${role.customer}")
+	private String roleCustomer;
+
 	public CustomerPojoResponse create(CustomerPojo customerPojo) {
+		// exception handle
 		Customer customer = ObjectMapperUtils.map(customerPojo, Customer.class);
+		String hashPassword = passwordEncoder.encode(customerPojo.getPassword());
+		customer.setPassword(hashPassword);
 		customer = customerService.create(customer);
 		customerPojo = ObjectMapperUtils.map(customer, CustomerPojo.class);
 		return createDeleteUpdateResponse(customerCreatedSuccessfully, customerPojo);
@@ -56,9 +67,9 @@ public class CustomerFacade {
 
 	public CustomerPojoListResponse get() {
 		CustomerPojoListResponse customerPojoListResponse = new CustomerPojoListResponse();
-		List<User> customerEntity = customerService.getAll();
-		List<CustomerPojo> customerPojo = ObjectMapperUtils.mapAll(customerEntity, CustomerPojo.class);
-		customerPojoListResponse.setCustomerPojo(customerPojo);
+		List<User> customerEntity = customerService.findAllCustomers(roleCustomer);
+		List<CustomerPojo> customerPojoList = ObjectMapperUtils.mapAll(customerEntity, CustomerPojo.class);
+		customerPojoListResponse.setCustomerPojo(customerPojoList);
 		return customerPojoListResponse;
 	}
 
@@ -67,6 +78,8 @@ public class CustomerFacade {
 		deleteExistingRoles(userEntity, userEntity.getRoles());
 		deleteExistingAddresses(userEntity, userEntity.getAddresses());
 		ObjectMapperUtils.map(customerPojo, userEntity);
+		String hashPassword = passwordEncoder.encode(customerPojo.getPassword());
+		userEntity.setPassword(hashPassword);
 		userEntity = customerService.update(userEntity);
 		customerPojo = ObjectMapperUtils.map(userEntity, CustomerPojo.class);
 		return createDeleteUpdateResponse(updateSuccessfully, customerPojo);

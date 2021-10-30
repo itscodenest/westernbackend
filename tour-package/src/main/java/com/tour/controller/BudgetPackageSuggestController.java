@@ -2,7 +2,6 @@
 package com.tour.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -13,9 +12,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.tour.facade.BudgetPackageSuggestFacade;
-import com.tourcoreservice.tourpackage.pojo.BudgetPackageSuggestPojo;
-import com.tourcoreservice.tourpackage.response.BudgetPackageSuggestPojoListResponse;
-import com.tourcoreservice.tourpackage.response.BudgetPackageSuggestPojoResponse;
+import com.tourcoreservice.pojo.tourpackage.BudgetPackageSuggestPojo;
+import com.tourcoreservice.response.tourpackage.BudgetPackageSuggestPojoListResponse;
+import com.tourcoreservice.response.tourpackage.BudgetPackageSuggestPojoResponse;
 
 @RestController
 @RequestMapping("/budgetpackageSuggest")

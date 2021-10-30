@@ -3,7 +3,6 @@ package com.tour.config;
 import java.io.IOException;
 import java.io.UnsupportedEncodingException;
 import java.util.Map;
-
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.springframework.http.HttpEntity;
@@ -33,7 +32,7 @@ public class CustomRemoteTokenService extends RemoteTokenServices {
 
 	private String checkTokenEndpointUrl;
 
-	private String clientId="TourPackage";
+	private String clientId="tour-package";
 
 	private String clientSecret;
 

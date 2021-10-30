@@ -16,13 +16,14 @@ import com.tour.util.ObjectMapperUtils;
 import com.tourcoreservice.entity.Asset;
 import com.tourcoreservice.entity.Category;
 import com.tourcoreservice.entity.Hotel;
-import com.tourcoreservice.generic.pojo.ResponseMessagePojo;
-import com.tourcoreservice.tourpackage.pojo.AssetPojo;
-import com.tourcoreservice.tourpackage.pojo.HotelPartialPojo;
-import com.tourcoreservice.tourpackage.pojo.HotelPojo;
-import com.tourcoreservice.tourpackage.pojo.HotelUpdatePojo;
-import com.tourcoreservice.tourpackage.response.HotelListResponse;
-import com.tourcoreservice.tourpackage.response.HotelResponse;
+import com.tourcoreservice.pojo.generic.ResponseMessagePojo;
+import com.tourcoreservice.pojo.tourpackage.AssetPojo;
+import com.tourcoreservice.pojo.tourpackage.HotelPartialPojo;
+import com.tourcoreservice.pojo.tourpackage.HotelPojo;
+import com.tourcoreservice.pojo.tourpackage.HotelUpdatePojo;
+import com.tourcoreservice.response.tourpackage.HotelPojoListResponse;
+import com.tourcoreservice.response.tourpackage.HotelPojoResponse;
+
 
 @Component
 public class HotelFacade {
@@ -32,23 +33,23 @@ public class HotelFacade {
 	@Autowired
 	AssetService assetService;
 
-	public HotelListResponse listAllHotel() {
-		HotelListResponse hotelListResponse = new HotelListResponse();
+	public HotelPojoListResponse listAllHotel() {
+		HotelPojoListResponse hotelListResponse = new HotelPojoListResponse();
 		List<Hotel> HotelEntity = hotelService.listAllHotel();
 		List<HotelPartialPojo> hotelPojo = ObjectMapperUtils.mapAll(HotelEntity, HotelPartialPojo.class);
 		hotelListResponse.setHotelPojo(hotelPojo);
 		return hotelListResponse;
 	}
 
-	public HotelResponse getHotel(long id) {
-		HotelResponse hotelResponse = new HotelResponse();
+	public HotelPojoResponse getHotel(long id) {
+		HotelPojoResponse hotelResponse = new HotelPojoResponse();
 		Hotel hotelEntity = hotelService.getHotelById(id);
 		HotelPojo hotelPojo = ObjectMapperUtils.map(hotelEntity, HotelPojo.class);
 		hotelResponse.setHotelPojo(hotelPojo);
 		return hotelResponse;
 	}
 
-	public HotelResponse saveHotel(HotelPojo hotelPojo) {
+	public HotelPojoResponse saveHotel(HotelPojo hotelPojo) {
 		Hotel hotelEntity = ObjectMapperUtils.map(hotelPojo, Hotel.class);
 		Set<Asset> assetEntity = new HashSet<>();
 		for (Asset asset : hotelEntity.getImages()) {
@@ -63,7 +64,7 @@ public class HotelFacade {
 		return createDeleteUpdateResponse(null, "Created successfully");
 	}
 
-	public HotelResponse updateHotel(HotelUpdatePojo hotelPojo) {
+	public HotelPojoResponse updateHotel(HotelUpdatePojo hotelPojo) {
 		Hotel existingHotel = hotelService.getHotelById(hotelPojo.getId());
 		Set<Category> category = existingHotel.getCategories();
 		existingHotel = ifCategoryExists(existingHotel, category);
@@ -82,14 +83,14 @@ public class HotelFacade {
 
 	}
 
-	public HotelResponse deleteHotel(long id) {
+	public HotelPojoResponse deleteHotel(long id) {
 		hotelService.deleteHotel(id);
 		return createDeleteUpdateResponse(null, "Deleted successfully");
 
 	}
 
-	private HotelResponse createDeleteUpdateResponse(HotelPojo hotelservicePojo, String message) {
-		HotelResponse hotelResponce = new HotelResponse();
+	private HotelPojoResponse createDeleteUpdateResponse(HotelPojo hotelservicePojo, String message) {
+		HotelPojoResponse hotelResponce = new HotelPojoResponse();
 		List<ResponseMessagePojo> successMessaages = new ArrayList<>();
 		ResponseMessagePojo responseMessagePojo = new ResponseMessagePojo();
 		responseMessagePojo.setSuccessMessage(message);
@@ -100,7 +101,7 @@ public class HotelFacade {
 		return hotelResponce;
 	}
 
-	public HotelResponse deleteAsset(long id, long hotelid) {
+	public HotelPojoResponse deleteAsset(long id, long hotelid) {
 		Hotel hotel = hotelService.getHotelById(hotelid);
 		Asset asset = assetService.getAssetById(id);
 		hotel.getImages().remove(asset);
@@ -110,7 +111,7 @@ public class HotelFacade {
 
 	}
 
-	public HotelResponse addHotelImage(long id, AssetPojo assetPojo) {
+	public HotelPojoResponse addHotelImage(long id, AssetPojo assetPojo) {
 		Hotel hotel = hotelService.getHotelById(id);
 		Asset asset2 = ObjectMapperUtils.map(assetPojo, Asset.class);
 		Asset savedAsset = assetService.saveAsset(asset2);

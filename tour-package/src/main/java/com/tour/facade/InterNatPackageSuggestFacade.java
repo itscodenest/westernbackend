@@ -8,9 +8,9 @@ import org.springframework.stereotype.Component;
 import com.tour.service.InterNatPackageSuggestService;
 import com.tour.util.ObjectMapperUtils;
 import com.tourcoreservice.entity.InterNatPackageSuggest;
-import com.tourcoreservice.tourpackage.pojo.InterNatPackageSuggestPojo;
-import com.tourcoreservice.tourpackage.response.InterNatPackageSuggestListResponse;
-import com.tourcoreservice.tourpackage.response.InterNatPackageSuggestResponse;
+import com.tourcoreservice.pojo.tourpackage.InterNatPackageSuggestPojo;
+import com.tourcoreservice.response.tourpackage.InterNatPackageSuggestPojoListResponse;
+import com.tourcoreservice.response.tourpackage.InterNatPackageSuggestPojoResponse;
 
 @Component
 public class InterNatPackageSuggestFacade {
@@ -18,17 +18,17 @@ public class InterNatPackageSuggestFacade {
 	@Autowired
 	InterNatPackageSuggestService interNatPackageSuggestService;
 
-	public InterNatPackageSuggestResponse create(InterNatPackageSuggestPojo packageSuggestPojo) {
+	public InterNatPackageSuggestPojoResponse create(InterNatPackageSuggestPojo packageSuggestPojo) {
 		InterNatPackageSuggest packageSuggest = ObjectMapperUtils.map(packageSuggestPojo, InterNatPackageSuggest.class);
 		packageSuggest = interNatPackageSuggestService.create(packageSuggest);
 		packageSuggestPojo = ObjectMapperUtils.map(packageSuggest, InterNatPackageSuggestPojo.class);
-		InterNatPackageSuggestResponse packageSuggestPojoResponse = new InterNatPackageSuggestResponse();
+		InterNatPackageSuggestPojoResponse packageSuggestPojoResponse = new InterNatPackageSuggestPojoResponse();
 		packageSuggestPojoResponse.setInterNatPackageSuggestPojo(packageSuggestPojo);
 		return packageSuggestPojoResponse;
 	}
 
-	public InterNatPackageSuggestListResponse getAll() {
-		InterNatPackageSuggestListResponse PackagePojoListResponse = new InterNatPackageSuggestListResponse();
+	public InterNatPackageSuggestPojoListResponse getAll() {
+		InterNatPackageSuggestPojoListResponse PackagePojoListResponse = new InterNatPackageSuggestPojoListResponse();
 		List<InterNatPackageSuggest> packList = interNatPackageSuggestService.getAll();
 		List<InterNatPackageSuggestPojo> PackagePojoList = ObjectMapperUtils.mapAll(packList,
 				InterNatPackageSuggestPojo.class);
@@ -42,12 +42,12 @@ public class InterNatPackageSuggestFacade {
 
 	}
 
-	public InterNatPackageSuggestResponse update(InterNatPackageSuggestPojo packageSuggestPojo) {
+	public InterNatPackageSuggestPojoResponse update(InterNatPackageSuggestPojo packageSuggestPojo) {
 		InterNatPackageSuggest interNatPackageSuggest = ObjectMapperUtils.map(packageSuggestPojo,
 				InterNatPackageSuggest.class);
 		interNatPackageSuggest = interNatPackageSuggestService.Update(interNatPackageSuggest);
 		packageSuggestPojo = ObjectMapperUtils.map(interNatPackageSuggest, InterNatPackageSuggestPojo.class);
-		InterNatPackageSuggestResponse packageSuggestPojoResponse = new InterNatPackageSuggestResponse();
+		InterNatPackageSuggestPojoResponse packageSuggestPojoResponse = new InterNatPackageSuggestPojoResponse();
 		return packageSuggestPojoResponse;
 	}
 

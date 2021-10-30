@@ -40,4 +40,16 @@ public class RoleService {
 		roleRepository.save(role);
 		
 	}
+
+	public List<Role> findParentRole() {
+		return roleRepository.findAll();
+	}
+
+	public List<Role> findEmployeeRoles() {
+		return roleRepository.findAll();
+	}
+
+	public List<Role> findCustomerRoles() {
+		return roleRepository.findAll();
+	}
 }

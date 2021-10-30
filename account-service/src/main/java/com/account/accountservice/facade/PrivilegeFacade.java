@@ -8,11 +8,11 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Component;
 import com.account.accountservice.service.PrivilegeService;
-import com.tourcoreservice.account.pojo.PrivilegePojo;
-import com.tourcoreservice.account.response.PrivilegePojoListResponse;
-import com.tourcoreservice.account.response.PrivilegePojoResponse;
 import com.tourcoreservice.entity.Privilege;
-import com.tourcoreservice.generic.pojo.ResponseMessagePojo;
+import com.tourcoreservice.pojo.account.PrivilegePojo;
+import com.tourcoreservice.pojo.generic.ResponseMessagePojo;
+import com.tourcoreservice.response.account.PrivilegePojoListResponse;
+import com.tourcoreservice.response.account.PrivilegePojoResponse;
 import com.tourcoreservice.util.ObjectMapperUtils;
 
 @Component

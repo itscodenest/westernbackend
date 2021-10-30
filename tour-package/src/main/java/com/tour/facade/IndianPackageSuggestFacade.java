@@ -8,9 +8,9 @@ import org.springframework.stereotype.Component;
 import com.tour.service.IndianPackageSuggestService;
 import com.tour.util.ObjectMapperUtils;
 import com.tourcoreservice.entity.IndianPackageSuggest;
-import com.tourcoreservice.tourpackage.pojo.IndianPackageSuggestPojo;
-import com.tourcoreservice.tourpackage.response.IndianPackageSuggestListResponse;
-import com.tourcoreservice.tourpackage.response.IndianPackageSuggestResponse;
+import com.tourcoreservice.pojo.tourpackage.IndianPackageSuggestPojo;
+import com.tourcoreservice.response.tourpackage.IndianPackageSuggestPojoListResponse;
+import com.tourcoreservice.response.tourpackage.IndianPackageSuggestPojoResponse;
 
 @Component
 public class IndianPackageSuggestFacade {
@@ -18,17 +18,17 @@ public class IndianPackageSuggestFacade {
 	@Autowired 
 	IndianPackageSuggestService indianPackageSuggestService;
 
-	public IndianPackageSuggestResponse create(IndianPackageSuggestPojo packageSuggestPojo) {
+	public IndianPackageSuggestPojoResponse create(IndianPackageSuggestPojo packageSuggestPojo) {
 		IndianPackageSuggest packageSuggest = ObjectMapperUtils.map(packageSuggestPojo, IndianPackageSuggest.class);
 		packageSuggest = indianPackageSuggestService.create(packageSuggest);
 		packageSuggestPojo = ObjectMapperUtils.map(packageSuggest, IndianPackageSuggestPojo.class);
-		IndianPackageSuggestResponse packageSuggestPojoResponse = new IndianPackageSuggestResponse();
+		IndianPackageSuggestPojoResponse packageSuggestPojoResponse = new IndianPackageSuggestPojoResponse();
 		packageSuggestPojoResponse.setIndianPackageSuggestPojo(packageSuggestPojo);
 		return packageSuggestPojoResponse;
 	}
 
-	public IndianPackageSuggestListResponse getAll() {
-		IndianPackageSuggestListResponse packageSuggestPojoResponse = new IndianPackageSuggestListResponse();
+	public IndianPackageSuggestPojoListResponse getAll() {
+		IndianPackageSuggestPojoListResponse packageSuggestPojoResponse = new IndianPackageSuggestPojoListResponse();
 		List<IndianPackageSuggest> packList = indianPackageSuggestService.getAll();
 		List<IndianPackageSuggestPojo> PackagePojoList = ObjectMapperUtils.mapAll(packList,
 				IndianPackageSuggestPojo.class);
@@ -41,12 +41,12 @@ public class IndianPackageSuggestFacade {
 
 	}
 
-	public IndianPackageSuggestResponse update(IndianPackageSuggestPojo packageSuggestPojo) {
+	public IndianPackageSuggestPojoResponse update(IndianPackageSuggestPojo packageSuggestPojo) {
 		IndianPackageSuggest indianPackageSuggest = ObjectMapperUtils.map(packageSuggestPojo,
 				IndianPackageSuggest.class);
 		indianPackageSuggest = indianPackageSuggestService.Update(indianPackageSuggest);
 		packageSuggestPojo = ObjectMapperUtils.map(indianPackageSuggest, IndianPackageSuggestPojo.class);
-		IndianPackageSuggestResponse packageSuggestPojoResponse = new IndianPackageSuggestResponse();
+		IndianPackageSuggestPojoResponse packageSuggestPojoResponse = new IndianPackageSuggestPojoResponse();
 		return packageSuggestPojoResponse;
 	}
 

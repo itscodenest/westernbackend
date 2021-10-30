@@ -7,17 +7,18 @@ import java.util.Set;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.HttpStatus;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Component;
 
 import com.account.accountservice.service.EmployeeService;
-import com.tourcoreservice.account.pojo.EmployeePojo;
-import com.tourcoreservice.account.response.EmployeePojoListResponse;
-import com.tourcoreservice.account.response.EmployeePojoResponse;
 import com.tourcoreservice.entity.Address;
 import com.tourcoreservice.entity.Employee;
 import com.tourcoreservice.entity.Role;
 import com.tourcoreservice.entity.User;
-import com.tourcoreservice.generic.pojo.ResponseMessagePojo;
+import com.tourcoreservice.pojo.account.EmployeePojo;
+import com.tourcoreservice.pojo.generic.ResponseMessagePojo;
+import com.tourcoreservice.response.account.EmployeePojoListResponse;
+import com.tourcoreservice.response.account.EmployeePojoResponse;
 import com.tourcoreservice.util.ObjectMapperUtils;
 
 @Component
@@ -34,9 +35,17 @@ public class EmployeeFacade {
 
 	@Value("${employee.deleted.success}")
 	private String employeeDeletedSuccessfully;
+	
+	@Value("${role.employee}")
+	private String roleEmployee;
+
+	@Autowired
+	private PasswordEncoder passwordEncoder;
 
 	public EmployeePojoResponse create(EmployeePojo employeePojo) {
 		Employee employee = ObjectMapperUtils.map(employeePojo, Employee.class);
+		String hashPassword = passwordEncoder.encode(employeePojo.getPassword());
+		employee.setPassword(hashPassword);
 		employee = employeeService.create(employee);
 		employeePojo = ObjectMapperUtils.map(employee, EmployeePojo.class);
 		return createDeleteUpdateResponse(employeePojo, employeeCreated);
@@ -55,7 +64,7 @@ public class EmployeeFacade {
 
 	public EmployeePojoListResponse getAll() {
 		EmployeePojoListResponse employeePojoListResponse = new EmployeePojoListResponse();
-		List<User> employeeEntity = employeeService.getAll();
+		List<User> employeeEntity = employeeService.findAllEmployees(roleEmployee);
 		List<EmployeePojo> employeePojoList = ObjectMapperUtils.mapAll(employeeEntity, EmployeePojo.class);
 		employeePojoListResponse.setEmploeePojo(employeePojoList);
 		return employeePojoListResponse;
@@ -66,6 +75,8 @@ public class EmployeeFacade {
 		deleteExistingRoles(user, user.getRoles());
 		deleteExistingAddresses(user, user.getAddresses());
 		ObjectMapperUtils.map(employeePojo, user);
+		String hashPassword = passwordEncoder.encode(employeePojo.getPassword());
+		user.setPassword(hashPassword);
 		user = employeeService.update(user);
 		EmployeePojo employee = ObjectMapperUtils.map(user, EmployeePojo.class);
 		return createDeleteUpdateResponse(employee, employeeUpdated);

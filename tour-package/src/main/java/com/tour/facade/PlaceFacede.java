@@ -9,67 +9,110 @@ import org.springframework.stereotype.Component;
 
 import com.tour.service.PlaceService;
 import com.tour.util.ObjectMapperUtils;
+import com.tourcoreservice.entity.MainPlace;
 import com.tourcoreservice.entity.Place;
-import com.tourcoreservice.generic.pojo.ResponseMessagePojo;
-import com.tourcoreservice.tourpackage.pojo.PlacePojo;
-import com.tourcoreservice.tourpackage.response.PlaceListResponse;
-import com.tourcoreservice.tourpackage.response.PlaceResponce;
+import com.tourcoreservice.pojo.generic.ResponseMessagePojo;
+import com.tourcoreservice.pojo.tourpackage.MainPlacePojo;
+import com.tourcoreservice.pojo.tourpackage.PlacePojo;
+import com.tourcoreservice.response.tourpackage.MainPlacePojoListResponse;
+import com.tourcoreservice.response.tourpackage.MainPlacePojoResponse;
+import com.tourcoreservice.response.tourpackage.PlacePojoListResponse;
+import com.tourcoreservice.response.tourpackage.PlacePojoResponce;
 
 @Component
 public class PlaceFacede {
 
 	@Autowired
-	PlaceService placeService;
-	
-	public PlaceListResponse listAllPlaces() {
-		PlaceListResponse placeListResponse = new PlaceListResponse();
+	private PlaceService placeService;
+
+	public PlacePojoListResponse listAllPlaces() {
+		PlacePojoListResponse placeListResponse = new PlacePojoListResponse();
 		List<Place> PlaceEntity = placeService.listAllPlace();
 		List<PlacePojo> placePojo = ObjectMapperUtils.mapAll(PlaceEntity, PlacePojo.class);
 		placeListResponse.setPlacePojos(placePojo);
 		return placeListResponse;
 	}
 
-	public PlaceResponce getPlace(long id) {
-		PlaceResponce placeResponce = new PlaceResponce();
+	public PlacePojoResponce getPlace(long id) {
+		PlacePojoResponce placeResponce = new PlacePojoResponce();
 		Place placeEntity = placeService.getPlaceById(id);
 		PlacePojo placePojo = ObjectMapperUtils.map(placeEntity, PlacePojo.class);
 		placeResponce.setPlacePojo(placePojo);
 		return placeResponce;
-		
+
 	}
-	
-	public PlaceResponce savePlace(PlacePojo placepojo)
-	{
+
+	public PlacePojoResponce savePlace(PlacePojo placepojo) {
 		Place placeEntity = ObjectMapperUtils.map(placepojo, Place.class);
 		Place placeserviceEntity = placeService.savePlace(placeEntity);
 		PlacePojo placeservicePojo = ObjectMapperUtils.map(placeserviceEntity, PlacePojo.class);
-		return createDeleteUpdateResponse(placeservicePojo,"Created successfully");
+		return createDeleteUpdateResponse(placeservicePojo, "Created successfully");
 	}
-	
 
-	public  PlaceResponce updatePlace(PlacePojo placepojo) {
-		PlaceResponce placeResponce = new PlaceResponce();
+	public PlacePojoResponce updatePlace(PlacePojo placepojo) {
+		PlacePojoResponce placeResponce = new PlacePojoResponce();
 		Place placeEntity = ObjectMapperUtils.map(placepojo, Place.class);
 		Place placeserviceEntity = placeService.UpdatePlace(placeEntity);
 		PlacePojo placeservicePojo = ObjectMapperUtils.map(placeserviceEntity, PlacePojo.class);
 		placeResponce.setPlacePojo(placeservicePojo);
 		return placeResponce;
 	}
-	
+
 	public void deletePlace(long id) {
 		placeService.deletePlace(id);
-		
+
 	}
-	
-	private PlaceResponce createDeleteUpdateResponse(PlacePojo placeservicePojo, String message) {
-		PlaceResponce placeResponce = new PlaceResponce();	
-		List<ResponseMessagePojo> successMessaages=new ArrayList<>();
-		ResponseMessagePojo  responseMessagePojo= new ResponseMessagePojo();
+
+	private PlacePojoResponce createDeleteUpdateResponse(PlacePojo placeservicePojo, String message) {
+		PlacePojoResponce placeResponce = new PlacePojoResponce();
+		List<ResponseMessagePojo> successMessaages = new ArrayList<>();
+		ResponseMessagePojo responseMessagePojo = new ResponseMessagePojo();
 		responseMessagePojo.setSuccessMessage(message);
 		responseMessagePojo.setStatus(HttpStatus.OK);
 		successMessaages.add(responseMessagePojo);
 		placeResponce.setPlacePojo(placeservicePojo);
 		placeResponce.setSuccessMessaages(successMessaages);
 		return placeResponce;
+	}
+
+	public MainPlacePojoResponse mainplaceCreae(MainPlacePojo mainPlacePojo) {
+		MainPlace mainplace = ObjectMapperUtils.map(mainPlacePojo, MainPlace.class);
+		MainPlace mainplaceEntity = placeService.saveMainPlace(mainplace);
+		mainPlacePojo = ObjectMapperUtils.map(mainplaceEntity, MainPlacePojo.class);
+		return createDeleteUpdateMainPlaceResponse(mainPlacePojo, "Created successfully");
+	}
+
+	private MainPlacePojoResponse createDeleteUpdateMainPlaceResponse(MainPlacePojo mainPlacePojo, String message) {
+		MainPlacePojoResponse mainplaceResponce = new MainPlacePojoResponse();
+		List<ResponseMessagePojo> successMessaages = new ArrayList<>();
+		ResponseMessagePojo responseMessagePojo = new ResponseMessagePojo();
+		responseMessagePojo.setSuccessMessage(message);
+		responseMessagePojo.setStatus(HttpStatus.OK);
+		successMessaages.add(responseMessagePojo);
+		mainplaceResponce.setMainPlacePojo(mainPlacePojo);
+		mainplaceResponce.setSuccessMessaages(successMessaages);
+		return mainplaceResponce;
+	}
+
+	public MainPlacePojoListResponse allMainPlaces() {
+		MainPlacePojoListResponse mainPlacePojoListResponse = new MainPlacePojoListResponse();
+		List<MainPlace> mainPlaceEntityList = placeService.allMainPlaces();
+		List<MainPlacePojo> mainPlacePojoList = ObjectMapperUtils.mapAll(mainPlaceEntityList, MainPlacePojo.class);
+		mainPlacePojoListResponse.setMainPlacePojo(mainPlacePojoList);
+		return mainPlacePojoListResponse;
+	}
+
+	public MainPlacePojoResponse updateMainPlace(MainPlacePojo mainPlacePojo) {
+		MainPlace mainPlace = placeService.getMainPlaceById(mainPlacePojo.getId());
+		ObjectMapperUtils.map(mainPlacePojo, mainPlace);
+		mainPlace = placeService.updateMainPlace(mainPlace);
+		mainPlacePojo = ObjectMapperUtils.map(mainPlace, mainPlacePojo);
+		return createDeleteUpdateMainPlaceResponse(mainPlacePojo, "updated Successfully");
+	}
+
+	public MainPlacePojoResponse deleteMainPlace(long id) {
+		MainPlace mainPlace = placeService.getMainPlaceById(id);
+		placeService.deleteMainPlace(mainPlace);
+		return createDeleteUpdateMainPlaceResponse(null, "Deleted Successfully");
 	}
 }

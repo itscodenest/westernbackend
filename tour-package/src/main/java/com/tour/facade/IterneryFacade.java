@@ -19,11 +19,11 @@ import com.tourcoreservice.entity.Asset;
 import com.tourcoreservice.entity.Hotel;
 import com.tourcoreservice.entity.Iternery;
 import com.tourcoreservice.entity.Tourpackage;
-import com.tourcoreservice.generic.pojo.ResponseMessagePojo;
-import com.tourcoreservice.tourpackage.pojo.AssetPojo;
-import com.tourcoreservice.tourpackage.pojo.IterneryPojo;
-import com.tourcoreservice.tourpackage.response.IterneryPojoListResponse;
-import com.tourcoreservice.tourpackage.response.IterneryPojoResponse;
+import com.tourcoreservice.pojo.generic.ResponseMessagePojo;
+import com.tourcoreservice.pojo.tourpackage.AssetPojo;
+import com.tourcoreservice.pojo.tourpackage.IterneryPojo;
+import com.tourcoreservice.response.tourpackage.IterneryPojoListResponse;
+import com.tourcoreservice.response.tourpackage.IterneryPojoResponse;
 
 @Component
 public class IterneryFacade {

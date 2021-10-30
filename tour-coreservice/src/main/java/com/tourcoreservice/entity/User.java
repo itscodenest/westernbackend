@@ -32,6 +32,9 @@ public class User extends BaseEntity {
 	private long salary;
 	@Column
 	private int age;
+	
+	@Column(updatable=false,insertable=false)
+	private String type;
 
 	@ManyToMany(targetEntity = Role.class, cascade = CascadeType.DETACH, fetch = FetchType.EAGER)
 	@JoinTable(name = "users_roles")
@@ -88,5 +91,14 @@ public class User extends BaseEntity {
 	public void setAddresses(Set<Address> addresses) {
 		this.addresses = addresses;
 	}
+
+	public String getType() {
+		return type;
+	}
+
+	public void setType(String type) {
+		this.type = type;
+	}
+	
 
 }

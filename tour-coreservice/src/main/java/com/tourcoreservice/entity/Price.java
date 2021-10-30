@@ -1,10 +1,12 @@
 package com.tourcoreservice.entity;
 
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.ManyToOne;
+import javax.persistence.OneToOne;
+import javax.persistence.Transient;
 
 @Entity
 public class Price {
@@ -21,7 +23,10 @@ public class Price {
 	private long threestarprice;
 	private long fourstarprice;
 	private long fivestarprice;
-	
+
+	@Transient
+	@OneToOne(fetch = FetchType.LAZY, mappedBy = "price")
+	private Activity activity;
 
 	public long getId() {
 		return id;

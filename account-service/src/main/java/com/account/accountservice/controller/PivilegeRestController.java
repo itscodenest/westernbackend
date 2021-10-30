@@ -11,9 +11,9 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import com.account.accountservice.facade.PrivilegeFacade;
-import com.tourcoreservice.account.pojo.PrivilegePojo;
-import com.tourcoreservice.account.response.PrivilegePojoListResponse;
-import com.tourcoreservice.account.response.PrivilegePojoResponse;
+import com.tourcoreservice.pojo.account.PrivilegePojo;
+import com.tourcoreservice.response.account.PrivilegePojoListResponse;
+import com.tourcoreservice.response.account.PrivilegePojoResponse;
 
 @RestController
 @RequestMapping("/privilege")

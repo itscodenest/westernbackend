@@ -12,9 +12,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.account.accountservice.facade.RoleFacade;
-import com.tourcoreservice.account.pojo.RolePojo;
-import com.tourcoreservice.account.response.RolePojoListResponse;
-import com.tourcoreservice.account.response.RolePojoResponse;
+import com.tourcoreservice.pojo.account.RolePojo;
+import com.tourcoreservice.response.account.RolePojoListResponse;
+import com.tourcoreservice.response.account.RolePojoResponse;
 
 @RestController
 @RequestMapping("/role")
@@ -62,4 +62,22 @@ public class RoleRestController {
 		return roleFacade.getRoleById(roleId);
 		
 	}
+	
+	@GetMapping("/parentroles")
+	public RolePojoListResponse getParentRoles() {
+		return roleFacade.getParentRoles();
+		
+	}
+	@GetMapping("/employeeroles")
+	public RolePojoListResponse employeeRoles() {
+		return roleFacade.getEmployeeRoles();	
+	}
+	
+	@GetMapping("/customerroles")
+	public RolePojoListResponse customerRoles() {
+		return roleFacade.customerRoles();
+	}
+	
+	
+	
 }

@@ -1,7 +1,6 @@
 package com.tour.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -12,10 +11,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.tour.facade.IterneryFacade;
-import com.tourcoreservice.tourpackage.pojo.AssetPojo;
-import com.tourcoreservice.tourpackage.pojo.IterneryPojo;
-import com.tourcoreservice.tourpackage.response.IterneryPojoListResponse;
-import com.tourcoreservice.tourpackage.response.IterneryPojoResponse;
+import com.tourcoreservice.pojo.tourpackage.AssetPojo;
+import com.tourcoreservice.pojo.tourpackage.IterneryPojo;
+import com.tourcoreservice.response.tourpackage.IterneryPojoListResponse;
+import com.tourcoreservice.response.tourpackage.IterneryPojoResponse;
 
 @RestController
 @RequestMapping("/iternery")

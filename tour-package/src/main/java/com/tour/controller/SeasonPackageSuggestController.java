@@ -1,7 +1,6 @@
 package com.tour.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -12,9 +11,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.tour.facade.SeasonPackageSuggestFacade;
-import com.tourcoreservice.tourpackage.pojo.SeasonPackageSuggestPojo;
-import com.tourcoreservice.tourpackage.response.SeasonPackageSuggestListResponse;
-import com.tourcoreservice.tourpackage.response.SeasonPackageSuggestResponse;
+import com.tourcoreservice.pojo.tourpackage.SeasonPackageSuggestPojo;
+import com.tourcoreservice.response.tourpackage.SeasonPackageSuggestPojoListResponse;
+import com.tourcoreservice.response.tourpackage.SeasonPackageSuggestPojoResponse;
 
 @RestController
 @RequestMapping("/seasonPackageSuggest")
@@ -24,17 +23,17 @@ public class SeasonPackageSuggestController {
 	SeasonPackageSuggestFacade seasonFacade;
 
 	@PostMapping
-	public SeasonPackageSuggestResponse create(@RequestBody SeasonPackageSuggestPojo seasonPojo) {
+	public SeasonPackageSuggestPojoResponse create(@RequestBody SeasonPackageSuggestPojo seasonPojo) {
 		return seasonFacade.create(seasonPojo);
 	}
 
 	@GetMapping("/{id}")
-	public SeasonPackageSuggestResponse get(@PathVariable long id) {
+	public SeasonPackageSuggestPojoResponse get(@PathVariable long id) {
 		return seasonFacade.get(id);
 	}
 
 	@GetMapping
-	public SeasonPackageSuggestListResponse getAll() {
+	public SeasonPackageSuggestPojoListResponse getAll() {
 		return seasonFacade.listAll();
 	}
 
@@ -44,7 +43,7 @@ public class SeasonPackageSuggestController {
 	}
 
 	@PutMapping("/{id}")
-	public SeasonPackageSuggestResponse update(@RequestBody SeasonPackageSuggestPojo seasonPojo, @PathVariable("id") long id) {
+	public SeasonPackageSuggestPojoResponse update(@RequestBody SeasonPackageSuggestPojo seasonPojo, @PathVariable("id") long id) {
 		seasonPojo.setId(id);
 		return seasonFacade.update(seasonPojo);
 	}

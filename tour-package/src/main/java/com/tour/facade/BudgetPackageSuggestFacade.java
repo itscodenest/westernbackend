@@ -10,10 +10,10 @@ import com.tour.service.BudgetPackageSuggestService;
 import com.tour.util.ObjectMapperUtils;
 import com.tourcoreservice.entity.BudgetPackageSuggest;
 import com.tourcoreservice.entity.Place;
-import com.tourcoreservice.generic.pojo.ResponseMessagePojo;
-import com.tourcoreservice.tourpackage.pojo.BudgetPackageSuggestPojo;
-import com.tourcoreservice.tourpackage.response.BudgetPackageSuggestPojoListResponse;
-import com.tourcoreservice.tourpackage.response.BudgetPackageSuggestPojoResponse;
+import com.tourcoreservice.pojo.generic.ResponseMessagePojo;
+import com.tourcoreservice.pojo.tourpackage.BudgetPackageSuggestPojo;
+import com.tourcoreservice.response.tourpackage.BudgetPackageSuggestPojoListResponse;
+import com.tourcoreservice.response.tourpackage.BudgetPackageSuggestPojoResponse;
 
 @Component
 public class BudgetPackageSuggestFacade {
