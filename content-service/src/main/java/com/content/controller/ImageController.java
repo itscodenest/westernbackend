@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.content.facade.Imagefacade;
-import com.tourcoreservice.content.pojo.ImagePojo;
+import com.tourcoreservice.pojo.content.ImagePojo;
 
 @RequestMapping("/image")
 @RestController

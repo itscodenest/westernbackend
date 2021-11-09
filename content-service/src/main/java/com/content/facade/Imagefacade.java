@@ -11,8 +11,8 @@ import org.springframework.web.multipart.MultipartFile;
 import com.content.service.BlogService;
 import com.content.service.ImageService;
 import com.content.service.ObjectMapperUtils;
-import com.tourcoreservice.content.pojo.ImagePojo;
 import com.tourcoreservice.entity.Image;
+import com.tourcoreservice.pojo.content.ImagePojo;
 
 @Component
 public class Imagefacade {
