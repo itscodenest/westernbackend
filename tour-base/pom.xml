@@ -57,6 +57,7 @@
 		<module>../account-service</module>
 		<module>../tour-coreservice</module>
 		<module>../tour-package</module>
+		<module>../order-service</module>
 		<!-- <module>../activity</module> --> 
 
 	</modules>
