@@ -55,9 +55,10 @@ public class OrderFacade {
 	}
 
 	public OrderPojoResponse update(OrdersPojo ordersPojo) {
-		Orders orders = ObjectMapperUtils.map(ordersPojo, Orders.class);
-		orders = orderService.Update(orders);
-		ordersPojo = ObjectMapperUtils.map(orders, OrdersPojo.class);
+		Orders order = orderService.getOrderyId(ordersPojo.getId());
+		ObjectMapperUtils.map(ordersPojo, order);
+		order = orderService.Update(order);
+		ordersPojo = ObjectMapperUtils.map(order, OrdersPojo.class);
 		return createDeleteUpdateResponse(ordersPojo, "Updated successfully");
 	}
 

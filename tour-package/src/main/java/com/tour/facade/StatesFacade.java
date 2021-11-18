@@ -10,7 +10,6 @@ import org.springframework.util.ObjectUtils;
 
 import com.tour.service.StatesService;
 import com.tour.util.ObjectMapperUtils;
-import com.tourcoreservice.entity.Country;
 import com.tourcoreservice.entity.States;
 import com.tourcoreservice.exception.tourpackage.DataAlreadyExistException;
 import com.tourcoreservice.pojo.generic.ResponseMessagePojo;
