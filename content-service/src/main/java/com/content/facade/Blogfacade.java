@@ -7,7 +7,7 @@ import org.springframework.stereotype.Component;
 
 import com.content.service.BlogService;
 import com.content.service.ObjectMapperUtils;
-import com.tourcoreservice.content.pojo.BlogPojo;
+import com.tourcoreservice.pojo.content.BlogPojo;
 import com.tourcoreservice.entity.Blog;
 
 @Component

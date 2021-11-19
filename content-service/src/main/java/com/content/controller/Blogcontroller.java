@@ -13,7 +13,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.content.facade.Blogfacade;
-import com.tourcoreservice.content.pojo.BlogPojo;
+import com.tourcoreservice.pojo.content.BlogPojo;
+
 
 @RestController
 @RequestMapping("/blog")
