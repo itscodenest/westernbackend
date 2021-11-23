@@ -25,6 +25,8 @@ public class Country {
 	@OneToMany(cascade = CascadeType.DETACH, fetch = FetchType.LAZY)
 	@JoinTable(name = "country_states")
 	private Set<States> states;
+	
+	
 
 	public long getId() {
 		return id;

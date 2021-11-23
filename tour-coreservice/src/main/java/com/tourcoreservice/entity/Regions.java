@@ -3,6 +3,7 @@ package com.tourcoreservice.entity;
 import java.util.List;
 
 import javax.persistence.CascadeType;
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
@@ -12,17 +13,19 @@ import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
 
 @Entity
-public class MainPlace {
+public class Regions {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Column(name = "ID")
 	private long id;
 
+	@Column(length = 20, unique = true)
 	private String name;
-	
-	@OneToMany(cascade=CascadeType.DETACH,fetch=FetchType.LAZY)
-	@JoinColumn(name="subplaces_id")
-	private List<Place> subplaces;
+
+	@OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.DETACH)
+	@JoinColumn(name = "Country_id")
+	private List<Country> countries;
 
 	public long getId() {
 		return id;
@@ -40,13 +43,12 @@ public class MainPlace {
 		this.name = name;
 	}
 
-	public List<Place> getSubplaces() {
-		return subplaces;
+	public List<Country> getCountries() {
+		return countries;
 	}
 
-	public void setSubplaces(List<Place> subplaces) {
-		this.subplaces = subplaces;
+	public void setCountries(List<Country> countries) {
+		this.countries = countries;
 	}
-	
-	
+
 }
