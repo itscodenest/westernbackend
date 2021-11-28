@@ -1,7 +1,5 @@
 package com.tourcoreservice.entity;
 
-import java.util.List;
-
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -10,7 +8,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
-import javax.persistence.OneToMany;
+import javax.persistence.ManyToOne;
 
 @Entity
 public class Taluk {
@@ -22,10 +20,10 @@ public class Taluk {
 
 	@Column(length = 20, unique = true)
 	private String name;
-	
-	@OneToMany(cascade=CascadeType.DETACH,fetch=FetchType.LAZY)
-	@JoinColumn(name="mainplace_id")
-	private List<MainPlace> mainPlaces;
+
+	@ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.DETACH)
+	@JoinColumn(name = "district_id")
+	private District district;
 
 	public long getId() {
 		return id;
@@ -43,13 +41,12 @@ public class Taluk {
 		this.name = name;
 	}
 
-	public List<MainPlace> getMainPlaces() {
-		return mainPlaces;
+	public District getDistrict() {
+		return district;
 	}
 
-	public void setMainPlaces(List<MainPlace> mainPlaces) {
-		this.mainPlaces = mainPlaces;
+	public void setDistrict(District district) {
+		this.district = district;
 	}
-	
 
 }

@@ -6,11 +6,13 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Component;
+import org.springframework.util.ObjectUtils;
 
 import com.tour.service.PlaceService;
 import com.tour.util.ObjectMapperUtils;
 import com.tourcoreservice.entity.MainPlace;
 import com.tourcoreservice.entity.Place;
+import com.tourcoreservice.entity.Taluk;
 import com.tourcoreservice.pojo.generic.ResponseMessagePojo;
 import com.tourcoreservice.pojo.tourpackage.MainPlacePojo;
 import com.tourcoreservice.pojo.tourpackage.PlacePojo;
@@ -50,12 +52,22 @@ public class PlaceFacede {
 	}
 
 	public PlacePojoResponce updatePlace(PlacePojo placepojo) {
+		Place place=placeService.getPlaceById(placepojo.getId());
+		if (!ObjectUtils.isEmpty(place.getMainplace())) {
+			deleteExistingMAinplace(place,place.getMainplace());
+		}
 		PlacePojoResponce placeResponce = new PlacePojoResponce();
-		Place placeEntity = ObjectMapperUtils.map(placepojo, Place.class);
-		Place placeserviceEntity = placeService.UpdatePlace(placeEntity);
+		ObjectMapperUtils.map(placepojo, place);
+		Place placeserviceEntity = placeService.UpdatePlace(place);
 		PlacePojo placeservicePojo = ObjectMapperUtils.map(placeserviceEntity, PlacePojo.class);
 		placeResponce.setPlacePojo(placeservicePojo);
 		return placeResponce;
+	}
+
+	private void deleteExistingMAinplace(Place place, MainPlace mainplace) {
+		mainplace=null;
+		place.setMainplace(null);
+		placeService.savePlace(place);
 	}
 
 	public void deletePlace(long id) {
@@ -104,10 +116,20 @@ public class PlaceFacede {
 
 	public MainPlacePojoResponse updateMainPlace(MainPlacePojo mainPlacePojo) {
 		MainPlace mainPlace = placeService.getMainPlaceById(mainPlacePojo.getId());
+		if (!ObjectUtils.isEmpty(mainPlace.getTaluk())) {
+			deleteExistingTaluk(mainPlace,mainPlace.getTaluk());
+		}
+		
 		ObjectMapperUtils.map(mainPlacePojo, mainPlace);
 		mainPlace = placeService.updateMainPlace(mainPlace);
 		mainPlacePojo = ObjectMapperUtils.map(mainPlace, mainPlacePojo);
 		return createDeleteUpdateMainPlaceResponse(mainPlacePojo, "updated Successfully");
+	}
+
+	private void deleteExistingTaluk(MainPlace mainPlace, Taluk taluk) {
+		taluk=null;
+		mainPlace.setTaluk(taluk);
+		placeService.saveMainPlace(mainPlace);
 	}
 
 	public MainPlacePojoResponse deleteMainPlace(long id) {

@@ -1,7 +1,5 @@
 package com.tourcoreservice.entity;
 
-import java.util.Set;
-
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -9,8 +7,8 @@ import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinTable;
-import javax.persistence.ManyToMany;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 
 @Entity
 
@@ -23,9 +21,9 @@ public class Place {
 
 	private String type;
 
-	@ManyToMany(cascade = CascadeType.DETACH, fetch = FetchType.LAZY)
-	@JoinTable(name = "main_placess")
-	private Set<MainPlace> mainPlaces;
+	@ManyToOne(cascade = CascadeType.DETACH, fetch = FetchType.EAGER)
+	@JoinColumn(name = "mainplace_id")
+	private MainPlace mainplace;
 
 	public long getId() {
 		return id;
@@ -51,12 +49,12 @@ public class Place {
 		this.type = type;
 	}
 
-	public Set<MainPlace> getMainPlaces() {
-		return mainPlaces;
+	public MainPlace getMainplace() {
+		return mainplace;
 	}
 
-	public void setMainPlaces(Set<MainPlace> mainPlaces) {
-		this.mainPlaces = mainPlaces;
+	public void setMainplace(MainPlace mainplace) {
+		this.mainplace = mainplace;
 	}
 
 }

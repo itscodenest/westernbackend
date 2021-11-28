@@ -5,7 +5,7 @@ import java.util.List;
 public class DistrictPojo {
 	private long id;
 	private String name;
-	private List<TalukPojo> talukPojoList;
+	private StatesPojo state;
 
 	public long getId() {
 		return id;
@@ -23,11 +23,12 @@ public class DistrictPojo {
 		this.name = name;
 	}
 
-	public List<TalukPojo> getTalukPojoList() {
-		return talukPojoList;
+	public StatesPojo getState() {
+		return state;
 	}
 
-	public void setTalukPojoList(List<TalukPojo> talukPojoList) {
-		this.talukPojoList = talukPojoList;
+	public void setState(StatesPojo state) {
+		this.state = state;
 	}
+
 }

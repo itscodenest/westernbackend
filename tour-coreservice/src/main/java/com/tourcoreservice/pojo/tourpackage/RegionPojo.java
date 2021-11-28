@@ -7,16 +7,6 @@ public class RegionPojo {
 	private long id;
 	private String name;
 
-	private List<CountryPojo> countryPojoList;
-
-	public List<CountryPojo> getCountryPojoList() {
-		return countryPojoList;
-	}
-
-	public void setCountryPojoList(List<CountryPojo> countryPojoList) {
-		this.countryPojoList = countryPojoList;
-	}
-
 	public long getId() {
 		return id;
 	}

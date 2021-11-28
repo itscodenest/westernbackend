@@ -9,6 +9,8 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.ManyToMany;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 
 @Entity
@@ -19,10 +21,10 @@ public class MainPlace {
 	private long id;
 
 	private String name;
-	
-	@OneToMany(cascade=CascadeType.DETACH,fetch=FetchType.LAZY)
-	@JoinColumn(name="subplaces_id")
-	private List<Place> subplaces;
+
+	@ManyToOne(cascade = CascadeType.DETACH, fetch = FetchType.EAGER)
+	@JoinColumn(name = "taluk_id")
+	private Taluk taluk;
 
 	public long getId() {
 		return id;
@@ -40,13 +42,13 @@ public class MainPlace {
 		this.name = name;
 	}
 
-	public List<Place> getSubplaces() {
-		return subplaces;
+	public Taluk getTaluk() {
+		return taluk;
 	}
 
-	public void setSubplaces(List<Place> subplaces) {
-		this.subplaces = subplaces;
+	public void setTaluk(Taluk taluk) {
+		this.taluk = taluk;
 	}
 	
-	
+
 }

@@ -6,7 +6,7 @@ public class PlacePojo {
 	private long id;
 	private String name;
 	private String type;
-	private Set<MainPlacePojo> mainPlaces;
+	private MainPlacePojo mainplace;
 
 	public long getId() {
 		return id;
@@ -32,12 +32,12 @@ public class PlacePojo {
 		this.type = type;
 	}
 
-	public Set<MainPlacePojo> getMainPlaces() {
-		return mainPlaces;
+	public MainPlacePojo getMainplace() {
+		return mainplace;
 	}
 
-	public void setMainPlaces(Set<MainPlacePojo> mainPlaces) {
-		this.mainPlaces = mainPlaces;
+	public void setMainplace(MainPlacePojo mainplace) {
+		this.mainplace = mainplace;
 	}
 
 }

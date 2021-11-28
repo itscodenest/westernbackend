@@ -1,7 +1,5 @@
 package com.tourcoreservice.entity;
 
-import java.util.Set;
-
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -9,24 +7,22 @@ import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinTable;
-import javax.persistence.OneToMany;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 
 @Entity
 public class Country {
 
 	@Id
-	@GeneratedValue( strategy = GenerationType.IDENTITY)
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private long id;
-	
-	@Column( unique = true)
+
+	@Column(unique = true)
 	private String name;
-	
-	@OneToMany(cascade = CascadeType.DETACH, fetch = FetchType.LAZY)
-	@JoinTable(name = "country_states")
-	private Set<States> states;
-	
-	
+
+	@ManyToOne(cascade = CascadeType.DETACH, fetch = FetchType.EAGER)
+	@JoinColumn(name = "region_id")
+	private Regions region;
 
 	public long getId() {
 		return id;
@@ -44,12 +40,12 @@ public class Country {
 		this.name = name;
 	}
 
-	public Set<States> getStates() {
-		return states;
+	public Regions getRegion() {
+		return region;
 	}
 
-	public void setStates(Set<States> states) {
-		this.states = states;
+	public void setRegion(Regions region) {
+		this.region = region;
 	}
-	
+
 }

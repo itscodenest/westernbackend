@@ -97,6 +97,16 @@ public class RegionService {
 
 	public void deleteTaluk(Long id) {
 		talukRepository.deleteById(id);
-		
+
+	}
+
+	public void saveDistrict(District district) {
+		districtRepository.save(district);
+
+	}
+
+	public void saveTaluk(Taluk taluk) {
+		talukRepository.save(taluk);
+
 	}
 }

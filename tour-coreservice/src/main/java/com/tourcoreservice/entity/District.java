@@ -9,6 +9,8 @@ import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 
 @Entity
@@ -20,9 +22,10 @@ public class District {
 
 	@Column(length = 20, unique = true)
 	private String name;
-	
-	@OneToMany(cascade=CascadeType.DETACH,fetch=FetchType.LAZY)
-	private List<Taluk> taluks;
+
+	@ManyToOne(cascade = CascadeType.DETACH)
+	@JoinColumn(name = "state_id")
+	private States state;
 
 	public long getId() {
 		return id;
@@ -40,13 +43,13 @@ public class District {
 		this.name = name;
 	}
 
-	public List<Taluk> getTaluks() {
-		return taluks;
+	public States getState() {
+		return state;
 	}
 
-	public void setTaluks(List<Taluk> taluks) {
-		this.taluks = taluks;
+	public void setState(States state) {
+		this.state = state;
 	}
-	
+
 	
 }

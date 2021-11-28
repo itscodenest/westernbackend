@@ -7,10 +7,12 @@ import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Component;
+import org.springframework.util.ObjectUtils;
 
 import com.tour.service.RegionService;
 import com.tourcoreservice.entity.District;
 import com.tourcoreservice.entity.Regions;
+import com.tourcoreservice.entity.States;
 import com.tourcoreservice.entity.Taluk;
 import com.tourcoreservice.pojo.generic.ResponseMessagePojo;
 import com.tourcoreservice.pojo.tourpackage.DistrictPojo;
@@ -94,10 +96,19 @@ public class RegionFacade {
 
 	public RegionDestrictTalukPojoResponse updateDistrict(DistrictPojo districtPojo) {
 		Optional<District> district = regionService.findDistrictById(districtPojo.getId());
+		if (!ObjectUtils.isEmpty(district.get().getState())) {
+			deleteSatesExists(district.get(),district.get().getState());
+		}
 		ObjectMapperUtils.map(districtPojo, district.get());
 		District districtEntity = regionService.updateDistrict(district.get());
 		districtPojo = ObjectMapperUtils.map(districtEntity, DistrictPojo.class);
 		return createDeleteUpdateResponse(null, "Updated Successfully", districtPojo, null);
+	}
+
+	private void deleteSatesExists(District district, States state) {
+		state=null;
+		district.setState(state);
+		regionService.saveDistrict(district);
 	}
 
 	public RegionDestrictTalukPojoResponse deleteDistrict(Long id) {
@@ -130,10 +141,20 @@ public class RegionFacade {
 
 	public RegionDestrictTalukPojoResponse updateTaluk(TalukPojo talukPojo) {
 		Optional<Taluk> taluk = regionService.findTalukById(talukPojo.getId());
+		if (!ObjectUtils.isEmpty(taluk.get().getDistrict())) {
+			deleteExisting(taluk.get(),taluk.get().getDistrict());
+		}
 		ObjectMapperUtils.map(talukPojo, taluk.get());
 		Taluk talukEntity = regionService.updateTaluk(taluk.get());
 		talukPojo = ObjectMapperUtils.map(talukEntity, TalukPojo.class);
 		return createDeleteUpdateResponse(null, "Updated Successfully", null, talukPojo);
+	}
+
+	private void deleteExisting(Taluk taluk, District district) {
+		
+		district=null;
+		taluk.setDistrict(district);
+		regionService.saveTaluk(taluk);
 	}
 
 	public RegionDestrictTalukPojoResponse deleteTaluk(Long id) {
