@@ -14,7 +14,7 @@ public class Regions {
 	@Column(name = "ID")
 	private long id;
 
-	@Column(length = 20, unique = true)
+	@Column( unique = true)
 	private String name;
 
 	public long getId() {
