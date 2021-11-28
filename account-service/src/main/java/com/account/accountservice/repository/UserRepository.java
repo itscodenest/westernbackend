@@ -9,6 +9,8 @@ import com.tourcoreservice.entity.User;
 public interface UserRepository extends JpaRepository<User,Long>{
 	User findById(long id);
 
+	User getUserByUsername(String username);
+
 	
 
 }

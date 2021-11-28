@@ -22,6 +22,7 @@ import org.springframework.web.cors.CorsConfigurationSource;
 import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
 
 import com.account.accountservice.service.AuditorAwareService;
+import com.account.accountservice.service.CustomOAuth2UserService;
 import com.google.common.collect.ImmutableList;
 
 @Configuration
@@ -33,11 +34,19 @@ public class ResourceServerConfiguration extends ResourceServerConfigurerAdapter
 	@Autowired
 	private ResourceServerProperties reource;
 
+	@Autowired
+	private CustomOAuth2UserService oauthUserService;
+
 	@Override
 	public void configure(HttpSecurity http) throws Exception {
-		/*http.cors().and().requestMatchers().antMatchers("/**").and().authorizeRequests().anyRequest().authenticated();*/
+		/*
+		 * http.cors().and().requestMatchers().antMatchers("/**").and().
+		 * authorizeRequests().anyRequest().authenticated();
+		 */
 
-		http.authorizeRequests().antMatchers("/**").permitAll();
+		http.authorizeRequests().antMatchers("/**", "/oauth/**").permitAll().and().formLogin().permitAll()
+		.and().oauth2Login().loginPage("/login")
+		.userInfoEndpoint().userService(oauthUserService);
 	}
 
 	@Primary
@@ -77,7 +86,7 @@ public class ResourceServerConfiguration extends ResourceServerConfigurerAdapter
 
 	@Bean
 	public PasswordEncoder encoder() {
-	    return new BCryptPasswordEncoder();
+		return new BCryptPasswordEncoder();
 	}
 
 }
