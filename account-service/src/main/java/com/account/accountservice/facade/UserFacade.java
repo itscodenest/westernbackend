@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Component;
 
+import com.account.accountservice.repository.LocalEmailServiceInterface;
 import com.account.accountservice.service.UserService;
 import com.tourcoreservice.entity.Address;
 import com.tourcoreservice.entity.Role;
@@ -34,9 +35,18 @@ public class UserFacade {
 	@Value("${customer.delete.success}")
 	private String customerDeleteSuccessfully;
 
+	@Autowired
+	private LocalEmailServiceInterface localEmailServiceInterface;
+	
 	public UserPojoResponse create(UserPojo userPojo) {
 		User user = ObjectMapperUtils.map(userPojo, User.class);
 		user = userService.create(user);
+		try {
+		localEmailServiceInterface.sendMailWithoutBody();
+		}
+		catch(Exception e) {
+			e.printStackTrace();
+		}
 		userPojo = ObjectMapperUtils.map(user, UserPojo.class);
 		return createDeleteUpdateResponse(userPojo, customerCreatedSuccessfully);
 	}
