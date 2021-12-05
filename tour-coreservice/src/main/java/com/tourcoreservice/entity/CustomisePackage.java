@@ -1,12 +1,20 @@
 package com.tourcoreservice.entity;
 
 import java.util.Date;
+import java.util.Set;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.Lob;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 
 @Entity
 public class CustomisePackage {
@@ -43,6 +51,37 @@ public class CustomisePackage {
 
 	@Column(name = "travel_duration")
 	private String travelDuration;
+	
+	@ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.DETACH)
+	@JoinTable(name = "customisepackage_user")
+	private User user;
+
+	
+	@OneToMany(fetch=FetchType.LAZY,cascade=CascadeType.DETACH)
+	@JoinColumn(name="flightinfo_id")
+	private Set<CustomisePackageFlightinfo> flightInfo;
+	
+	@OneToMany(fetch=FetchType.LAZY,cascade=CascadeType.DETACH)
+	@JoinColumn(name="hotelinfo_id")
+	private Set<CustomisePackageHotelInfo> hotel_info;
+	/*
+	 * @ManyToMany(fetch = FetchType.LAZY, cascade = CascadeType.DETACH)
+	 * 
+	 * @JoinTable(name = "order_price") private List<Price> price;
+	 */
+
+	private String totalPrice;
+	
+	@Lob
+	private String inclusiontext;
+	@Lob
+	private String exlusionText;
+	@Lob
+	private String paymentPolicy;
+	@Lob
+	private String termsandconditions;
+	@Lob
+	private String aditionalinfo;
 
 	public long getId() {
 		return id;
