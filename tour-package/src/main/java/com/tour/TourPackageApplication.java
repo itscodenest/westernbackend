@@ -3,6 +3,7 @@ package com.tour;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.net.URISyntaxException;
+import java.util.concurrent.atomic.LongAdder;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -25,6 +26,7 @@ public class TourPackageApplication {
 	public static void main(String[] args) throws FileNotFoundException, IOException, URISyntaxException {
 		SpringApplication.run(TourPackageApplication.class, args);
 		Gcs googleCloudStorage = new Gcs("test", "tour-package");
+		LongAdder ls=new LongAdder();
 
 	}
 

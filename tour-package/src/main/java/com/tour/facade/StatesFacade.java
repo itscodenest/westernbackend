@@ -10,6 +10,7 @@ import org.springframework.util.ObjectUtils;
 
 import com.tour.service.StatesService;
 import com.tour.util.ObjectMapperUtils;
+import com.tourcoreservice.entity.Country;
 import com.tourcoreservice.entity.States;
 import com.tourcoreservice.exception.tourpackage.DataAlreadyExistException;
 import com.tourcoreservice.pojo.generic.ResponseMessagePojo;
@@ -33,8 +34,8 @@ public class StatesFacade {
 
 	private void ifStatesExist(String name) {
 		// TODO Auto-generated method stub
-		States state =  statesService.findStateByName(name);
-		if(!ObjectUtils.isEmpty(state)) {
+		States state = statesService.findStateByName(name);
+		if (!ObjectUtils.isEmpty(state)) {
 			throw new DataAlreadyExistException("Data already exists");
 		}
 	}
@@ -64,10 +65,20 @@ public class StatesFacade {
 		 * return createDeleteUpdateResponse(statePojo,"Updated successfully");
 		 */
 		States state = statesService.getStateById(statesPojo.getId());
+		if (!ObjectUtils.isEmpty(state.getCountry())) {
+			deleteExistingCountry(state, state.getCountry());
+
+		}
 		ObjectMapperUtils.map(statesPojo, state);
 		state = statesService.UpdateStateById(state);
 		statesPojo = ObjectMapperUtils.map(state, StatesPojo.class);
 		return createDeleteUpdateResponse(statesPojo, "Updated successfully");
+	}
+
+	private void deleteExistingCountry(States state, Country country) {
+		country = null;
+		state.setCountry(country);
+		statesService.saveStates(state);
 	}
 
 	public StatesPojoResponse deleteState(long id) {

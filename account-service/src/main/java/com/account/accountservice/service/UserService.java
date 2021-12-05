@@ -43,5 +43,17 @@ public class UserService {
 		user.getRoles().removeAll(user.getRoles());
 		userRespository.save(user);
 	}
+	
+	 public void processOAuthPostLogin(String username) {
+	        User existUser = userRespository.getUserByUsername(username);
+	         
+	        if (existUser == null) {
+	            User newUser = new User();
+	            newUser.setUsername(username);         
+	             
+	            userRespository.save(newUser);        
+	        }
+	         
+	    }
 
 }

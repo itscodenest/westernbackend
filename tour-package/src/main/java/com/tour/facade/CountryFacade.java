@@ -2,7 +2,6 @@ package com.tour.facade;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Set;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -12,7 +11,7 @@ import org.springframework.util.ObjectUtils;
 import com.tour.service.CountryServices;
 import com.tour.util.ObjectMapperUtils;
 import com.tourcoreservice.entity.Country;
-import com.tourcoreservice.entity.States;
+import com.tourcoreservice.entity.Regions;
 import com.tourcoreservice.exception.tourpackage.DataAlreadyExistException;
 import com.tourcoreservice.pojo.generic.ResponseMessagePojo;
 import com.tourcoreservice.pojo.tourpackage.CountryPojo;
@@ -35,9 +34,9 @@ public class CountryFacade {
 
 	private void ifCountryExist(String name) {
 		// TODO Auto-generated method stub
-		
-		Country country =  countryService.findCountryByName(name);
-		if(!ObjectUtils.isEmpty(country)) {
+
+		Country country = countryService.findCountryByName(name);
+		if (!ObjectUtils.isEmpty(country)) {
 			throw new DataAlreadyExistException("Data already exists");
 		}
 	}
@@ -60,15 +59,19 @@ public class CountryFacade {
 
 	public CountryPojoResponse updateCountry(CountryPojo countryPojo) {
 		Country country = countryService.getCountryById(countryPojo.getId());
-		deleteExistingStates(country, country.getStates());
+		if (!ObjectUtils.isEmpty(country.getRegion())) {
+			deleteExistingStates(country, country.getRegion());
+		}
+
 		ObjectMapperUtils.map(countryPojo, country);
 		country = countryService.updateCountry(country);
 		countryPojo = ObjectMapperUtils.map(country, CountryPojo.class);
 		return createDeleteUpdateResponse(countryPojo, "Updated successfully");
 	}
 
-	private void deleteExistingStates(Country country, Set<States> states) {
-		country.getStates().removeAll(states);
+	private void deleteExistingStates(Country country, Regions regions) {
+		regions = null;
+		country.setRegion(regions);
 		countryService.save(country);
 
 	}
