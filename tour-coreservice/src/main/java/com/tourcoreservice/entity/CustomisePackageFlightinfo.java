@@ -8,13 +8,14 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
 @Entity
-public class Flightinfo {
+public class CustomisePackageFlightinfo {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private long id;
 
 	private boolean roundtrip;
+	
 	private boolean oneside;
 
 	private String flightDepartureCity;

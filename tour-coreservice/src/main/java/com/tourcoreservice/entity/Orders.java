@@ -9,9 +9,12 @@ import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
+import javax.persistence.Lob;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 
 import org.springframework.data.annotation.CreatedBy;
 import org.springframework.data.annotation.CreatedDate;
@@ -32,22 +35,41 @@ public class Orders {
 
 	@CreatedDate
 	private Date createdOn;
-
-	@ManyToMany(fetch = FetchType.LAZY, cascade = CascadeType.DETACH)
-	@JoinTable(name = "order_package")
-	private Set<Tourpackage> tourpackage;
-
-	@ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.DETACH)
-	@JoinTable(name = "order_user")
-	private User users;
-
-	/*
-	 * @ManyToMany(fetch = FetchType.LAZY, cascade = CascadeType.DETACH)
-	 * 
-	 * @JoinTable(name = "order_price") private List<Price> price;
-	 */
-
-	private String totalPrice;
+//
+//	@ManyToMany(fetch = FetchType.LAZY, cascade = CascadeType.DETACH)
+//	@JoinTable(name = "order_package")
+//	private Set<CustomisePackage> packages;
+//
+//	@ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.DETACH)
+//	@JoinTable(name = "order_user")
+//	private User users;
+//
+//	
+//	@OneToMany(fetch=FetchType.LAZY,cascade=CascadeType.DETACH)
+//	@JoinColumn(name="flightinfo_id")
+//	private Set<CustomisePackageFlightinfo> flightInfo;
+//	
+//	@OneToMany(fetch=FetchType.LAZY,cascade=CascadeType.DETACH)
+//	@JoinColumn(name="hotelinfo_id")
+//	private Set<CustomisePackageHotelInfo> hotel_info;
+//	/*
+//	 * @ManyToMany(fetch = FetchType.LAZY, cascade = CascadeType.DETACH)
+//	 * 
+//	 * @JoinTable(name = "order_price") private List<Price> price;
+//	 */
+//
+//	private String totalPrice;
+//	
+//	@Lob
+//	private String inclusiontext;
+//	@Lob
+//	private String exlusionText;
+//	@Lob
+//	private String paymentPolicy;
+//	@Lob
+//	private String termsandconditions;
+//	@Lob
+//	private String aditionalinfo;
 
 	/*
 	 * public List<Price> getPrice() { return price; }
@@ -55,7 +77,7 @@ public class Orders {
 	 * public void setPrice(List<Price> price) { this.price = price; }
 	 */
 
-	public String getTotalPrice() {
+	/*public String getTotalPrice() {
 		return totalPrice;
 	}
 
@@ -103,13 +125,7 @@ public class Orders {
 		this.createdOn = createdOn;
 	}
 
-	public Set<Tourpackage> getTourpackage() {
-		return tourpackage;
-	}
-
-	public void setTourpackage(Set<Tourpackage> tourpackage) {
-		this.tourpackage = tourpackage;
-	}
+	
 
 	public User getUsers() {
 		return users;
@@ -118,5 +134,62 @@ public class Orders {
 	public void setUsers(User users) {
 		this.users = users;
 	}
+
+	public String getInclusiontext() {
+		return inclusiontext;
+	}
+
+	public void setInclusiontext(String inclusiontext) {
+		this.inclusiontext = inclusiontext;
+	}
+
+	public String getExlusionText() {
+		return exlusionText;
+	}
+
+	public void setExlusionText(String exlusionText) {
+		this.exlusionText = exlusionText;
+	}
+
+	public String getPaymentPolicy() {
+		return paymentPolicy;
+	}
+
+	public void setPaymentPolicy(String paymentPolicy) {
+		this.paymentPolicy = paymentPolicy;
+	}
+
+	public String getTermsandconditions() {
+		return termsandconditions;
+	}
+
+	public void setTermsandconditions(String termsandconditions) {
+		this.termsandconditions = termsandconditions;
+	}
+
+	public String getAditionalinfo() {
+		return aditionalinfo;
+	}
+
+	public void setAditionalinfo(String aditionalinfo) {
+		this.aditionalinfo = aditionalinfo;
+	}
+
+	public Set<CustomisePackageFlightinfo> getFlightInfo() {
+		return flightInfo;
+	}
+
+	public void setFlightInfo(Set<CustomisePackageFlightinfo> flightInfo) {
+		this.flightInfo = flightInfo;
+	}
+
+	public Set<CustomisePackageHotelInfo> getHotel_info() {
+		return hotel_info;
+	}
+
+	public void setHotel_info(Set<CustomisePackageHotelInfo> hotel_info) {
+		this.hotel_info = hotel_info;
+	}*/
+	
 
 }
