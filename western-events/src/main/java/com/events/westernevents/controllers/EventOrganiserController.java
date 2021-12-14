@@ -16,7 +16,7 @@ import com.tourcoreservice.pojo.events.EventOrganiserPojo;
 import com.tourcoreservice.response.events.EventOrganiserListResponse;
 import com.tourcoreservice.response.events.EventOrganiserResponse;
 
-@CrossOrigin(origins = "http://localhost:4200", maxAge = 3600)
+
 @RestController
 @RequestMapping("/EventOrganiser")
 public class EventOrganiserController {

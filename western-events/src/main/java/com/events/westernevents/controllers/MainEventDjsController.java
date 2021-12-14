@@ -15,7 +15,7 @@ import com.tourcoreservice.pojo.events.MainEventDjsPojo;
 import com.tourcoreservice.response.events.MainEventDjsListResponse;
 import com.tourcoreservice.response.events.MainEventDjsResponse;
 
-@CrossOrigin(origins = "http://localhost:4200", maxAge = 3600)
+
 @RestController
 @RequestMapping("/MainEventDjs")
 public class MainEventDjsController {

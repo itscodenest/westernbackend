@@ -15,7 +15,7 @@ import com.tourcoreservice.pojo.events.MainEventBlogsPojo;
 import com.tourcoreservice.response.events.MainEventBloglistResponse;
 import com.tourcoreservice.response.events.MainEventBlogsResponse;
 
-@CrossOrigin(origins = "http://localhost:4200", maxAge = 3600)
+
 @RestController
 @RequestMapping("/MainEventBlogs")
 public class MainEventBlogsController {

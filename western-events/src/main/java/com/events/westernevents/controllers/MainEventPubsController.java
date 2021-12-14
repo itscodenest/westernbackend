@@ -15,7 +15,7 @@ import com.tourcoreservice.pojo.events.MainEventPubsPojo;
 import com.tourcoreservice.response.events.MainEventPubsListResponse;
 import com.tourcoreservice.response.events.MainEventPubsResponse;
 
-@CrossOrigin(origins = "http://localhost:4200", maxAge = 3600)
+
 @RestController
 @RequestMapping("/MainEventPubs")
 public class MainEventPubsController {

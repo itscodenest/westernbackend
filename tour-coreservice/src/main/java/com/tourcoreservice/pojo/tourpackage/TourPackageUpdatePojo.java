@@ -19,6 +19,7 @@ public class TourPackageUpdatePojo {
 
 	private int offer;
 
+	private String imgcdn;
 	private String link;
 
 	private String inclusion;
@@ -49,6 +50,16 @@ public class TourPackageUpdatePojo {
 
 	public String getDuration() {
 		return duration;
+	}
+	
+	
+
+	public String getImgcdn() {
+		return imgcdn;
+	}
+
+	public void setImgcdn(String imgcdn) {
+		this.imgcdn = imgcdn;
 	}
 
 	public void setDuration(String duration) {

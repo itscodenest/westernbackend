@@ -17,7 +17,7 @@ import com.tourcoreservice.response.events.EventThemeNoImageListResponse;
 import com.tourcoreservice.response.events.EventsThemeListResponse;
 import com.tourcoreservice.response.events.EventsThemeResponse;
 
-@CrossOrigin(origins = "http://localhost:4200", maxAge = 3600)
+
 @RestController
 @RequestMapping("/EventThemes")
 public class EventThemeController {

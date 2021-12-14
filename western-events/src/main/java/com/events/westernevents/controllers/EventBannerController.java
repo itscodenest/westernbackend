@@ -16,7 +16,7 @@ import com.tourcoreservice.pojo.events.EventbannerPojo;
 import com.tourcoreservice.response.events.EventsBannerListResponse;
 import com.tourcoreservice.response.events.EventsBannerResponse;
 
-@CrossOrigin(origins = "http://localhost:4200", maxAge = 3600)
+
 @RestController
 @RequestMapping("/EventBanners")
 public class EventBannerController {

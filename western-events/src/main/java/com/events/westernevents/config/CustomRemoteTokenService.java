@@ -32,7 +32,7 @@ public class CustomRemoteTokenService extends RemoteTokenServices {
 
 	private String checkTokenEndpointUrl;
 
-	private String clientId="tour-package";
+	private String clientId="western-events";
 
 	private String clientSecret;
 

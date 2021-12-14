@@ -17,7 +17,6 @@ import com.tourcoreservice.response.events.EventArstistResponse;
 import com.tourcoreservice.response.events.EventArtistListResponse;
 import com.tourcoreservice.response.events.EventArtsitNoImageListResponse;
 
-@CrossOrigin(origins = "http://localhost:4200", maxAge = 3600)
 @RestController
 @RequestMapping("/EventArtist")
 public class EventArtistController {

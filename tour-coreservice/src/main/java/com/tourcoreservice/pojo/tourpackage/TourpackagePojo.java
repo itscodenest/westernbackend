@@ -31,8 +31,8 @@ public class TourpackagePojo {
 	private FacilityPojo facility;
 
 	private PricePojo price;
-	
-	
+
+	private String imgcdn;
 
 	public long getId() {
 		return id;
@@ -48,6 +48,15 @@ public class TourpackagePojo {
 
 	public void setName(String name) {
 		this.name = name;
+	}
+
+	
+	public String getImgcdn() {
+		return imgcdn;
+	}
+
+	public void setImgcdn(String imgcdn) {
+		this.imgcdn = imgcdn;
 	}
 
 	public String getDuration() {

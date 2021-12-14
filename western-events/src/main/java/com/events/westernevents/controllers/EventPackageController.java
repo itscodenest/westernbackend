@@ -16,7 +16,7 @@ import com.tourcoreservice.pojo.events.EventPackagePojo;
 import com.tourcoreservice.response.events.EventPackageListResponse;
 import com.tourcoreservice.response.events.EventPackageResponse;
 
-@CrossOrigin(origins = "http://localhost:4200", maxAge = 3600)
+
 @RestController
 @RequestMapping("/EventPackage")
 public class EventPackageController {

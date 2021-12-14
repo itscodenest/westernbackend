@@ -58,10 +58,9 @@
 		<module>../tour-coreservice</module>
  		<module>../tour-package</module>
 		<module>../order-service</module>
-
+        <module>../western-events</module> 
 		<module>../email-service</module>
-		<!-- <module>../activity</module>
-
+		
 
 	</modules>
 </project>

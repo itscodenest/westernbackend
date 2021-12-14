@@ -18,7 +18,7 @@ import com.tourcoreservice.response.events.MainEventsPartyResponseList;
 
 import javassist.bytecode.stackmap.BasicBlock.Catch;
 
-@CrossOrigin(origins = "http://localhost:4200", maxAge = 3600)
+
 @RestController
 @RequestMapping("/MainEventParties")
 public class MainEventsPartiesController {

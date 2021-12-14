@@ -17,7 +17,7 @@ import com.tourcoreservice.response.events.EventCategoryListResponse;
 import com.tourcoreservice.response.events.EventCategoryNoImgListResponse;
 import com.tourcoreservice.response.events.EventCategoryResponse;
 
-@CrossOrigin(origins = "http://localhost:4200", maxAge = 3600)
+
 @RestController
 @RequestMapping("/EventCategory")
 public class EventCategoryController {

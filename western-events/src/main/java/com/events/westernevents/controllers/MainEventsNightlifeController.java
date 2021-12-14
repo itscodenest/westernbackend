@@ -16,7 +16,7 @@ import com.tourcoreservice.pojo.events.MainEventsNightlifePojo;
 import com.tourcoreservice.response.events.MainEventNightlifeResponse;
 import com.tourcoreservice.response.events.MainEventNightlifeResponseList;
 
-@CrossOrigin(origins = "http://localhost:4200", maxAge = 3600)
+
 @RestController
 @RequestMapping("/MainEventNightlife")
 public class MainEventsNightlifeController {

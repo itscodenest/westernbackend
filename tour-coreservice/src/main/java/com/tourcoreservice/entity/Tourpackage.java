@@ -47,6 +47,8 @@ public class Tourpackage {
 	@JoinTable(name = "tourpackages_assets")
 	private Set<Asset> images;
 	
+	private String imgcdn;
+	
 	@Lob
 	private String inclusion;
 	
@@ -205,6 +207,14 @@ public class Tourpackage {
 
 	public void setIterneries(List<Iternery> iterneries) {
 		this.iterneries = iterneries;
+	}
+
+	public String getImgcdn() {
+		return imgcdn;
+	}
+
+	public void setImgcdn(String imgcdn) {
+		this.imgcdn = imgcdn;
 	}
 
 	
