@@ -7,16 +7,19 @@ public class TourPackagePartialPojo {
 	private String name;
 
 	private String duration;
-
+	private int offer;
 	private PlacePojo place;
 
 	private ThemePojo theme;
+	private PricePartialPojo price;
 
 	private String pricecategory;
+	private FacilityPojo facility;
 
 	private String country;
 
 	private long members;
+	private String imgcdn;
 
 	public long getId() {
 		return id;
@@ -81,4 +84,39 @@ public class TourPackagePartialPojo {
 	public void setMembers(long members) {
 		this.members = members;
 	}
+
+	
+	public FacilityPojo getFacility() {
+		return facility;
+	}
+
+	public void setFacility(FacilityPojo facility) {
+		this.facility = facility;
+	}
+
+	public PricePartialPojo getPrice() {
+		return price;
+	}
+
+	public void setPrice(PricePartialPojo price) {
+		this.price = price;
+	}
+
+	public String getImgcdn() {
+		return imgcdn;
+	}
+
+	public void setImgcdn(String imgcdn) {
+		this.imgcdn = imgcdn;
+	}
+
+	public int getOffer() {
+		return offer;
+	}
+
+	public void setOffer(int offer) {
+		this.offer = offer;
+	}
+	
+	
 }

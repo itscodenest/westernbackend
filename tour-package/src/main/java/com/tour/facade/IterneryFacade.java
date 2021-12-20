@@ -85,6 +85,14 @@ public class IterneryFacade {
 		iterneryPojoListResponse.setIterneryListPojo(iterneryPojoList);
 		return iterneryPojoListResponse;
 	}
+	
+	public IterneryPojoListResponse getByPackageID(long packid) {
+		IterneryPojoListResponse iterneryPojoListResponse = new IterneryPojoListResponse();
+		List<Iternery> iList = iterneryService.findAllIterneryByPackId(packid);
+		List<IterneryPojo> iterneryPojos = ObjectMapperUtils.mapAll(iList, IterneryPojo.class);
+		iterneryPojoListResponse.setIterneryListPojo(iterneryPojos);
+		return iterneryPojoListResponse;
+	}
 
 	public IterneryPojoResponse update(IterneryPojo iterneryPojo) {
 		Iternery iternery = iterneryService.findIterneryById(iterneryPojo.getId());

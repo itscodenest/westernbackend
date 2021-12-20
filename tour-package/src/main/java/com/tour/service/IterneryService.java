@@ -23,6 +23,9 @@ public class IterneryService {
 		return iterneryRepository.findAll();
 	}
 
+	public List<Iternery> findAllIterneryByPackId(long packid) {
+		return iterneryRepository.findAllIterneryBypack(packid);
+	}
 	public Iternery findIterneryById(long id) {
 		return iterneryRepository.findById(id);
 	}

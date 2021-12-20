@@ -7,23 +7,22 @@ public class IterneryPojo {
 	private String place;
 	private String address;
 	private String dayheading;
-	private String daydescription;
-	private String imgcdn1;
-	private String imgcdn2;
-	private String imgcdn3;
+	private String  daydescription;
 	private boolean ishotel;
 	private boolean ismeal;
 	private boolean iscab;
+	private boolean isactivity;
+	private boolean issight;
 	private boolean isflight;
-//	private Set<HotelPojo> hotels;
+	private String imgcdn1;
+	private String imgcdn2;
+	private String imgcdn3;
 	private String hotelname;
 	private String hotelLocation;
 	private String hotRating;
 	private String hotAddress;
 	private String hotelroom;
-	private String hotelimgcdn1;
-	private String hotelimgcdn2;
-	private String hotelimgcdn3;
+	
 //	private Set<AssetPojo> images;
 	private TourpackagePojo tourpackage;
 	
@@ -93,31 +92,22 @@ public class IterneryPojo {
 		this.hotelroom = hotelroom;
 	}
 
-	public String getHotelimgcdn1() {
-		return hotelimgcdn1;
+
+	public boolean isIsactivity() {
+		return isactivity;
 	}
 
-	public void setHotelimgcdn1(String hotelimgcdn1) {
-		this.hotelimgcdn1 = hotelimgcdn1;
+	public void setIsactivity(boolean isactivity) {
+		this.isactivity = isactivity;
 	}
 
-	public String getHotelimgcdn2() {
-		return hotelimgcdn2;
+	public boolean isIssight() {
+		return issight;
 	}
 
-	public void setHotelimgcdn2(String hotelimgcdn2) {
-		this.hotelimgcdn2 = hotelimgcdn2;
+	public void setIssight(boolean issight) {
+		this.issight = issight;
 	}
-
-	public String getHotelimgcdn3() {
-		return hotelimgcdn3;
-	}
-
-	public void setHotelimgcdn3(String hotelimgcdn3) {
-		this.hotelimgcdn3 = hotelimgcdn3;
-	}
-
-
 
 	public long getId() {
 		return id;

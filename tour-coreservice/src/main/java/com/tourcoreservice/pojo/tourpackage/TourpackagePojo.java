@@ -19,6 +19,8 @@ public class TourpackagePojo {
 	private long members;
 
 	private int offer;
+	
+	private String daynight;
 
 	private String link;
 
@@ -162,5 +164,15 @@ public class TourpackagePojo {
 	public void setPrice(PricePojo price) {
 		this.price = price;
 	}
+
+	public String getDaynight() {
+		return daynight;
+	}
+
+	public void setDaynight(String daynight) {
+		this.daynight = daynight;
+	}
+
+	
 
 }

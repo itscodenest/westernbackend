@@ -23,6 +23,8 @@ public class Iternery {
 	private boolean ishotel;
 	private boolean ismeal;
 	private boolean iscab;
+	private boolean isactivity;
+	private boolean issight;
 	private boolean isflight;
 	private String imgcdn1;
 	private String imgcdn2;
@@ -32,9 +34,6 @@ public class Iternery {
 	private String hotRating;
 	private String hotAddress;
 	private String hotelroom;
-	private String hotelimgcdn1;
-	private String hotelimgcdn2;
-	private String hotelimgcdn3;
 	
 	 
 //	@ManyToMany(fetch = FetchType.LAZY,cascade=CascadeType.DETACH)
@@ -108,24 +107,8 @@ public class Iternery {
 	public void setHotelroom(String hotelroom) {
 		this.hotelroom = hotelroom;
 	}
-	public String getHotelimgcdn1() {
-		return hotelimgcdn1;
-	}
-	public void setHotelimgcdn1(String hotelimgcdn1) {
-		this.hotelimgcdn1 = hotelimgcdn1;
-	}
-	public String getHotelimgcdn2() {
-		return hotelimgcdn2;
-	}
-	public void setHotelimgcdn2(String hotelimgcdn2) {
-		this.hotelimgcdn2 = hotelimgcdn2;
-	}
-	public String getHotelimgcdn3() {
-		return hotelimgcdn3;
-	}
-	public void setHotelimgcdn3(String hotelimgcdn3) {
-		this.hotelimgcdn3 = hotelimgcdn3;
-	}
+	
+	
 	public String getAddress() {
 		return address;
 	}
@@ -186,6 +169,28 @@ public class Iternery {
 	public void setIsflight(boolean isflight) {
 		this.isflight = isflight;
 	}
+	
+	
+	public boolean isIsactivity() {
+		return isactivity;
+	}
+
+
+	public void setIsactivity(boolean isactivity) {
+		this.isactivity = isactivity;
+	}
+
+
+	public boolean isIssight() {
+		return issight;
+	}
+
+
+	public void setIssight(boolean issight) {
+		this.issight = issight;
+	}
+
+
 	public long getId() {
 		return id;
 	}
