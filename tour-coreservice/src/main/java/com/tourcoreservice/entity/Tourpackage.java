@@ -22,7 +22,7 @@ public class Tourpackage {
 	private long id;
 	
 	private String name;
-	
+	private String daynight;
 	private String duration;
 	
 	@ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.DETACH)
@@ -32,8 +32,6 @@ public class Tourpackage {
 	@ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.DETACH)
 	@JoinTable(name = "tourpackages_themes")
 	private Theme theme;
-	
-	private String pricecategory;
 	
 	private String country;
 	
@@ -46,6 +44,8 @@ public class Tourpackage {
 	@ManyToMany(fetch = FetchType.LAZY, cascade = CascadeType.DETACH)
 	@JoinTable(name = "tourpackages_assets")
 	private Set<Asset> images;
+	
+	private String imgcdn;
 	
 	@Lob
 	private String inclusion;
@@ -159,13 +159,7 @@ public class Tourpackage {
 		this.theme = theme;
 	}
 
-	public String getPricecategory() {
-		return pricecategory;
-	}
-
-	public void setPricecategory(String pricecategory) {
-		this.pricecategory = pricecategory;
-	}
+	
 
 	public String getCountry() {
 		return country;
@@ -205,6 +199,22 @@ public class Tourpackage {
 
 	public void setIterneries(List<Iternery> iterneries) {
 		this.iterneries = iterneries;
+	}
+
+	public String getImgcdn() {
+		return imgcdn;
+	}
+
+	public void setImgcdn(String imgcdn) {
+		this.imgcdn = imgcdn;
+	}
+
+	public String getDaynight() {
+		return daynight;
+	}
+
+	public void setDaynight(String daynight) {
+		this.daynight = daynight;
 	}
 
 	

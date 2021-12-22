@@ -1,7 +1,6 @@
 package com.tour.facade;
 
 import java.util.ArrayList;
-import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
@@ -40,16 +39,16 @@ public class IterneryFacade {
 	public IterneryPojoResponse create(IterneryPojo iterneryPojo) {
 		ifIterneryExists(iterneryPojo.getDay(),iterneryPojo.getTourpackage().getId());
 		Iternery iternery = ObjectMapperUtils.map(iterneryPojo, Iternery.class);
-		List<Asset> asset=ObjectMapperUtils.mapAll(iterneryPojo.getImages(), Asset.class);
-		Asset savedAsset=new Asset();
-		for (Asset eachAsset : asset) {
-			savedAsset=	assetService.saveAsset(eachAsset);
-		}
-		if (!ObjectUtils.isEmpty(savedAsset)) {
-			Set<Asset> assetSet=new HashSet<Asset>();
-			assetSet.add(savedAsset);
-			iternery.setImages(assetSet);
-		}
+//		List<Asset> asset=ObjectMapperUtils.mapAll(iterneryPojo.getImages(), Asset.class);
+//		Asset savedAsset=new Asset();
+//		for (Asset eachAsset : asset) {
+//			savedAsset=	assetService.saveAsset(eachAsset);
+//		}
+//		if (!ObjectUtils.isEmpty(savedAsset)) {
+//			Set<Asset> assetSet=new HashSet<Asset>();
+//			assetSet.add(savedAsset);
+//			iternery.setImages(assetSet);
+//		}
 		iternery = iterneryService.create(iternery);
 		iterneryPojo = ObjectMapperUtils.map(iternery, IterneryPojo.class);
 		return CreateDeleteUpdateResponse(iterneryPojo, "createdSuccessfully");
@@ -86,16 +85,24 @@ public class IterneryFacade {
 		iterneryPojoListResponse.setIterneryListPojo(iterneryPojoList);
 		return iterneryPojoListResponse;
 	}
+	
+	public IterneryPojoListResponse getByPackageID(long packid) {
+		IterneryPojoListResponse iterneryPojoListResponse = new IterneryPojoListResponse();
+		List<Iternery> iList = iterneryService.findAllIterneryByPackId(packid);
+		List<IterneryPojo> iterneryPojos = ObjectMapperUtils.mapAll(iList, IterneryPojo.class);
+		iterneryPojoListResponse.setIterneryListPojo(iterneryPojos);
+		return iterneryPojoListResponse;
+	}
 
 	public IterneryPojoResponse update(IterneryPojo iterneryPojo) {
 		Iternery iternery = iterneryService.findIterneryById(iterneryPojo.getId());
-		Set<Asset> existImage = iternery.getImages();
-		Set<Hotel> hotel = iternery.getHotels();
-		ifHotelExists(iternery,hotel);
+//		Set<Asset> existImage = iternery.getImages();
+//		Set<Hotel> hotel = iternery.getHotels();
+//		ifHotelExists(iternery,hotel);
 		Tourpackage tourpackage = iternery.getTourpackage();
 		ifPackageExists(iternery,tourpackage);
 		ObjectMapperUtils.map(iterneryPojo, iternery);
-		iternery.setImages(existImage);
+//		iternery.setImages(existImage);
 		iternery = iterneryService.update(iternery);
 		iterneryPojo=ObjectMapperUtils.map(iternery,IterneryPojo.class);
 		return CreateDeleteUpdateResponse(iterneryPojo,"Updated Successfully");
@@ -113,7 +120,7 @@ public class IterneryFacade {
 	private void ifHotelExists(Iternery existingIternery, Set<Hotel> hotels) {
 		if (!ObjectUtils.isEmpty(hotels)) {
 			hotels.clear();
-			existingIternery.setHotels(hotels);
+//			existingIternery.setHotels(hotels);
 			iterneryService.create(existingIternery);
 		}
 		
@@ -127,7 +134,7 @@ public class IterneryFacade {
 	public IterneryPojoResponse deleteAsset(long id, long iterneryid) {
 		Iternery iternery=iterneryService.findIterneryById(iterneryid);
 		Asset asset = assetService.getAssetById(id);
-		iternery.getImages().remove(asset);
+//		iternery.getImages().remove(asset);
 		iterneryService.update(iternery);
 		assetService.deleteAssetById(id);
 		return CreateDeleteUpdateResponse(null, "Deleted Asset successfully");
@@ -139,9 +146,9 @@ public class IterneryFacade {
 		Asset asset2 = ObjectMapperUtils.map(assetPojo, Asset.class);
     	Asset savedAsset = assetService.saveAsset(asset2);
 //		hotel.setImages(savedasset);
-		Set<Asset> Existingassets= iternery.getImages();
-		Existingassets.add(savedAsset);
-		iternery.setImages(Existingassets);
+//		Set<Asset> Existingassets= iternery.getImages();
+//		Existingassets.add(savedAsset);
+//		iternery.setImages(Existingassets);
 		iterneryService.update(iternery);
 		return CreateDeleteUpdateResponse(null, "updated Image successfully");
 		

@@ -12,6 +12,8 @@ public class FacilityPojo {
 	private boolean ismeal;
 	private boolean iscab;
 	private boolean ishotel;
+	private boolean isactivity;
+	private boolean issight;
 	@Lob
 	private String smallDescripton;
 	@Lob
@@ -81,4 +83,21 @@ public class FacilityPojo {
 	public void setCategories(Set<Category> categories) {
 		this.categories = categories;
 	}
+
+	public boolean isIsactivity() {
+		return isactivity;
+	}
+
+	public void setIsactivity(boolean isactivity) {
+		this.isactivity = isactivity;
+	}
+
+	public boolean isIssight() {
+		return issight;
+	}
+
+	public void setIssight(boolean issight) {
+		this.issight = issight;
+	}
+	
 }

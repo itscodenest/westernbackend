@@ -33,6 +33,12 @@ public class IterneryController {
 		return iterneryFacade.getAll();
 	}
 
+	@GetMapping("/{id}")
+	public IterneryPojoListResponse getbyPackId(@PathVariable long id) {
+		
+		return iterneryFacade.getByPackageID(id);
+		
+	}
 	@PutMapping
 	public IterneryPojoResponse update(@RequestBody IterneryPojo iterneryPojo) {
 		return iterneryFacade.update(iterneryPojo);
