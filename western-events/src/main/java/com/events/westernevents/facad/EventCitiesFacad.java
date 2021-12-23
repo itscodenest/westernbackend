@@ -7,9 +7,11 @@ import org.springframework.stereotype.Repository;
 
 import com.events.westernevents.service.EventCitiesService;
 import com.tourcoreservice.entity.events.EventCities;
+import com.tourcoreservice.pojo.events.EventCitiesOnlyPojo;
 import com.tourcoreservice.pojo.events.EventCitiesPojo;
 import com.tourcoreservice.response.events.EventCitiesListResponse;
 import com.tourcoreservice.response.events.EventCitiesResponse;
+import com.tourcoreservice.response.events.EventCitiesSimpleListResponse;
 import com.tourcoreservice.util.ObjectMapperUtils;
 
 @Repository
@@ -26,7 +28,13 @@ public class EventCitiesFacad {
 		return eListResponse;
 	}
 	
-	
+	public EventCitiesSimpleListResponse SimpelistAll() {
+		EventCitiesSimpleListResponse eListResponse = new EventCitiesSimpleListResponse();
+		List<EventCities> eCities = eService.listAll();
+		List<EventCitiesOnlyPojo> eCitiesPojos = ObjectMapperUtils.mapAll(eCities, EventCitiesOnlyPojo.class);
+		eListResponse.seteCitiesPojos(eCitiesPojos);
+		return eListResponse;
+	}
 	
 	
 	public EventCitiesResponse getCities(long id) {
@@ -59,4 +67,9 @@ public class EventCitiesFacad {
 		
 		eService.delete(id);
 	}
+
+
+
+
+	
 }

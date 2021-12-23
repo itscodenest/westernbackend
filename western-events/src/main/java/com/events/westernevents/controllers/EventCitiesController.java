@@ -1,7 +1,6 @@
 package com.events.westernevents.controllers;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -15,6 +14,7 @@ import com.events.westernevents.facad.EventCitiesFacad;
 import com.tourcoreservice.pojo.events.EventCitiesPojo;
 import com.tourcoreservice.response.events.EventCitiesListResponse;
 import com.tourcoreservice.response.events.EventCitiesResponse;
+import com.tourcoreservice.response.events.EventCitiesSimpleListResponse;
 
 
 @RestController
@@ -29,7 +29,10 @@ public class EventCitiesController {
 		return eCitiesFacad.listAll();
 	}
 	
-	
+	@GetMapping("/simple")
+	public EventCitiesSimpleListResponse getAllWithoutpack() {
+		return eCitiesFacad.SimpelistAll();
+	}
 	@GetMapping("/{id}")
 	public EventCitiesResponse get(@PathVariable long id) {
 		return eCitiesFacad.getCities(id);
