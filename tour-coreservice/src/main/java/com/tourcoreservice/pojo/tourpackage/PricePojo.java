@@ -2,80 +2,205 @@ package com.tourcoreservice.pojo.tourpackage;
 
 public class PricePojo {
 	private long id;
-	private boolean isonestar;
-	private boolean istwostar;
-	private boolean isthreestar;
-	private boolean isfourstar;
-	private boolean isfivestar;
-	private long onestarprice;
-	private long twostarprice;
-	private long threestarprice;
-	private long fourstarprice;
-	private long fivestarprice;
+	private boolean isStandard;
+	private boolean isDelux;
+	private boolean isPremium;
+	
+	private long standardprice;
+	private String standardduration;
+	private String standardicludes;
+	private String standardHotelimg1;
+	private String standardHotelimg2;
+	private String standardHotelimg3;
+	
+	private long deluxprice;
+	private String deluxduration;
+	private String deluxicludes;
+	private String deluxHotelimg1;
+	private String deluxHotelimg2;
+	private String deluxHotelimg3;
+
+	private long premiumrprice;
+	private String premiumduration;
+	private String premiumicludes;
+	private String premiumHotelimg1;
+	private String premiumHotelimg2;
+	private String premiumHotelimg3;
+
 	public long getId() {
 		return id;
 	}
+
 	public void setId(long id) {
 		this.id = id;
 	}
-	public boolean isIsonestar() {
-		return isonestar;
+
+	public boolean isStandard() {
+		return isStandard;
 	}
-	public void setIsonestar(boolean isonestar) {
-		this.isonestar = isonestar;
+
+	public void setStandard(boolean isStandard) {
+		this.isStandard = isStandard;
 	}
-	public boolean isIstwostar() {
-		return istwostar;
+
+	public boolean isDelux() {
+		return isDelux;
 	}
-	public void setIstwostar(boolean istwostar) {
-		this.istwostar = istwostar;
+
+	public void setDelux(boolean isDelux) {
+		this.isDelux = isDelux;
 	}
-	public boolean isIsthreestar() {
-		return isthreestar;
+
+	public boolean isPremium() {
+		return isPremium;
 	}
-	public void setIsthreestar(boolean isthreestar) {
-		this.isthreestar = isthreestar;
+
+	public void setPremium(boolean isPremium) {
+		this.isPremium = isPremium;
 	}
-	public boolean isIsfourstar() {
-		return isfourstar;
+
+	public long getStandardprice() {
+		return standardprice;
 	}
-	public void setIsfourstar(boolean isfourstar) {
-		this.isfourstar = isfourstar;
+
+	public void setStandardprice(long standardprice) {
+		this.standardprice = standardprice;
 	}
-	public boolean isIsfivestar() {
-		return isfivestar;
+
+	public String getStandardduration() {
+		return standardduration;
 	}
-	public void setIsfivestar(boolean isfivestar) {
-		this.isfivestar = isfivestar;
+
+	public void setStandardduration(String standardduration) {
+		this.standardduration = standardduration;
 	}
-	public long getOnestarprice() {
-		return onestarprice;
+
+	public String getStandardicludes() {
+		return standardicludes;
 	}
-	public void setOnestarprice(long onestarprice) {
-		this.onestarprice = onestarprice;
+
+	public void setStandardicludes(String standardicludes) {
+		this.standardicludes = standardicludes;
 	}
-	public long getTwostarprice() {
-		return twostarprice;
+
+	public String getStandardHotelimg1() {
+		return standardHotelimg1;
 	}
-	public void setTwostarprice(long twostarprice) {
-		this.twostarprice = twostarprice;
+
+	public void setStandardHotelimg1(String standardHotelimg1) {
+		this.standardHotelimg1 = standardHotelimg1;
 	}
-	public long getThreestarprice() {
-		return threestarprice;
+
+	public String getStandardHotelimg2() {
+		return standardHotelimg2;
 	}
-	public void setThreestarprice(long threestarprice) {
-		this.threestarprice = threestarprice;
+
+	public void setStandardHotelimg2(String standardHotelimg2) {
+		this.standardHotelimg2 = standardHotelimg2;
 	}
-	public long getFourstarprice() {
-		return fourstarprice;
+
+	public String getStandardHotelimg3() {
+		return standardHotelimg3;
 	}
-	public void setFourstarprice(long fourstarprice) {
-		this.fourstarprice = fourstarprice;
+
+	public void setStandardHotelimg3(String standardHotelimg3) {
+		this.standardHotelimg3 = standardHotelimg3;
 	}
-	public long getFivestarprice() {
-		return fivestarprice;
+
+	public long getDeluxprice() {
+		return deluxprice;
 	}
-	public void setFivestarprice(long fivestarprice) {
-		this.fivestarprice = fivestarprice;
+
+	public void setDeluxprice(long deluxprice) {
+		this.deluxprice = deluxprice;
 	}
+
+	public String getDeluxduration() {
+		return deluxduration;
+	}
+
+	public void setDeluxduration(String deluxduration) {
+		this.deluxduration = deluxduration;
+	}
+
+	public String getDeluxicludes() {
+		return deluxicludes;
+	}
+
+	public void setDeluxicludes(String deluxicludes) {
+		this.deluxicludes = deluxicludes;
+	}
+
+	public String getDeluxHotelimg1() {
+		return deluxHotelimg1;
+	}
+
+	public void setDeluxHotelimg1(String deluxHotelimg1) {
+		this.deluxHotelimg1 = deluxHotelimg1;
+	}
+
+	public String getDeluxHotelimg2() {
+		return deluxHotelimg2;
+	}
+
+	public void setDeluxHotelimg2(String deluxHotelimg2) {
+		this.deluxHotelimg2 = deluxHotelimg2;
+	}
+
+	public String getDeluxHotelimg3() {
+		return deluxHotelimg3;
+	}
+
+	public void setDeluxHotelimg3(String deluxHotelimg3) {
+		this.deluxHotelimg3 = deluxHotelimg3;
+	}
+
+	public long getPremiumrprice() {
+		return premiumrprice;
+	}
+
+	public void setPremiumrprice(long premiumrprice) {
+		this.premiumrprice = premiumrprice;
+	}
+
+	public String getPremiumduration() {
+		return premiumduration;
+	}
+
+	public void setPremiumduration(String premiumduration) {
+		this.premiumduration = premiumduration;
+	}
+
+	public String getPremiumicludes() {
+		return premiumicludes;
+	}
+
+	public void setPremiumicludes(String premiumicludes) {
+		this.premiumicludes = premiumicludes;
+	}
+
+	public String getPremiumHotelimg1() {
+		return premiumHotelimg1;
+	}
+
+	public void setPremiumHotelimg1(String premiumHotelimg1) {
+		this.premiumHotelimg1 = premiumHotelimg1;
+	}
+
+	public String getPremiumHotelimg2() {
+		return premiumHotelimg2;
+	}
+
+	public void setPremiumHotelimg2(String premiumHotelimg2) {
+		this.premiumHotelimg2 = premiumHotelimg2;
+	}
+
+	public String getPremiumHotelimg3() {
+		return premiumHotelimg3;
+	}
+
+	public void setPremiumHotelimg3(String premiumHotelimg3) {
+		this.premiumHotelimg3 = premiumHotelimg3;
+	}
+
 }

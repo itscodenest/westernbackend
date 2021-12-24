@@ -18,7 +18,10 @@ public class TourPackageUpdatePojo {
 	private long members;
 
 	private int offer;
+	
+	private String daynight;
 
+	private String imgcdn;
 	private String link;
 
 	private String inclusion;
@@ -49,6 +52,16 @@ public class TourPackageUpdatePojo {
 
 	public String getDuration() {
 		return duration;
+	}
+	
+	
+
+	public String getImgcdn() {
+		return imgcdn;
+	}
+
+	public void setImgcdn(String imgcdn) {
+		this.imgcdn = imgcdn;
 	}
 
 	public void setDuration(String duration) {
@@ -150,5 +163,15 @@ public class TourPackageUpdatePojo {
 	public void setPrice(PricePojo price) {
 		this.price = price;
 	}
+
+	public String getDaynight() {
+		return daynight;
+	}
+
+	public void setDaynight(String daynight) {
+		this.daynight = daynight;
+	}
+	
+	
 
 }

@@ -22,6 +22,8 @@ public class Facility {
 	private boolean ismeal;
 	private boolean iscab;
 	private boolean ishotel;
+	private boolean isactivity;
+	private boolean issight;
 	@Lob
 	private  String smallDescripton;
 	@Lob
@@ -59,6 +61,26 @@ public class Facility {
 	}
 	public void setIshotel(boolean ishotel) {
 		this.ishotel = ishotel;
+	}
+	
+	
+	public boolean isIssight() {
+		return issight;
+	}
+	public void setIssight(boolean issight) {
+		this.issight = issight;
+	}
+	public boolean isIsactivity() {
+		return isactivity;
+	}
+	public void setIsactivity(boolean isactivity) {
+		this.isactivity = isactivity;
+	}
+	public Activity getActivity() {
+		return activity;
+	}
+	public void setActivity(Activity activity) {
+		this.activity = activity;
 	}
 	public String getSmallDescripton() {
 		return smallDescripton;
