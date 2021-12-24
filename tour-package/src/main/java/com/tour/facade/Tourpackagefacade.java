@@ -3,7 +3,6 @@ package com.tour.facade;
 import java.io.IOException;
 import java.net.URISyntaxException;
 import java.util.ArrayList;
-import java.util.Base64;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
@@ -30,6 +29,7 @@ import com.tourcoreservice.entity.Tourpackage;
 import com.tourcoreservice.pojo.tourpackage.FacilityPojo;
 import com.tourcoreservice.pojo.tourpackage.InclusionPojo;
 import com.tourcoreservice.pojo.tourpackage.IterneryPojo;
+import com.tourcoreservice.pojo.tourpackage.LastDayinfoPojo;
 import com.tourcoreservice.pojo.tourpackage.PricePojo;
 import com.tourcoreservice.pojo.tourpackage.TourPackagePartialPojo;
 import com.tourcoreservice.pojo.tourpackage.TourPackageUpdatePojo;
@@ -140,6 +140,13 @@ public class Tourpackagefacade {
 		}
 
 	}
+	
+	public void updatelastday(LastDayinfoPojo lastDayinfoPojo, long id) {
+		Tourpackage tourpackage = tourPackageService.getPackageById(id);
+		tourpackage.setLastdayDiscription(lastDayinfoPojo.getLastdayDiscription());
+		tourpackage.setLastdayheading(lastDayinfoPojo.getLastdayheading());
+		tourpackage = tourPackageService.UpdatePackage(tourpackage);
+	}
 
 	// price
 	public PackageIdPojoResponse createPrice(long id, PricePojo pricePojo) {
@@ -225,4 +232,10 @@ public class Tourpackagefacade {
 		tourpackageListResponse.setTourpackagePojo(tourPackagePojo);
 		return tourpackageListResponse;
 	}
+
+	
+
+	
+
+	
 }
