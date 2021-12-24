@@ -21,9 +21,9 @@ public class Place {
 
 	private String type;
 
-	@ManyToOne(cascade = CascadeType.DETACH, fetch = FetchType.EAGER)
-	@JoinColumn(name = "mainplace_id")
-	private MainPlace mainplace;
+	@ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.DETACH)
+	@JoinColumn(name = "district_id")
+	private District district;
 
 	public long getId() {
 		return id;
@@ -49,12 +49,14 @@ public class Place {
 		this.type = type;
 	}
 
-	public MainPlace getMainplace() {
-		return mainplace;
+	public District getDistrict() {
+		return district;
 	}
 
-	public void setMainplace(MainPlace mainplace) {
-		this.mainplace = mainplace;
+	public void setDistrict(District district) {
+		this.district = district;
 	}
+
+	
 
 }

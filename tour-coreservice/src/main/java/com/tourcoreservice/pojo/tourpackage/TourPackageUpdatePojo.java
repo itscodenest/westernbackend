@@ -24,6 +24,9 @@ public class TourPackageUpdatePojo {
 	private String imgcdn;
 	private String link;
 
+	private String lastdayDiscription;
+	private String lastdayheading;
+
 	private String inclusion;
 
 	private String exclusion;
@@ -171,6 +174,23 @@ public class TourPackageUpdatePojo {
 	public void setDaynight(String daynight) {
 		this.daynight = daynight;
 	}
+
+	public String getLastdayDiscription() {
+		return lastdayDiscription;
+	}
+
+	public void setLastdayDiscription(String lastdayDiscription) {
+		this.lastdayDiscription = lastdayDiscription;
+	}
+
+	public String getLastdayheading() {
+		return lastdayheading;
+	}
+
+	public void setLastdayheading(String lastdayheading) {
+		this.lastdayheading = lastdayheading;
+	}
+	
 	
 	
 

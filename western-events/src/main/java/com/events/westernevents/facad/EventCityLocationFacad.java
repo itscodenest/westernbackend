@@ -7,9 +7,11 @@ import org.springframework.stereotype.Component;
 
 import com.events.westernevents.service.EventCityLocationService;
 import com.tourcoreservice.entity.events.EventCityLocation;
+import com.tourcoreservice.pojo.events.EventCityLocationOnlyPojo;
 import com.tourcoreservice.pojo.events.EventCityLocationPojo;
 import com.tourcoreservice.response.events.EventCityLocationListResponse;
 import com.tourcoreservice.response.events.EventCityLocationResponse;
+import com.tourcoreservice.response.events.EventCityLocationSimpleListResponse;
 import com.tourcoreservice.util.ObjectMapperUtils;
 
 @Component
@@ -26,6 +28,13 @@ public class EventCityLocationFacad {
 		return eListResponse;
 	}
 	
+	public EventCityLocationSimpleListResponse SimpelistAll() {
+		EventCityLocationSimpleListResponse eListResponse = new EventCityLocationSimpleListResponse();
+		List<EventCityLocation> eCities = eService.listAll();
+		List<EventCityLocationOnlyPojo> eCitiesPojos = ObjectMapperUtils.mapAll(eCities, EventCityLocationOnlyPojo.class);
+		eListResponse.seteLocationPojos(eCitiesPojos);
+		return eListResponse;
+	}
 	
 	
 	

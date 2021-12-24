@@ -2,11 +2,13 @@ package com.tourcoreservice.pojo.tourpackage;
 
 import java.util.Set;
 
+import com.tourcoreservice.entity.District;
+
 public class PlacePojo {
 	private long id;
 	private String name;
 	private String type;
-	private MainPlacePojo mainplace;
+	private District district;
 
 	public long getId() {
 		return id;
@@ -32,12 +34,14 @@ public class PlacePojo {
 		this.type = type;
 	}
 
-	public MainPlacePojo getMainplace() {
-		return mainplace;
+	public District getDistrict() {
+		return district;
 	}
 
-	public void setMainplace(MainPlacePojo mainplace) {
-		this.mainplace = mainplace;
+	public void setDistrict(District district) {
+		this.district = district;
 	}
+
+	
 
 }

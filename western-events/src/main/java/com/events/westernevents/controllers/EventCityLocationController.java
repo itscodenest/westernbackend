@@ -15,6 +15,7 @@ import com.events.westernevents.facad.EventCityLocationFacad;
 import com.tourcoreservice.pojo.events.EventCityLocationPojo;
 import com.tourcoreservice.response.events.EventCityLocationListResponse;
 import com.tourcoreservice.response.events.EventCityLocationResponse;
+import com.tourcoreservice.response.events.EventCityLocationSimpleListResponse;
 
 
 @RestController
@@ -28,6 +29,10 @@ public class EventCityLocationController {
 		return eCitiesFacad.listAll();
 	}
 	
+	@GetMapping("/simple")
+	public EventCityLocationSimpleListResponse getAllWithoutpack() {
+		return eCitiesFacad.SimpelistAll();
+	}
 	
 	@GetMapping("/{id}")
 	public EventCityLocationResponse get(@PathVariable long id) {

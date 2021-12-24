@@ -56,6 +56,10 @@ public class Tourpackage {
 	@Lob
 	private String additionalinfo;
 	
+	@Lob
+	private String lastdayDiscription;
+	private String lastdayheading;
+	
 	@OneToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
 	@JoinTable(name = "tourpackages_facilities")
 	private Facility facility;
@@ -109,6 +113,24 @@ public class Tourpackage {
 
 	public void setOffer(int offer) {
 		this.offer = offer;
+	}
+	
+	
+
+	public String getLastdayDiscription() {
+		return lastdayDiscription;
+	}
+
+	public void setLastdayDiscription(String lastdayDiscription) {
+		this.lastdayDiscription = lastdayDiscription;
+	}
+
+	public String getLastdayheading() {
+		return lastdayheading;
+	}
+
+	public void setLastdayheading(String lastdayheading) {
+		this.lastdayheading = lastdayheading;
 	}
 
 	public String getLink() {

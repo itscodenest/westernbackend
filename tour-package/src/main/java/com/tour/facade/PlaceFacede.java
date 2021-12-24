@@ -10,6 +10,7 @@ import org.springframework.util.ObjectUtils;
 
 import com.tour.service.PlaceService;
 import com.tour.util.ObjectMapperUtils;
+import com.tourcoreservice.entity.District;
 import com.tourcoreservice.entity.MainPlace;
 import com.tourcoreservice.entity.Place;
 import com.tourcoreservice.entity.Taluk;
@@ -53,8 +54,8 @@ public class PlaceFacede {
 
 	public PlacePojoResponce updatePlace(PlacePojo placepojo) {
 		Place place=placeService.getPlaceById(placepojo.getId());
-		if (!ObjectUtils.isEmpty(place.getMainplace())) {
-			deleteExistingMAinplace(place,place.getMainplace());
+		if (!ObjectUtils.isEmpty(place.getDistrict())) {
+			deleteExistingMAinplace(place,place.getDistrict());
 		}
 		PlacePojoResponce placeResponce = new PlacePojoResponce();
 		ObjectMapperUtils.map(placepojo, place);
@@ -64,9 +65,9 @@ public class PlaceFacede {
 		return placeResponce;
 	}
 
-	private void deleteExistingMAinplace(Place place, MainPlace mainplace) {
-		mainplace=null;
-		place.setMainplace(null);
+	private void deleteExistingMAinplace(Place place, District district) {
+		district=null;
+		place.setDistrict(null);                                                                                                                                                                                           
 		placeService.savePlace(place);
 	}
 

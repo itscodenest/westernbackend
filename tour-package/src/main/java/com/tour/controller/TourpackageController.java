@@ -22,6 +22,7 @@ import com.tourcoreservice.entity.Asset;
 import com.tourcoreservice.pojo.tourpackage.FacilityPojo;
 import com.tourcoreservice.pojo.tourpackage.InclusionPojo;
 import com.tourcoreservice.pojo.tourpackage.IterneryPojo;
+import com.tourcoreservice.pojo.tourpackage.LastDayinfoPojo;
 import com.tourcoreservice.pojo.tourpackage.PricePojo;
 import com.tourcoreservice.pojo.tourpackage.TourPackageUpdatePojo;
 import com.tourcoreservice.pojo.tourpackage.TourpackagePojo;
@@ -59,6 +60,11 @@ public class TourpackageController {
     @PostMapping
     public PackageIdPojoResponse create(@RequestBody TourpackagePojo tourPackagePojo) {
     	return tourPackageFacade.savePackageMainDetails(tourPackagePojo);
+    }
+    @PutMapping("lastday/{id}")
+    public void  Iternrylastday(@RequestBody LastDayinfoPojo lastDayinfoPojo,@PathVariable long id) {
+    	lastDayinfoPojo.setId(id);
+    	tourPackageFacade.updatelastday(lastDayinfoPojo,id);
     }
     @PutMapping("/{id}")
     public TourpackagePojoResponse update(@RequestBody TourPackageUpdatePojo pack, @PathVariable long id) {
