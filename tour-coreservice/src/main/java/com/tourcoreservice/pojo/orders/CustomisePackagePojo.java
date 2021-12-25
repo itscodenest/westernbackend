@@ -1,41 +1,24 @@
-package com.tourcoreservice.entity;
+package com.tourcoreservice.pojo.orders;
 
 import java.util.Date;
 import java.util.Set;
 
-import javax.persistence.CascadeType;
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.FetchType;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.JoinTable;
-import javax.persistence.Lob;
-import javax.persistence.ManyToOne;
-import javax.persistence.OneToMany;
+import com.tourcoreservice.entity.CustomisePackageFlightinfo;
+import com.tourcoreservice.entity.CustomisePackageHotelInfo;
+import com.tourcoreservice.entity.User;
 
-@Entity
-public class CustomisePackage {
+public class CustomisePackagePojo {
 
-	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private long id;
 
-	@Column(name = "departure_city")
 	private String departureCity;
 
-	@Column(name = "destination")
 	private String destination;
 
-	@Column(name = "mobileno")
 	private String mobileNo;
 
-	@Column(name = "transport")
 	private String transport;
 
-	@Column(name = "category")
 	private String category;
 
 	private int adults;
@@ -46,23 +29,14 @@ public class CustomisePackage {
 
 	private String email;
 
-	@Column(name = "travel_date")
 	private Date travelDate;
 
-	@Column(name = "travel_duration")
 	private String travelDuration;
-	
-	@ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.DETACH)
-	@JoinTable(name = "customisepackage_user")
+
 	private User user;
 
-	
-	@OneToMany(fetch=FetchType.LAZY,cascade=CascadeType.DETACH)
-	@JoinColumn(name="flightinfo_id")
 	private Set<CustomisePackageFlightinfo> flightInfo;
-	
-	@OneToMany(fetch=FetchType.LAZY,cascade=CascadeType.DETACH)
-	@JoinColumn(name="hotelinfo_id")
+
 	private Set<CustomisePackageHotelInfo> hotel_info;
 	/*
 	 * @ManyToMany(fetch = FetchType.LAZY, cascade = CascadeType.DETACH)
@@ -71,16 +45,15 @@ public class CustomisePackage {
 	 */
 
 	private String totalPrice;
-	
-	@Lob
+
 	private String inclusiontext;
-	@Lob
+
 	private String exlusionText;
-	@Lob
+
 	private String paymentPolicy;
-	@Lob
+
 	private String termsandconditions;
-	@Lob
+
 	private String aditionalinfo;
 
 	public long getId() {
