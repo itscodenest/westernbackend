@@ -22,7 +22,7 @@ public class Approver {
 	
 	private String lastName;
 	
-	@OneToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+	@OneToOne(fetch = FetchType.EAGER, cascade = CascadeType.MERGE)
 	@JoinTable(name = "approver_employee")
 	private User employee;
 
