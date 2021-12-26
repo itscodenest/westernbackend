@@ -13,10 +13,8 @@ import org.springframework.web.bind.annotation.RestController;
 import com.order.orderservice.facade.ApproversRegionFacade;
 import com.tourcoreservice.pojo.orders.ApproverRegionPojo;
 
-import com.tourcoreservice.pojo.orders.ApproversRegionPojo;
 import com.tourcoreservice.response.orders.ApproverRegionPojoListResponse;
 import com.tourcoreservice.response.orders.ApproverRegionPojoResponse;
-import com.tourcoreservice.response.orders.ApproversRegionPojoResponse;
 
 
 @RestController

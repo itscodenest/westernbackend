@@ -14,10 +14,8 @@ import com.tourcoreservice.exception.tourpackage.DataAlreadyExistException;
 import com.tourcoreservice.pojo.generic.ResponseMessagePojo;
 import com.tourcoreservice.pojo.orders.ApproverRegionPojo;
 
-import com.tourcoreservice.pojo.orders.ApproversRegionPojo;
 import com.tourcoreservice.response.orders.ApproverRegionPojoListResponse;
 import com.tourcoreservice.response.orders.ApproverRegionPojoResponse;
-import com.tourcoreservice.response.orders.ApproversRegionPojoResponse;
 
 import com.tourcoreservice.util.ObjectMapperUtils;
 
