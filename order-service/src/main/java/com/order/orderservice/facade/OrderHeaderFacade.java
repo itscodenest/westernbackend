@@ -79,6 +79,7 @@ public class OrderHeaderFacade {
 			approverHirarchy2.add(approverHirarchy);
 		}
 		ObjectMapperUtils.map(orderHeaderPojo, orderHeader);
+
 		orderHeader.setApproverHirarchy(approverHirarchy2);
 		orderHeader = orderHeaderService.Update(orderHeader);
 		orderHeaderPojo = ObjectMapperUtils.map(orderHeader, OrderHeaderPojo.class);
