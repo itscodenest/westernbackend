@@ -39,7 +39,8 @@ public class CustomisePackageIteneryFacade {
 		responseMessagePojo.setMessage(message);
 		responseMessagePojo.setStatus(HttpStatus.OK);
 		successMessages.add(responseMessagePojo);
-		customisePackageItenaryPojoResponse.setCustomisePackageItenaryPojo(customisePackageItenaryPojo);
+		customisePackageItenaryPojoResponse.setCustomisePackageIteneryPojo(customisePackageItenaryPojo);
+
 		customisePackageItenaryPojoResponse.setSuccessMessaages(successMessages);
 		return customisePackageItenaryPojoResponse;
 	}
@@ -49,7 +50,8 @@ public class CustomisePackageIteneryFacade {
 		List<CustomisePackageIternery> customisePackageItenary = customisePackageItenaryService.listAll();
 		List<CustomisePackageIteneryPojo> customisePackageItenaryPojo = ObjectMapperUtils
 				.mapAll(customisePackageItenary, CustomisePackageIteneryPojo.class);
-		customisePackageItenaryPojoListResponse.setCustomisePackageItenaryPojo(customisePackageItenaryPojo);
+		customisePackageItenaryPojoListResponse.setCustomisePackageIteneryPojo(customisePackageItenaryPojo);
+
 		return customisePackageItenaryPojoListResponse;
 
 	}
@@ -59,7 +61,8 @@ public class CustomisePackageIteneryFacade {
 		CustomisePackageIternery customisePackageItenary = customisePackageItenaryService.getById(id);
 		CustomisePackageIteneryPojo customisePackageItenaryPojo = ObjectMapperUtils.map(customisePackageItenary,
 				CustomisePackageIteneryPojo.class);
-		customisePackageItenaryPojoResponse.setCustomisePackageItenaryPojo(customisePackageItenaryPojo);
+		customisePackageItenaryPojoResponse.setCustomisePackageIteneryPojo(customisePackageItenaryPojo);
+
 		return customisePackageItenaryPojoResponse;
 	}
 

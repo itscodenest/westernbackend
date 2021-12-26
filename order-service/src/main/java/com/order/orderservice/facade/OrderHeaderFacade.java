@@ -72,13 +72,14 @@ public class OrderHeaderFacade {
 	public OrderHeaderPojoResponse update(OrderHeaderPojo orderHeaderPojo) {
 		OrderHeader orderHeader = orderHeaderService.getOrderyId(orderHeaderPojo.getId());
 		ApproverHirarchy approverHirarchy=null;
+		Set<ApproverHirarchy> approverHirarchy2=new HashSet<>();
 		List<ApproverHirarchy> setApproverHirarchy = ObjectMapperUtils.mapAll(orderHeaderPojo.getApproverHirarchy(), ApproverHirarchy.class);
 		for(ApproverHirarchy approverHirarchy1:setApproverHirarchy) {
 			approverHirarchy = approverHirarchyService.create(approverHirarchy1);
+			approverHirarchy2.add(approverHirarchy);
 		}
 		ObjectMapperUtils.map(orderHeaderPojo, orderHeader);
-		Set<ApproverHirarchy> approverHirarchy2=new HashSet<>();
-		approverHirarchy2.add(approverHirarchy);
+
 		orderHeader.setApproverHirarchy(approverHirarchy2);
 		orderHeader = orderHeaderService.Update(orderHeader);
 		orderHeaderPojo = ObjectMapperUtils.map(orderHeader, OrderHeaderPojo.class);

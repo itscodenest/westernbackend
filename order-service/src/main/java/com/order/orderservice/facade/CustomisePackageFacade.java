@@ -33,7 +33,8 @@ public class CustomisePackageFacade {
 		List<CustomisePackage> customisePackage = customisePackageService.listAll();
 		List<CustomisePackagePojo> customisePackagePojo = ObjectMapperUtils.mapAll(customisePackage,
 				CustomisePackagePojo.class);
-		customisePackagePojoListResponse.setCustomerPackagePojo(customisePackagePojo);
+		customisePackagePojoListResponse.setCustomisePackagePojo(customisePackagePojo);
+
 		return customisePackagePojoListResponse;
 	}
 
@@ -41,7 +42,8 @@ public class CustomisePackageFacade {
 		CustomisePackagePojoRespone customisePackagePojoRespone = new CustomisePackagePojoRespone();
 		CustomisePackage customisePackage = customisePackageService.getDataId(id);
 		CustomisePackagePojo customisePackagePojo = ObjectMapperUtils.map(customisePackage, CustomisePackagePojo.class);
-		customisePackagePojoRespone.setCustomerPackagePojo(customisePackagePojo);
+		customisePackagePojoRespone.setCustomisePackagePojo(customisePackagePojo);
+
 		return customisePackagePojoRespone;
 	}
 
@@ -67,7 +69,8 @@ public class CustomisePackageFacade {
 		responseMessagePojo.setMessage(message);
 		responseMessagePojo.setStatus(HttpStatus.OK);
 		successMessages.add(responseMessagePojo);
-		customisePackagePojoRespone.setCustomerPackagePojo(customisePackagePojo);
+		customisePackagePojoRespone.setCustomisePackagePojo(customisePackagePojo);
+
 		customisePackagePojoRespone.setSuccessMessaages(successMessages);
 		return customisePackagePojoRespone;
 	}

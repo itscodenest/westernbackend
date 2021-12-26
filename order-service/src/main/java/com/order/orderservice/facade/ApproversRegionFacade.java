@@ -13,10 +13,12 @@ import com.tourcoreservice.entity.ApproverRegion;
 import com.tourcoreservice.exception.tourpackage.DataAlreadyExistException;
 import com.tourcoreservice.pojo.generic.ResponseMessagePojo;
 import com.tourcoreservice.pojo.orders.ApproverRegionPojo;
+
 import com.tourcoreservice.pojo.orders.ApproversRegionPojo;
 import com.tourcoreservice.response.orders.ApproverRegionPojoListResponse;
 import com.tourcoreservice.response.orders.ApproverRegionPojoResponse;
 import com.tourcoreservice.response.orders.ApproversRegionPojoResponse;
+
 import com.tourcoreservice.util.ObjectMapperUtils;
 
 @Component
@@ -48,7 +50,8 @@ public class ApproversRegionFacade {
 		responseMessagePojo.setMessage(message);
 		responseMessagePojo.setStatus(HttpStatus.OK);
 		successMessages.add(responseMessagePojo);
-		approverRegionPojoResponse.setApproverRegionPojo(approverRegionPojo);
+		approverRegionPojoResponse.setApproversRegionPojo(approverRegionPojo);
+
 		approverRegionPojoResponse.setSuccessMessaages(successMessages);
 		return approverRegionPojoResponse;
 	}
@@ -57,7 +60,8 @@ public class ApproversRegionFacade {
 		ApproverRegionPojoListResponse approverRegionPojoListResponse = new ApproverRegionPojoListResponse();
 		List<ApproverRegion> approverRegion = approversRegionService.listAll();
 		List<ApproverRegionPojo> aproverRegionPojo = ObjectMapperUtils.mapAll(approverRegion, ApproverRegionPojo.class);
-		approverRegionPojoListResponse.setApproverRegionPojo(aproverRegionPojo);
+		approverRegionPojoListResponse.setApproversRegionPojo(aproverRegionPojo);
+
 		return approverRegionPojoListResponse;
 	}
 
@@ -65,7 +69,8 @@ public class ApproversRegionFacade {
 		ApproverRegionPojoResponse approverRegionPojoResponse = new ApproverRegionPojoResponse();
 		ApproverRegion approverRegion = approversRegionService.getyId(id);
 		ApproverRegionPojo approverRegionPojo = ObjectMapperUtils.map(approverRegion, ApproverRegionPojo.class);
-		approverRegionPojoResponse.setApproverRegionPojo(approverRegionPojo);
+		approverRegionPojoResponse.setApproversRegionPojo(approverRegionPojo);
+
 		return approverRegionPojoResponse;
 	}
 
@@ -82,10 +87,11 @@ public class ApproversRegionFacade {
 		return createDeleteUpdateResponse(approverRegionPojo, "Updated successfully");
 	}
 
-	public ApproversRegionPojoResponse getApproversByName(String regionName) {
-		ApproversRegionPojoResponse approversRegionPojoResponse = new ApproversRegionPojoResponse();
+	public ApproverRegionPojoResponse getApproversByName(String regionName) {
+		ApproverRegionPojoResponse approversRegionPojoResponse = new ApproverRegionPojoResponse();
 		ApproverRegion approverRegion = approversRegionService.findRegionByName(regionName);
-		ApproversRegionPojo approversRegionPojo = ObjectMapperUtils.map(approverRegion, ApproversRegionPojo.class);
+		ApproverRegionPojo approversRegionPojo = ObjectMapperUtils.map(approverRegion, ApproverRegionPojo.class);
+
 
 		approversRegionPojoResponse.setApproversRegionPojo(approversRegionPojo);
 		return approversRegionPojoResponse;
@@ -96,7 +102,8 @@ public class ApproversRegionFacade {
 		ApproverRegion approverRegion = approversRegionService
 				.getApproverByRegionName(approverRegionPojo.getRegionName());
 		ApproverRegionPojo approversRegionPojo = ObjectMapperUtils.map(approverRegion, ApproverRegionPojo.class);
-		approversRegionPojoResponse.setApproverRegionPojo(approversRegionPojo);
+		approversRegionPojoResponse.setApproversRegionPojo(approversRegionPojo);
+
 		return approversRegionPojoResponse;
 	}
 
