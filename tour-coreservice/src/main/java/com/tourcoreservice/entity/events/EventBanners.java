@@ -20,7 +20,8 @@ public class EventBanners {
 	private String date;
 	private String month;
 	private String eventid;
-	
+    private Boolean isActive;
+    
 	public long getId() {
 		return id;
 	}
@@ -69,6 +70,12 @@ public class EventBanners {
 	}
 	public void setEventid(String eventid) {
 		this.eventid = eventid;
+	}
+	public Boolean getIsActive() {
+		return isActive;
+	}
+	public void setIsActive(Boolean isActive) {
+		this.isActive = isActive;
 	}
 
 	

@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import com.events.westernevents.service.EventsBannerService;
+import com.tourcoreservice.entity.Tourpackage;
 import com.tourcoreservice.entity.events.EventBanners;
 import com.tourcoreservice.pojo.events.EventbannerPojo;
 import com.tourcoreservice.response.events.EventsBannerListResponse;
@@ -57,6 +58,19 @@ public class EventsBannerFacad {
 
 	public void delete(long id) {
 		eService.delete(id);
+	}
+
+
+
+
+	public EventsBannerResponse updateBannerstatus(boolean status, long id) {
+		EventsBannerResponse eResponse = new EventsBannerResponse();
+		EventBanners eventBanners = eService.getById(id);
+		eventBanners.setIsActive(status);
+		EventBanners eBanners2 = eService.Update(eventBanners);
+		EventbannerPojo mEventBlogsPojo = ObjectMapperUtils.map(eBanners2,EventbannerPojo.class);
+		eResponse.setEventbannerPojo(mEventBlogsPojo);
+		return eResponse;
 	}
 	
 }
