@@ -8,8 +8,8 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
-
 import com.order.orderservice.facade.ApproverHirarchyFacade;
 import com.tourcoreservice.pojo.orders.ApproverHirarchyPojo;
 import com.tourcoreservice.response.orders.ApproverHirarchyPojoListResponse;
@@ -23,7 +23,7 @@ public class ApproverHirarchyController {
 	private ApproverHirarchyFacade approverHirarchyFacade;
 
 	@PostMapping
-	public ApproverHirarchyPojoResponse createApproverHirarchy(@RequestBody ApproverHirarchyPojo approverHirarchyPojo) {
+	public ApproverHirarchyPojoResponse createApproverHirarchy(@RequestParam String mode, @RequestBody ApproverHirarchyPojo approverHirarchyPojo) {
 		return approverHirarchyFacade.create(approverHirarchyPojo);
 
 	}

@@ -1,17 +1,17 @@
 package com.tourcoreservice.response.orders;
 
 import com.tourcoreservice.pojo.generic.AbstractPojoResponse;
-import com.tourcoreservice.pojo.orders.CustomisePackageIteneryPojo;
+import com.tourcoreservice.pojo.orders.CustomisedOrderPackageIteneryPojo;
 
 public class CustomisePackageItenaryPojoResponse extends AbstractPojoResponse{
 
-	private CustomisePackageIteneryPojo customisePackageIteneryPojo;
+	private CustomisedOrderPackageIteneryPojo customisePackageIteneryPojo;
 
-	public CustomisePackageIteneryPojo getCustomisePackageIteneryPojo() {
+	public CustomisedOrderPackageIteneryPojo getCustomisePackageIteneryPojo() {
 		return customisePackageIteneryPojo;
 	}
 
-	public void setCustomisePackageIteneryPojo(CustomisePackageIteneryPojo customisePackageIteneryPojo) {
+	public void setCustomisePackageIteneryPojo(CustomisedOrderPackageIteneryPojo customisePackageIteneryPojo) {
 		this.customisePackageIteneryPojo = customisePackageIteneryPojo;
 	}
 	

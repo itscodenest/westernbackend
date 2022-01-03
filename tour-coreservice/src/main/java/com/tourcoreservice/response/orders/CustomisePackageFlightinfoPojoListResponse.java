@@ -3,17 +3,17 @@ package com.tourcoreservice.response.orders;
 import java.util.List;
 
 import com.tourcoreservice.pojo.generic.AbstractPojoResponse;
-import com.tourcoreservice.pojo.orders.CustomisePackageFlightinfoPojo;
+import com.tourcoreservice.pojo.orders.CustomisedOrderPackageFlightinfoPojo;
 
 public class CustomisePackageFlightinfoPojoListResponse extends AbstractPojoResponse{
 
-	private List<CustomisePackageFlightinfoPojo> customisePackageFlightinfoPojo;
+	private List<CustomisedOrderPackageFlightinfoPojo> customisePackageFlightinfoPojo;
 
-	public List<CustomisePackageFlightinfoPojo> getCustomisePackageFlightinfoPojo() {
+	public List<CustomisedOrderPackageFlightinfoPojo> getCustomisePackageFlightinfoPojo() {
 		return customisePackageFlightinfoPojo;
 	}
 
-	public void setCustomisePackageFlightinfoPojo(List<CustomisePackageFlightinfoPojo> customisePackageFlightinfoPojo) {
+	public void setCustomisePackageFlightinfoPojo(List<CustomisedOrderPackageFlightinfoPojo> customisePackageFlightinfoPojo) {
 		this.customisePackageFlightinfoPojo = customisePackageFlightinfoPojo;
 	}
 	

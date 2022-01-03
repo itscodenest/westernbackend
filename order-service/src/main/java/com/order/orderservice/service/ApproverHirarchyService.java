@@ -6,7 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.order.orderservice.repository.ApproverHirarchyRepository;
-import com.tourcoreservice.entity.ApproverHirarchy;
+import com.tourcoreservice.entity.OrderApproverHirarchy;
 
 @Service
 public class ApproverHirarchyService {
@@ -14,15 +14,15 @@ public class ApproverHirarchyService {
 	@Autowired
 	private ApproverHirarchyRepository approverHirarchyRepository;
 
-	public ApproverHirarchy create(ApproverHirarchy approverHirarchy) {
+	public OrderApproverHirarchy create(OrderApproverHirarchy approverHirarchy) {
 		return approverHirarchyRepository.save(approverHirarchy);
 	}
 
-	public List<ApproverHirarchy> listAll() {
+	public List<OrderApproverHirarchy> listAll() {
 		return approverHirarchyRepository.findAll();
 	}
 
-	public ApproverHirarchy getApproverHirarchyById(Long id) {
+	public OrderApproverHirarchy getApproverHirarchyById(Long id) {
 		return approverHirarchyRepository.findById(id).get();
 	}
 
@@ -30,7 +30,7 @@ public class ApproverHirarchyService {
 		approverHirarchyRepository.deleteById(id);
 	}
 
-	public ApproverHirarchy Update(ApproverHirarchy approverHirarchy) {
+	public OrderApproverHirarchy Update(OrderApproverHirarchy approverHirarchy) {
 		return approverHirarchyRepository.save(approverHirarchy);
 	}
 

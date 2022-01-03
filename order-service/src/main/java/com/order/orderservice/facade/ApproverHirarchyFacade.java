@@ -8,7 +8,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Component;
 
 import com.order.orderservice.service.ApproverHirarchyService;
-import com.tourcoreservice.entity.ApproverHirarchy;
+import com.tourcoreservice.entity.OrderApproverHirarchy;
 import com.tourcoreservice.pojo.generic.ResponseMessagePojo;
 import com.tourcoreservice.pojo.orders.ApproverHirarchyPojo;
 import com.tourcoreservice.response.orders.ApproverHirarchyPojoListResponse;
@@ -22,8 +22,8 @@ public class ApproverHirarchyFacade {
 	private ApproverHirarchyService approverHirarchyService;
 
 	public ApproverHirarchyPojoResponse create(ApproverHirarchyPojo approverHirarchyPojo) {
-		ApproverHirarchy approverHirarchy = ObjectMapperUtils.map(approverHirarchyPojo, ApproverHirarchy.class);
-		approverHirarchy = approverHirarchyService.create(approverHirarchy);
+		OrderApproverHirarchy approverHirarchy = ObjectMapperUtils.map(approverHirarchyPojo, OrderApproverHirarchy.class);
+		approverHirarchy=approverHirarchyService.create(approverHirarchy);
 		approverHirarchyPojo = ObjectMapperUtils.map(approverHirarchy, ApproverHirarchyPojo.class);
 		return createDeleteUpdateResponse(approverHirarchyPojo, "Order created Successfully ");
 	}
@@ -43,7 +43,7 @@ public class ApproverHirarchyFacade {
 
 	public ApproverHirarchyPojoListResponse listAll() {
 		ApproverHirarchyPojoListResponse approverHirarchyPojoListResponse = new ApproverHirarchyPojoListResponse();
-		List<ApproverHirarchy> approverHirarchy = approverHirarchyService.listAll();
+		List<OrderApproverHirarchy> approverHirarchy = approverHirarchyService.listAll();
 		List<ApproverHirarchyPojo> approverHirarchyPojo = ObjectMapperUtils.mapAll(approverHirarchy,
 				ApproverHirarchyPojo.class);
 		approverHirarchyPojoListResponse.setApproverHirarchyPojo(approverHirarchyPojo);
@@ -52,7 +52,7 @@ public class ApproverHirarchyFacade {
 
 	public ApproverHirarchyPojoResponse getApproverHirarchyByid(Long id) {
 		ApproverHirarchyPojoResponse approverHirarchyPojoResponse = new ApproverHirarchyPojoResponse();
-		ApproverHirarchy approverHirarchy = approverHirarchyService.getApproverHirarchyById(id);
+		OrderApproverHirarchy approverHirarchy = approverHirarchyService.getApproverHirarchyById(id);
 		ApproverHirarchyPojo approverHirarchyPojo = ObjectMapperUtils.map(approverHirarchy, ApproverHirarchyPojo.class);
 		approverHirarchyPojoResponse.setApproverHirarchyPojo(approverHirarchyPojo);
 		return approverHirarchyPojoResponse;
@@ -65,7 +65,7 @@ public class ApproverHirarchyFacade {
 	}
 
 	public ApproverHirarchyPojoResponse update(ApproverHirarchyPojo approverHirarchyPojo) {
-		ApproverHirarchy approverHirarchy = approverHirarchyService
+		OrderApproverHirarchy approverHirarchy = approverHirarchyService
 				.getApproverHirarchyById(approverHirarchyPojo.getId());
 		ObjectMapperUtils.map(approverHirarchyPojo, approverHirarchy);
 		approverHirarchy = approverHirarchyService.Update(approverHirarchy);

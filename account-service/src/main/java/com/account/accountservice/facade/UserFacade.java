@@ -2,7 +2,9 @@ package com.account.accountservice.facade;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 import java.util.Set;
+import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
@@ -37,14 +39,13 @@ public class UserFacade {
 
 	@Autowired
 	private LocalEmailServiceInterface localEmailServiceInterface;
-	
+
 	public UserPojoResponse create(UserPojo userPojo) {
 		User user = ObjectMapperUtils.map(userPojo, User.class);
 		user = userService.create(user);
 		try {
-		localEmailServiceInterface.sendMailWithoutBody();
-		}
-		catch(Exception e) {
+			localEmailServiceInterface.sendMailWithoutBody();
+		} catch (Exception e) {
 			e.printStackTrace();
 		}
 		userPojo = ObjectMapperUtils.map(user, UserPojo.class);
@@ -94,6 +95,23 @@ public class UserFacade {
 	private void deleteExisistingRole(User user, List<Role> roles) {
 		user.getRoles().removeAll(roles);
 		userService.save(user);
+	}
+
+	public UserPojoListResponse getAllInternalDMC() {
+		UserPojoListResponse userPojoListResponse=new UserPojoListResponse();
+		List<UserPojo> userPojo=new ArrayList<>();
+		List<User> userEntity = userService.listAll();
+		for (User user : userEntity) {
+			for (Role role : user.getRoles()) {
+				if (role.getName().equals("DMC")) {
+					userPojo.add(ObjectMapperUtils.map(user, UserPojo.class));
+				}
+			}
+		}
+		userPojoListResponse.setUserPojo(userPojo);
+		return userPojoListResponse;
+
+		
 	}
 
 }

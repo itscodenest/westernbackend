@@ -1,17 +1,17 @@
 package com.tourcoreservice.response.orders;
 
 import com.tourcoreservice.pojo.generic.AbstractPojoResponse;
-import com.tourcoreservice.pojo.orders.CustomisePackageHotelInfoPojo;
+import com.tourcoreservice.pojo.orders.CustomisedOrderPackageHotelInfoPojo;
 
 public class CustomisePackageHotelInfoPojoResponse extends AbstractPojoResponse {
 
-	private CustomisePackageHotelInfoPojo customisePackageHotelInfoPojo;
+	private CustomisedOrderPackageHotelInfoPojo customisePackageHotelInfoPojo;
 
-	public CustomisePackageHotelInfoPojo getCustomisePackageHotelInfoPojo() {
+	public CustomisedOrderPackageHotelInfoPojo getCustomisePackageHotelInfoPojo() {
 		return customisePackageHotelInfoPojo;
 	}
 
-	public void setCustomisePackageHotelInfoPojo(CustomisePackageHotelInfoPojo customisePackageHotelInfoPojo) {
+	public void setCustomisePackageHotelInfoPojo(CustomisedOrderPackageHotelInfoPojo customisePackageHotelInfoPojo) {
 		this.customisePackageHotelInfoPojo = customisePackageHotelInfoPojo;
 	}
 	

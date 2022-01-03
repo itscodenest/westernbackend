@@ -3,8 +3,8 @@ package com.tourcoreservice.pojo.orders;
 import java.util.Date;
 import java.util.Set;
 
-import com.tourcoreservice.entity.ApproverHirarchy;
-import com.tourcoreservice.entity.CustomisePackage;
+import com.tourcoreservice.entity.OrderApproverHirarchy;
+import com.tourcoreservice.entity.CustomisedOrderPackage;
 
 public class OrderHeaderPojo {
 
@@ -28,9 +28,9 @@ public class OrderHeaderPojo {
 	
 	private long creatorId;
 
-	private CustomisePackage orderDetails;
+	private CustomisedOrderPackage orderDetails;
 
-	private Set<ApproverHirarchy> approverHirarchy;
+	private Set<OrderApproverHirarchy> approverHirarchy;
 
 	public long getId() {
 		return id;
@@ -96,19 +96,19 @@ public class OrderHeaderPojo {
 		this.status = status;
 	}
 
-	public CustomisePackage getOrderDetails() {
+	public CustomisedOrderPackage getOrderDetails() {
 		return orderDetails;
 	}
 
-	public void setOrderDetails(CustomisePackage orderDetails) {
+	public void setOrderDetails(CustomisedOrderPackage orderDetails) {
 		this.orderDetails = orderDetails;
 	}
 
-	public Set<ApproverHirarchy> getApproverHirarchy() {
+	public Set<OrderApproverHirarchy> getApproverHirarchy() {
 		return approverHirarchy;
 	}
 
-	public void setApproverHirarchy(Set<ApproverHirarchy> approverHirarchy) {
+	public void setApproverHirarchy(Set<OrderApproverHirarchy> approverHirarchy) {
 		this.approverHirarchy = approverHirarchy;
 	}
 

@@ -1,17 +1,17 @@
 package com.tourcoreservice.response.orders;
 
 import com.tourcoreservice.pojo.generic.AbstractPojoResponse;
-import com.tourcoreservice.pojo.orders.CustomisePackageFlightinfoPojo;
+import com.tourcoreservice.pojo.orders.CustomisedOrderPackageFlightinfoPojo;
 
 public class CustomisePackageFlightinfoPojoResponse extends AbstractPojoResponse{
 
-	private CustomisePackageFlightinfoPojo customisePackageFlightinfoPojo;
+	private CustomisedOrderPackageFlightinfoPojo customisePackageFlightinfoPojo;
 
-	public CustomisePackageFlightinfoPojo getCustomisePackageFlightinfoPojo() {
+	public CustomisedOrderPackageFlightinfoPojo getCustomisePackageFlightinfoPojo() {
 		return customisePackageFlightinfoPojo;
 	}
 
-	public void setCustomisePackageFlightinfoPojo(CustomisePackageFlightinfoPojo customisePackageFlightinfoPojo) {
+	public void setCustomisePackageFlightinfoPojo(CustomisedOrderPackageFlightinfoPojo customisePackageFlightinfoPojo) {
 		this.customisePackageFlightinfoPojo = customisePackageFlightinfoPojo;
 	}
 	
