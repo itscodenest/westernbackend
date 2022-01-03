@@ -1,5 +1,7 @@
 package com.account.accountservice.controller;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -41,6 +43,11 @@ public class UserRestController {
 	public UserPojoResponse update(@RequestBody UserPojo userPojo, @PathVariable("id") long id) {
 		userPojo.setId(id);
 		return userFacade.update(userPojo);
+	}
+
+	@GetMapping("internaldmc")
+	public UserPojoListResponse getAllInternalDMC() {
+		return userFacade.getAllInternalDMC();
 	}
 
 }
