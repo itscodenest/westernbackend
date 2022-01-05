@@ -1,32 +1,22 @@
-package com.tourcoreservice.entity.events;
+package com.tourcoreservice.pojo.events;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.Lob;
+import com.tourcoreservice.entity.events.EventCityLocation;
 
-@Entity
-public class MainEventPubs {
-	
-	@Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+public class MainEventPubsPartialPojo {
+
 	private long id;
 	private String name;
 	private String smallDiscription;
-	@Lob
-	private String discription;
-	private String address;
 	private EventCityLocation place;
 	private String map;
 	private String image;
+	private String address;
 	private boolean isfood;
 	private boolean isdrink;
 	private boolean isparking;
 	private boolean ismusic;
 	private boolean isgarden;
 	private boolean isActive;
-	
 	public long getId() {
 		return id;
 	}
@@ -39,13 +29,13 @@ public class MainEventPubs {
 	public void setName(String name) {
 		this.name = name;
 	}
-	public String getDiscription() {
-		return discription;
+	public String getSmallDiscription() {
+		return smallDiscription;
 	}
-	public void setDiscription(String discription) {
-		this.discription = discription;
+	public void setSmallDiscription(String smallDiscription) {
+		this.smallDiscription = smallDiscription;
 	}
-
+	
 	public EventCityLocation getPlace() {
 		return place;
 	}
@@ -58,7 +48,12 @@ public class MainEventPubs {
 	public void setMap(String map) {
 		this.map = map;
 	}
-	
+	public String getImage() {
+		return image;
+	}
+	public void setImage(String image) {
+		this.image = image;
+	}
 	
 	public String getAddress() {
 		return address;
@@ -74,13 +69,6 @@ public class MainEventPubs {
 	}
 	public boolean isIsdrink() {
 		return isdrink;
-	}
-	
-	public String getImage() {
-		return image;
-	}
-	public void setImage(String image) {
-		this.image = image;
 	}
 	public void setIsdrink(boolean isdrink) {
 		this.isdrink = isdrink;
@@ -109,13 +97,6 @@ public class MainEventPubs {
 	public void setActive(boolean isActive) {
 		this.isActive = isActive;
 	}
-	public String getSmallDiscription() {
-		return smallDiscription;
-	}
-	public void setSmallDiscription(String smallDiscription) {
-		this.smallDiscription = smallDiscription;
-	}
 	
 	
-
 }

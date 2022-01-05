@@ -1,12 +1,14 @@
 package com.tourcoreservice.pojo.events;
 
+
+
 public class EventArtistPojo {
 
 	private long id;
 	private String name;
 	private String socialmedia1;
 	private String socialmedia2;
-	private byte[] image;
+	private String image;
 	private String gcsurl;
 	private String discription;
 	
@@ -34,10 +36,11 @@ public class EventArtistPojo {
 	public void setSocialmedia2(String socialmedia2) {
 		this.socialmedia2 = socialmedia2;
 	}
-	public byte[] getImage() {
+	
+	public String getImage() {
 		return image;
 	}
-	public void setImage(byte[] image) {
+	public void setImage(String image) {
 		this.image = image;
 	}
 	public String getGcsurl() {
