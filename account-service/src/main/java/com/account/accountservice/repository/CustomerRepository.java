@@ -7,6 +7,7 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 
+import com.tourcoreservice.entity.Customer;
 import com.tourcoreservice.entity.User;
 
 @Repository
@@ -17,5 +18,8 @@ public interface CustomerRepository extends JpaRepository<User,Long>{
 	  
 	@Query("SELECT u FROM User u WHERE type=:roleCustomer")
 	List<User> findAllCustomers(@Param("roleCustomer") String roleCustomer);
+
+
+	User findByemail(String email);
 
 }
