@@ -42,4 +42,10 @@ public class CustomerService {
 
 	}
 
+	public User findByemail(String email) {
+		// TODO Auto-generated method stub
+		
+		return customerRespository.findByemail(email);
+	}
+
 }
