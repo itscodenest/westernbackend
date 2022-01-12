@@ -6,10 +6,7 @@ public class CustomisedOrderPackageFlightinfoPojo {
 
 	private long id;
 
-	private boolean roundtrip;
-
-	private boolean oneside;
-
+	
 	private String flightDepartureCity;
 
 	private String flightArrivalCity;
@@ -34,22 +31,7 @@ public class CustomisedOrderPackageFlightinfoPojo {
 		this.id = id;
 	}
 
-	public boolean isRoundtrip() {
-		return roundtrip;
-	}
-
-	public void setRoundtrip(boolean roundtrip) {
-		this.roundtrip = roundtrip;
-	}
-
-	public boolean isOneside() {
-		return oneside;
-	}
-
-	public void setOneside(boolean oneside) {
-		this.oneside = oneside;
-	}
-
+	
 	public String getFlightDepartureCity() {
 		return flightDepartureCity;
 	}

@@ -1,10 +1,14 @@
 package com.tourcoreservice.entity.events;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.Lob;
+import javax.persistence.OneToOne;
 
 @Entity
 public class MainEventPubs {
@@ -17,6 +21,8 @@ public class MainEventPubs {
 	@Lob
 	private String discription;
 	private String address;
+	@OneToOne(fetch = FetchType.EAGER, cascade = CascadeType.DETACH)
+	@JoinColumn(name = "Publocation_id")
 	private EventCityLocation place;
 	private String map;
 	private String image;

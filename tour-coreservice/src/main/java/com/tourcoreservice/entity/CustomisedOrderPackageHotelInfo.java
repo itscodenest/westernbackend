@@ -7,6 +7,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.Lob;
 
 @Entity
 public class CustomisedOrderPackageHotelInfo {
@@ -27,9 +28,13 @@ public class CustomisedOrderPackageHotelInfo {
 	private String roomCheckoutTime;
 	private String hotelNote;
 	private String bookingMembersRoom;
+	@Lob
 	private String hotelImageurl1;
+	@Lob
 	private String hotelImageurl2;
+	@Lob
 	private String hotelImageurl3;
+	@Lob
 	private String hotelImageurl4;
 	public long getId() {
 		return id;
