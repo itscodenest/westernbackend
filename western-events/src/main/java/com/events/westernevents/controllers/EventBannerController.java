@@ -1,7 +1,6 @@
 package com.events.westernevents.controllers;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -12,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.events.westernevents.facad.EventsBannerFacad;
+import com.netflix.infix.lang.infix.antlr.EventFilterParser.boolean_expr_return;
 import com.tourcoreservice.pojo.events.EventbannerPojo;
 import com.tourcoreservice.response.events.EventsBannerListResponse;
 import com.tourcoreservice.response.events.EventsBannerResponse;
@@ -47,6 +47,12 @@ public class EventBannerController {
 
 	}
 
+	@PutMapping("isenable/{status}/{id}")
+	public EventsBannerResponse updateenable(@PathVariable boolean status, @PathVariable long id) {
+		return eFacad.updateBannerstatus(status,id);
+
+	}
+	
 	@DeleteMapping("/{id}")
 	public void delete(@PathVariable long id) {
 		eFacad.delete(id);

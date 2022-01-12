@@ -7,8 +7,10 @@ import org.springframework.stereotype.Component;
 
 import com.events.westernevents.service.MainEventPubsService;
 import com.tourcoreservice.entity.events.MainEventPubs;
+import com.tourcoreservice.pojo.events.MainEventPubsPartialPojo;
 import com.tourcoreservice.pojo.events.MainEventPubsPojo;
 import com.tourcoreservice.response.events.MainEventPubsListResponse;
+import com.tourcoreservice.response.events.MainEventPubsPartListResponse;
 import com.tourcoreservice.response.events.MainEventPubsResponse;
 import com.tourcoreservice.util.ObjectMapperUtils;
 
@@ -26,6 +28,13 @@ public class MainEventPubsFacad {
 		return mEventPubsListResponse;
 	}
 	
+	public MainEventPubsPartListResponse listAllPubsPart() {
+		MainEventPubsPartListResponse mEventPubsListResponse = new MainEventPubsPartListResponse();
+		List<MainEventPubs> mEventPubs = mEventPubsService.listAll();
+		List<MainEventPubsPartialPojo> mEventPubsPojos = ObjectMapperUtils.mapAll(mEventPubs, MainEventPubsPartialPojo.class);
+		mEventPubsListResponse.setmEventPubsPojos(mEventPubsPojos);
+		return mEventPubsListResponse;
+	}
 	public MainEventPubsResponse getPub(long id) {
 		MainEventPubsResponse mEventPubsResponse = new MainEventPubsResponse();
 		MainEventPubs mEventPubs = mEventPubsService.getById(id);
@@ -56,6 +65,8 @@ public class MainEventPubsFacad {
 		
 		mEventPubsService.delete(id);
 	}
+
+	
 	
 	
 }

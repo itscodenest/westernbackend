@@ -21,6 +21,8 @@ public class CustomisedOrderPackageHotelInfoPojo {
 	private String hotelImageurl2;
 	private String hotelImageurl3;
 	private String hotelImageurl4;
+	
+	
 	public long getId() {
 		return id;
 	}

@@ -1,20 +1,13 @@
 package com.tourcoreservice.entity;
 
 import java.util.Date;
-import java.util.Set;
 
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.JoinTable;
 import javax.persistence.Lob;
-import javax.persistence.ManyToOne;
-import javax.persistence.OneToMany;
 
 @Entity
 public class CustomisedOrderPackage {
@@ -23,6 +16,8 @@ public class CustomisedOrderPackage {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private long id;
 
+	private String coverheading;
+	private String coverImgCdn;
 	@Column(name = "departure_city")
 	private String departureCity;
 
@@ -55,13 +50,7 @@ public class CustomisedOrderPackage {
 	private long userId;
 	private long status;
 
-	@OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.DETACH)
-	@JoinColumn(name = "flightinfo_id")
-	private Set<CustomisedOrderPackageFlightinfo> flightInfo;
-
-	@OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.DETACH)
-	@JoinColumn(name = "hotelinfo_id")
-	private Set<CustomisedOrderPackageHotelInfo> hotel_info;
+	
 	
 	private String totalPrice;
 
@@ -82,6 +71,23 @@ public class CustomisedOrderPackage {
 
 	public void setId(long id) {
 		this.id = id;
+	}
+
+	
+	public String getCoverheading() {
+		return coverheading;
+	}
+
+	public void setCoverheading(String coverheading) {
+		this.coverheading = coverheading;
+	}
+
+	public String getCoverImgCdn() {
+		return coverImgCdn;
+	}
+
+	public void setCoverImgCdn(String coverImgCdn) {
+		this.coverImgCdn = coverImgCdn;
 	}
 
 	public String getDepartureCity() {
@@ -172,21 +178,7 @@ public class CustomisedOrderPackage {
 		this.travelDuration = travelDuration;
 	}
 
-	public Set<CustomisedOrderPackageFlightinfo> getFlightInfo() {
-		return flightInfo;
-	}
-
-	public void setFlightInfo(Set<CustomisedOrderPackageFlightinfo> flightInfo) {
-		this.flightInfo = flightInfo;
-	}
-
-	public Set<CustomisedOrderPackageHotelInfo> getHotel_info() {
-		return hotel_info;
-	}
-
-	public void setHotel_info(Set<CustomisedOrderPackageHotelInfo> hotel_info) {
-		this.hotel_info = hotel_info;
-	}
+	
 
 	public String getTotalPrice() {
 		return totalPrice;
