@@ -95,6 +95,20 @@ public class CustomerQoutesFacade {
 		cQoutesPojo = ObjectMapperUtils.map(cQoutes, CustomerQoutesPojo.class);
 		return createDeleteUpdateResponse(cQoutesPojo, "Updated successfully");
 	}
+	
+	public CustomerQoutesPojoResponse updateextra(CustomerQoutesPojo cQoutesPojo) {
+		CustomerQoutes cQoutes = qoutesService.getDataId(cQoutesPojo.getId());
+		CustomerQoutesPojo olddatapojo = ObjectMapperUtils.map(cQoutes, CustomerQoutesPojo.class);
+		olddatapojo.setAditionalinfo(cQoutesPojo.getAditionalinfo());//additional info
+		olddatapojo.setInclusiontext(cQoutesPojo.getInclusiontext());
+		olddatapojo.setExlusionText(cQoutesPojo.getExlusionText());
+		olddatapojo.setPaymentPolicy(cQoutesPojo.getPaymentPolicy());
+		olddatapojo.setTermsandconditions(cQoutesPojo.getTermsandconditions());
+		CustomerQoutes updateddata = ObjectMapperUtils.map(olddatapojo, CustomerQoutes.class);
+		updateddata = qoutesService.Update(updateddata);
+		cQoutesPojo = ObjectMapperUtils.map(updateddata, CustomerQoutesPojo.class);
+		return createDeleteUpdateResponse(cQoutesPojo, "Updated successfully");
+	}
 
 	private CustomerQoutesPojoResponse createDeleteUpdateResponse(CustomerQoutesPojo cQoutesPojo, String message) {
 		CustomerQoutesPojoResponse customisePackagePojoRespone = new CustomerQoutesPojoResponse();
@@ -108,6 +122,8 @@ public class CustomerQoutesFacade {
 		customisePackagePojoRespone.setSuccessMessaages(successMessages);
 		return customisePackagePojoRespone;
 	}
+
+	
 
 	
 	

@@ -59,10 +59,12 @@ public class IterneryFacade {
 		List<Iternery> iterneryList=iterneryService.getIterneries();
 
 		for (Iternery iternery : iterneryList) {
+			if(!ObjectUtils.isEmpty(iternery.getTourpackage().getId())) {
 			if (iternery.getTourpackage().getId()==id) {
 				if (iternery.getDay()==day) {
 					throw new DataAlreadyExistsException();
 				}
+			}
 			}
 		}
 	}

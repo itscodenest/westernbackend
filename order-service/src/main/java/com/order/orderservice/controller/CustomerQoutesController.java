@@ -67,4 +67,10 @@ public class CustomerQoutesController {
 	public CustomerQoutesPojoResponse updateCustomisePackageById(@RequestBody CustomerQoutesPojo cQoutesPojo) {
 		return customerQoutesFacade.update(cQoutesPojo);
 	}
+	
+	@PutMapping("/extrainfo/{id}")
+	public CustomerQoutesPojoResponse updateExtrainfoById(@RequestBody CustomerQoutesPojo cQoutesPojo,@PathVariable Long id) {
+		cQoutesPojo.setId(id);
+		return customerQoutesFacade.updateextra(cQoutesPojo);
+	}
 }
