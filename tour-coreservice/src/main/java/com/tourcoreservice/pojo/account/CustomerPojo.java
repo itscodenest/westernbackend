@@ -14,14 +14,21 @@ public class CustomerPojo {
 	private int age;
 
 	private List<RolePojo> roles;
-	
+
 	private String type;
-	
+
 	private Set<AddressPojo> addresses;
 
 	private long customerId;
 
 	private long id;
+
+	private String firstName;
+	private String lastName;
+	private String name;
+	private String photoUrl;
+	private String provider;
+	private String email;
 
 	public String getUsername() {
 		return username;
@@ -93,6 +100,54 @@ public class CustomerPojo {
 
 	public void setType(String type) {
 		this.type = type;
+	}
+
+	public String getFirstName() {
+		return firstName;
+	}
+
+	public void setFirstName(String firstName) {
+		this.firstName = firstName;
+	}
+
+	public String getLastName() {
+		return lastName;
+	}
+
+	public void setLastName(String lastName) {
+		this.lastName = lastName;
+	}
+
+	public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
+	}
+
+	public String getPhotoUrl() {
+		return photoUrl;
+	}
+
+	public void setPhotoUrl(String photoUrl) {
+		this.photoUrl = photoUrl;
+	}
+
+	public String getProvider() {
+		return provider;
+	}
+
+	public void setProvider(String provider) {
+		this.provider = provider;
+	}
+
+	public String getEmail() {
+		return email;
+	}
+
+	public void setEmail(String email) {
+		this.email = email;
 	}
 
 }

@@ -35,6 +35,8 @@ public class User extends BaseEntity {
 	
 	@Column(updatable=false,insertable=false)
 	private String type;
+	private String email;
+
 
 	@ManyToMany(targetEntity = Role.class, cascade = CascadeType.DETACH, fetch = FetchType.EAGER)
 	@JoinTable(name = "users_roles")
@@ -98,6 +100,14 @@ public class User extends BaseEntity {
 
 	public void setType(String type) {
 		this.type = type;
+	}
+
+	public String getEmail() {
+		return email;
+	}
+
+	public void setEmail(String email) {
+		this.email = email;
 	}
 	
 

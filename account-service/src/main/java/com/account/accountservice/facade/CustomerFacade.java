@@ -9,12 +9,14 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.HttpStatus;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Component;
+import org.springframework.util.ObjectUtils;
 
 import com.account.accountservice.service.CustomerService;
 import com.tourcoreservice.entity.Address;
 import com.tourcoreservice.entity.Customer;
 import com.tourcoreservice.entity.Role;
 import com.tourcoreservice.entity.User;
+import com.tourcoreservice.exception.account.UserAlreadyExistsException;
 import com.tourcoreservice.pojo.account.CustomerPojo;
 import com.tourcoreservice.pojo.account.EmployeePojo;
 import com.tourcoreservice.pojo.generic.ResponseMessagePojo;
@@ -45,12 +47,22 @@ public class CustomerFacade {
 
 	public CustomerPojoResponse create(CustomerPojo customerPojo) {
 		// exception handle
+		throwIfAlreadyExists(customerPojo.getEmail());
 		Customer customer = ObjectMapperUtils.map(customerPojo, Customer.class);
 		String hashPassword = passwordEncoder.encode(customerPojo.getPassword());
 		customer.setPassword(hashPassword);
 		customer = customerService.create(customer);
 		customerPojo = ObjectMapperUtils.map(customer, CustomerPojo.class);
 		return createDeleteUpdateResponse(customerCreatedSuccessfully, customerPojo);
+	}
+
+	private void throwIfAlreadyExists(String email) {
+		
+		User customer=customerService.findByemail(email);
+		if (!ObjectUtils.isEmpty(customer)) {
+			throw new UserAlreadyExistsException("User Already Exists");
+		}
+		
 	}
 
 	private CustomerPojoResponse createDeleteUpdateResponse(String message, CustomerPojo customerPojo) {
