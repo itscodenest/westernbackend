@@ -2,7 +2,6 @@ package com.order.orderservice.facade;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Set;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -11,10 +10,12 @@ import org.springframework.stereotype.Component;
 import com.order.orderservice.service.CustomerQoutesService;
 import com.tourcoreservice.entity.CustomerQoutes;
 import com.tourcoreservice.pojo.generic.ResponseMessagePojo;
+import com.tourcoreservice.pojo.orders.CustomerQoutesPartialPojo;
 import com.tourcoreservice.pojo.orders.CustomerQoutesPojo;
 import com.tourcoreservice.pojo.orders.CustomisedOrderPackageFlightinfoPojo;
 import com.tourcoreservice.pojo.orders.CustomisedOrderPackageHotelInfoPojo;
 import com.tourcoreservice.pojo.orders.CustomisedOrderPackageIteneryPojo;
+import com.tourcoreservice.response.orders.CustomerQoutesPartialPojoListResponse;
 import com.tourcoreservice.response.orders.CustomerQoutesPojoListResponse;
 import com.tourcoreservice.response.orders.CustomerQoutesPojoResponse;
 import com.tourcoreservice.util.ObjectMapperUtils;
@@ -72,7 +73,24 @@ public class CustomerQoutesFacade {
 		cResponse.setcPojos(cQoutesPojos);
 		return cResponse;
 	}
+	
+	public CustomerQoutesPartialPojoListResponse listAllPartial(Long customerid) {
+		CustomerQoutesPartialPojoListResponse cPojoListResponse = new CustomerQoutesPartialPojoListResponse();
+		List<CustomerQoutes> cQoutes = qoutesService.listallONcustomer(customerid);
+		
+		List<CustomerQoutesPartialPojo> cQoutesPojos = ObjectMapperUtils.mapAll(cQoutes, CustomerQoutesPartialPojo.class);
+		cPojoListResponse.setcPojos(cQoutesPojos);
+		return cPojoListResponse;
+	}
 
+	public CustomerQoutesPartialPojoListResponse listbyOrder(Long orderid) {
+		CustomerQoutesPartialPojoListResponse cPojoListResponse = new CustomerQoutesPartialPojoListResponse();
+		List<CustomerQoutes> cQoutes = qoutesService.listallOnOrder(orderid);
+		
+		List<CustomerQoutesPartialPojo> cQoutesPojos = ObjectMapperUtils.mapAll(cQoutes, CustomerQoutesPartialPojo.class);
+		cPojoListResponse.setcPojos(cQoutesPojos);
+		return cPojoListResponse;
+	}
 	public CustomerQoutesPojoResponse getData(Long id) {
 		CustomerQoutesPojoResponse cResponse = new CustomerQoutesPojoResponse();
 		CustomerQoutes cQoutes = qoutesService.getDataId(id);
@@ -99,6 +117,7 @@ public class CustomerQoutesFacade {
 	public CustomerQoutesPojoResponse updateextra(CustomerQoutesPojo cQoutesPojo) {
 		CustomerQoutes cQoutes = qoutesService.getDataId(cQoutesPojo.getId());
 		CustomerQoutesPojo olddatapojo = ObjectMapperUtils.map(cQoutes, CustomerQoutesPojo.class);
+		olddatapojo.setTotalcost(cQoutesPojo.getTotalcost());
 		olddatapojo.setAditionalinfo(cQoutesPojo.getAditionalinfo());//additional info
 		olddatapojo.setInclusiontext(cQoutesPojo.getInclusiontext());
 		olddatapojo.setExlusionText(cQoutesPojo.getExlusionText());
@@ -122,6 +141,10 @@ public class CustomerQoutesFacade {
 		customisePackagePojoRespone.setSuccessMessaages(successMessages);
 		return customisePackagePojoRespone;
 	}
+
+	
+
+	
 
 	
 

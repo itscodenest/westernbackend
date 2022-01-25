@@ -23,6 +23,8 @@ public class CustomisedOrderPackageFlightinfoPojo {
 
 	private String arrivalTime;
 
+	private String Members;
+	
 	public long getId() {
 		return id;
 	}
@@ -96,4 +98,13 @@ public class CustomisedOrderPackageFlightinfoPojo {
 		this.arrivalTime = arrivalTime;
 	}
 
+	public String getMembers() {
+		return Members;
+	}
+
+	public void setMembers(String members) {
+		Members = members;
+	}
+
+	
 }

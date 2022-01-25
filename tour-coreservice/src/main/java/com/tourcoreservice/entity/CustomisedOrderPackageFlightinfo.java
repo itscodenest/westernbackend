@@ -29,6 +29,8 @@ public class CustomisedOrderPackageFlightinfo {
 	private Date arrivalDate;
 
 	private String arrivalTime;
+	
+	private String Members;
 
 	public long getId() {
 		return id;
@@ -102,6 +104,14 @@ public class CustomisedOrderPackageFlightinfo {
 
 	public void setArrivalTime(String arrivalTime) {
 		this.arrivalTime = arrivalTime;
+	}
+
+	public String getMembers() {
+		return Members;
+	}
+
+	public void setMembers(String members) {
+		Members = members;
 	}
 	
 	

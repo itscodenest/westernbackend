@@ -15,7 +15,6 @@ import javax.persistence.OneToMany;
 @Entity
 public class CustomerQoutes {
 
-	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private long id;
@@ -33,13 +32,16 @@ public class CustomerQoutes {
 	private String custEmail;
 	private String travdate;
 	private String duration;
-	
+	private String totalcost;
 	private long userId;
 	private long status;
-	
+	// need to connect with order table
+	private long orderId;
+	private String createddate;
+	private String updateddate;
 	private String createrby;
 	private String updatedby;
-	
+
 	@Lob
 	private String inclusiontext;
 	@Lob
@@ -51,18 +53,17 @@ public class CustomerQoutes {
 	@Lob
 	private String aditionalinfo;
 
-	
 	@OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-	@JoinColumn(name="customerqoute_flight")
-    private List<CustomisedOrderPackageFlightinfo> CustomerQoutesFlight;
-	
+	@JoinColumn(name = "customerqoute_flight")
+	private List<CustomisedOrderPackageFlightinfo> CustomerQoutesFlight;
+
 	@OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-	@JoinColumn(name="customerqoute_hotel")
-    private List<CustomisedOrderPackageHotelInfo> customerQoutesHotel;
-	
+	@JoinColumn(name = "customerqoute_hotel")
+	private List<CustomisedOrderPackageHotelInfo> customerQoutesHotel;
+
 	@OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-	@JoinColumn(name="customerqoute_iternry")
-    private List<CustomisedOrderPackageIternery> customerQoutesiternery;
+	@JoinColumn(name = "customerqoute_iternry")
+	private List<CustomisedOrderPackageIternery> customerQoutesiternery;
 
 	public long getId() {
 		return id;
@@ -128,7 +129,6 @@ public class CustomerQoutes {
 		this.transport = transport;
 	}
 
-	
 	public long getUserId() {
 		return userId;
 	}
@@ -144,7 +144,6 @@ public class CustomerQoutes {
 	public void setStatus(long status) {
 		this.status = status;
 	}
-
 
 	public String getCreaterby() {
 		return createrby;
@@ -234,6 +233,14 @@ public class CustomerQoutes {
 		this.exlusionText = exlusionText;
 	}
 
+	public long getOrderId() {
+		return orderId;
+	}
+
+	public void setOrderId(long orderId) {
+		this.orderId = orderId;
+	}
+
 	public String getPaymentPolicy() {
 		return paymentPolicy;
 	}
@@ -281,7 +288,31 @@ public class CustomerQoutes {
 	public void setCustomerQoutesiternery(List<CustomisedOrderPackageIternery> customerQoutesiternery) {
 		this.customerQoutesiternery = customerQoutesiternery;
 	}
+
+	public String getTotalcost() {
+		return totalcost;
+	}
+
+	public void setTotalcost(String totalcost) {
+		this.totalcost = totalcost;
+	}
+
+	public String getCreateddate() {
+		return createddate;
+	}
+
+	public void setCreateddate(String createddate) {
+		this.createddate = createddate;
+	}
+
+	public String getUpdateddate() {
+		return updateddate;
+	}
+
+	public void setUpdateddate(String updateddate) {
+		this.updateddate = updateddate;
+	}
 	
 	
-	
+
 }

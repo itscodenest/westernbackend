@@ -2,10 +2,6 @@ package com.tourcoreservice.pojo.orders;
 
 import java.util.List;
 
-import com.tourcoreservice.entity.CustomisedOrderPackageFlightinfo;
-import com.tourcoreservice.entity.CustomisedOrderPackageHotelInfo;
-import com.tourcoreservice.entity.CustomisedOrderPackageIternery;
-
 public class CustomerQoutesPojo {
 	private long id;
 	private String coverImage;
@@ -27,9 +23,15 @@ public class CustomerQoutesPojo {
 	private String paymentPolicy;
 	private String termsandconditions;
 	private String aditionalinfo;
-	
+	private String totalcost;
+	//need to connect with order table
+	private long orderId;
+	private String createddate;
+	private String updateddate;
+	//need to connect with user table
 	private long userId;
 	private long status;
+	//need to connect with user table
 	private String createrby;
 	private String updatedby;
 	
@@ -60,6 +62,20 @@ public class CustomerQoutesPojo {
 	public void setCustumerName(String custumerName) {
 		this.custumerName = custumerName;
 	}
+	
+	
+	public String getCreateddate() {
+		return createddate;
+	}
+	public void setCreateddate(String createddate) {
+		this.createddate = createddate;
+	}
+	public String getTotalcost() {
+		return totalcost;
+	}
+	public void setTotalcost(String totalcost) {
+		this.totalcost = totalcost;
+	}
 	public String getMobileNum() {
 		return mobileNum;
 	}
@@ -71,6 +87,14 @@ public class CustomerQoutesPojo {
 	}
 	public void setDeparture(String departure) {
 		this.departure = departure;
+	}
+	
+	
+	public long getOrderId() {
+		return orderId;
+	}
+	public void setOrderId(long orderId) {
+		this.orderId = orderId;
 	}
 	public String getDestination() {
 		return destination;
@@ -157,6 +181,13 @@ public class CustomerQoutesPojo {
 	}
 	
 	
+	
+	public String getUpdateddate() {
+		return updateddate;
+	}
+	public void setUpdateddate(String updateddate) {
+		this.updateddate = updateddate;
+	}
 	public String getCreaterby() {
 		return createrby;
 	}

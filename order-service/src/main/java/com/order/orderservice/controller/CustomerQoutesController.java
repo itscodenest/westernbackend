@@ -17,6 +17,7 @@ import com.tourcoreservice.pojo.orders.CustomerQoutesPojo;
 import com.tourcoreservice.pojo.orders.CustomisedOrderPackageFlightinfoPojo;
 import com.tourcoreservice.pojo.orders.CustomisedOrderPackageHotelInfoPojo;
 import com.tourcoreservice.pojo.orders.CustomisedOrderPackageIteneryPojo;
+import com.tourcoreservice.response.orders.CustomerQoutesPartialPojoListResponse;
 import com.tourcoreservice.response.orders.CustomerQoutesPojoListResponse;
 import com.tourcoreservice.response.orders.CustomerQoutesPojoResponse;
 
@@ -58,6 +59,16 @@ public class CustomerQoutesController {
 		return customerQoutesFacade.getData(id);
 	}
 
+	@GetMapping("/Partial/{Customerid}")
+	public CustomerQoutesPartialPojoListResponse getAllQoutesPartialData(@PathVariable Long Customerid) {
+		return customerQoutesFacade.listAllPartial(Customerid);
+	}
+	
+	@GetMapping("/byorder/{Orderid}")
+	public CustomerQoutesPartialPojoListResponse getQoutesbuOrder(@PathVariable Long Orderid) {
+		return customerQoutesFacade.listbyOrder(Orderid);
+	}
+	
 	@DeleteMapping("/{id}")
 	public void delete(@PathVariable long id) {
 		customerQoutesFacade.delete(id);

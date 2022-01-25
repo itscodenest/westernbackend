@@ -22,6 +22,14 @@ public class CustomerQoutesService {
 		return qoutesRepository.findAll();
 	}
 
+	public List<CustomerQoutes> listallONcustomer(Long customerid){
+		return qoutesRepository.findAllOnCutomers(customerid);
+	}
+	
+	public List<CustomerQoutes> listallOnOrder(Long orderid) {
+		// TODO Auto-generated method stub
+		return qoutesRepository.findAllOnOrder(orderid);
+	}
 	public CustomerQoutes getDataId(Long id) {
 		return qoutesRepository.findById(id).get();
 	}
@@ -35,5 +43,7 @@ public class CustomerQoutesService {
 
 		return qoutesRepository.save(cQoutes);
 	}
+
+	
 
 }
