@@ -11,11 +11,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.events.westernevents.facad.EventsBannerFacad;
-import com.netflix.infix.lang.infix.antlr.EventFilterParser.boolean_expr_return;
 import com.tourcoreservice.pojo.events.EventbannerPojo;
 import com.tourcoreservice.response.events.EventsBannerListResponse;
 import com.tourcoreservice.response.events.EventsBannerResponse;
-
 
 @RestController
 @RequestMapping("/EventBanners")
@@ -28,8 +26,7 @@ public class EventBannerController {
 	public EventsBannerListResponse getAll() {
 		return eFacad.listAll();
 	}
-	
-	
+
 	@GetMapping("/{id}")
 	public EventsBannerResponse get(@PathVariable long id) {
 		return eFacad.getBanner(id);
@@ -49,10 +46,10 @@ public class EventBannerController {
 
 	@PutMapping("isenable/{status}/{id}")
 	public EventsBannerResponse updateenable(@PathVariable boolean status, @PathVariable long id) {
-		return eFacad.updateBannerstatus(status,id);
+		return eFacad.updateBannerstatus(status, id);
 
 	}
-	
+
 	@DeleteMapping("/{id}")
 	public void delete(@PathVariable long id) {
 		eFacad.delete(id);
