@@ -33,4 +33,6 @@ public class EventsBannerService {
 	public EventBanners Update(EventBanners eBanners) {
 		return eBannerRepository.save(eBanners);
 	}
+
+	
 }

@@ -19,7 +19,5 @@ public interface CustomerRepository extends JpaRepository<User,Long>{
 	@Query("SELECT u FROM User u WHERE type=:roleCustomer")
 	List<User> findAllCustomers(@Param("roleCustomer") String roleCustomer);
 
-
 	User findByemail(String email);
-
 }

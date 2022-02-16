@@ -23,6 +23,7 @@ public class EventCities {
 	@OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
 	private Set<EventPackages> eventPackage;
 	
+	
 	public long getId() {
 		return id;
 	}

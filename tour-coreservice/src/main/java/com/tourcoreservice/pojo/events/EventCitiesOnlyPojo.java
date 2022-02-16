@@ -4,6 +4,7 @@ public class EventCitiesOnlyPojo {
 	private long id;
 	private String city;
 	private String country;
+	
 	public String getCity() {
 		return city;
 	}

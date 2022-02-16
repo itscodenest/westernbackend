@@ -4,6 +4,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.Lob;
 
 @Entity
 public class EventArtist {
@@ -13,7 +14,8 @@ public class EventArtist {
 	private String name;
 	private String socialmedia1;
 	private String socialmedia2;
-	private byte[] image;
+	@Lob
+	private String image;
 	private String gcsurl;
 	private String discription;
 	
@@ -51,11 +53,12 @@ public class EventArtist {
 		this.socialmedia2 = socialmedia2;
 	}
 
-	public byte[] getImage() {
+	
+	public String getImage() {
 		return image;
 	}
 
-	public void setImage(byte[] image) {
+	public void setImage(String image) {
 		this.image = image;
 	}
 

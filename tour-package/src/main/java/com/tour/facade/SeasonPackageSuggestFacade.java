@@ -6,10 +6,13 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Component;
+import org.springframework.util.ObjectUtils;
 
 import com.tour.service.SeasonPackageSuggestService;
 import com.tour.util.ObjectMapperUtils;
 import com.tourcoreservice.entity.SeasonPackageSuggest;
+import com.tourcoreservice.exception.tourpackage.DataAlreadyExistException;
+import com.tourcoreservice.exception.tourpackage.DataDoesNotExistException;
 import com.tourcoreservice.pojo.generic.ResponseMessagePojo;
 import com.tourcoreservice.pojo.tourpackage.SeasonPackageSuggestPojo;
 import com.tourcoreservice.response.tourpackage.SeasonPackageSuggestPojoListResponse;
@@ -22,11 +25,21 @@ public class SeasonPackageSuggestFacade {
 	SeasonPackageSuggestService seasonService;
 
 	public SeasonPackageSuggestPojoResponse create(SeasonPackageSuggestPojo seasonPojo) {
-			SeasonPackageSuggest season = ObjectMapperUtils.map(seasonPojo, SeasonPackageSuggest.class);
-			season = seasonService.create(season);
-			seasonPojo = ObjectMapperUtils.map(season, SeasonPackageSuggestPojo.class);
-			return createDeleteUpdateResponse(seasonPojo,"Created successfully");
+		ifDataAlredyExits(seasonPojo.getId());
+		SeasonPackageSuggest season = ObjectMapperUtils.map(seasonPojo, SeasonPackageSuggest.class);
+		season = seasonService.create(season);
+		seasonPojo = ObjectMapperUtils.map(season, SeasonPackageSuggestPojo.class);
+		return createDeleteUpdateResponse(seasonPojo, "Created successfully");
 	}
+
+	private void ifDataAlredyExits(long id) {
+		SeasonPackageSuggest packageSuggest = seasonService.getById(id);
+		if (!ObjectUtils.isEmpty(packageSuggest)) {
+			throw new DataAlreadyExistException("Data already exists");
+		}
+
+	}
+
 	private SeasonPackageSuggestPojoResponse createDeleteUpdateResponse(SeasonPackageSuggestPojo seasonPojo,
 			String message) {
 		SeasonPackageSuggestPojoResponse seasonPojoResponse = new SeasonPackageSuggestPojoResponse();	
@@ -40,12 +53,22 @@ public class SeasonPackageSuggestFacade {
 		return seasonPojoResponse;
 	}
 	public SeasonPackageSuggestPojoResponse get(long id) {
+		ifDataDoesNotExist(id);
 		SeasonPackageSuggestPojoResponse seasonPojoResponse = new SeasonPackageSuggestPojoResponse();
 		SeasonPackageSuggest season = seasonService.getById(id);
 		SeasonPackageSuggestPojo seasonPojo = ObjectMapperUtils.map(season, SeasonPackageSuggestPojo.class);
 		seasonPojoResponse.setSeasonPojo(seasonPojo);
 		return seasonPojoResponse;
+	}
+
+	private void ifDataDoesNotExist(long id) {
+		SeasonPackageSuggest packageSuggest = seasonService.getById(id);
+		if (ObjectUtils.isEmpty(packageSuggest)) {
+			throw new DataDoesNotExistException("Data doesn't exists");
 		}
+
+	}
+
 	public SeasonPackageSuggestPojoListResponse listAll() {
 		SeasonPackageSuggestPojoListResponse seasonPojoListResponse = new SeasonPackageSuggestPojoListResponse();
 				List<SeasonPackageSuggest> season = seasonService.listAll();
@@ -54,18 +77,19 @@ public class SeasonPackageSuggestFacade {
 				return seasonPojoListResponse;
 			}
 	public SeasonPackageSuggestPojoResponse delete(long id) {
+		ifDataDoesNotExist(id);
 		SeasonPackageSuggest season = seasonService.getById(id);
 		seasonService.delete(season);
 		return createDeleteUpdateResponse(null,"Deleted successfully");
 		
 	}
 	public SeasonPackageSuggestPojoResponse update(SeasonPackageSuggestPojo seasonPojo) {
-			SeasonPackageSuggest season = ObjectMapperUtils.map(seasonPojo, SeasonPackageSuggest.class);
-			season = seasonService.Update(season);
-			seasonPojo = ObjectMapperUtils.map(season, SeasonPackageSuggestPojo.class);
-				return createDeleteUpdateResponse(seasonPojo,"Updated successfully");
-			}
-	
+		ifDataDoesNotExist(seasonPojo.getId());
+		SeasonPackageSuggest season = ObjectMapperUtils.map(seasonPojo, SeasonPackageSuggest.class);
+		season = seasonService.Update(season);
+		seasonPojo = ObjectMapperUtils.map(season, SeasonPackageSuggestPojo.class);
+		return createDeleteUpdateResponse(seasonPojo, "Updated successfully");
+	}
 
 	
 }

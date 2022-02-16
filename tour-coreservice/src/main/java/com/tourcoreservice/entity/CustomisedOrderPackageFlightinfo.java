@@ -14,10 +14,6 @@ public class CustomisedOrderPackageFlightinfo {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private long id;
 
-	private boolean roundtrip;
-	
-	private boolean oneside;
-
 	private String flightDepartureCity;
 
 	private String flightArrivalCity;
@@ -33,6 +29,8 @@ public class CustomisedOrderPackageFlightinfo {
 	private Date arrivalDate;
 
 	private String arrivalTime;
+	
+	private String Members;
 
 	public long getId() {
 		return id;
@@ -42,21 +40,7 @@ public class CustomisedOrderPackageFlightinfo {
 		this.id = id;
 	}
 
-	public boolean isRoundtrip() {
-		return roundtrip;
-	}
-
-	public void setRoundtrip(boolean roundtrip) {
-		this.roundtrip = roundtrip;
-	}
-
-	public boolean isOneside() {
-		return oneside;
-	}
-
-	public void setOneside(boolean oneside) {
-		this.oneside = oneside;
-	}
+	
 
 	public String getFlightDepartureCity() {
 		return flightDepartureCity;
@@ -120,6 +104,14 @@ public class CustomisedOrderPackageFlightinfo {
 
 	public void setArrivalTime(String arrivalTime) {
 		this.arrivalTime = arrivalTime;
+	}
+
+	public String getMembers() {
+		return Members;
+	}
+
+	public void setMembers(String members) {
+		Members = members;
 	}
 	
 	

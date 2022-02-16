@@ -13,23 +13,26 @@ public class EventBanners {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private long id;
 	@Lob
-	private byte[] image;
+	private String image;
 	private String gcsurl;
 	private String heading;
 	private String discription;
 	private String date;
-	
-	
+	private String month;
+	private String eventid;
+    private Boolean isActive;
+    
 	public long getId() {
 		return id;
 	}
 	public void setId(long id) {
 		this.id = id;
 	}
-	public byte[] getImage() {
+	
+	public String getImage() {
 		return image;
 	}
-	public void setImage(byte[] image) {
+	public void setImage(String image) {
 		this.image = image;
 	}
 	public String getGcsurl() {
@@ -56,6 +59,25 @@ public class EventBanners {
 	public void setDate(String date) {
 		this.date = date;
 	}
+	public String getMonth() {
+		return month;
+	}
+	public void setMonth(String month) {
+		this.month = month;
+	}
+	public String getEventid() {
+		return eventid;
+	}
+	public void setEventid(String eventid) {
+		this.eventid = eventid;
+	}
+	public Boolean getIsActive() {
+		return isActive;
+	}
+	public void setIsActive(Boolean isActive) {
+		this.isActive = isActive;
+	}
 
+	
 	
 }

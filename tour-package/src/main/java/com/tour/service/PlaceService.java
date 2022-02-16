@@ -32,7 +32,7 @@ public class PlaceService {
 	}
 
 	public Place getPlaceById(long id) {
-		return placeRepositoty.findById(id).get();
+		return placeRepositoty.findById(id);
 	}
 
 	public void deletePlace(long id) {
@@ -58,5 +58,9 @@ public class PlaceService {
 	public void deleteMainPlace(MainPlace mainPlace) {
 		mainPlaceRepository.delete(mainPlace);
 		
+	}
+
+	public Place getByName(String placeName) {
+		return placeRepositoty.findByName(placeName);
 	}
 }
