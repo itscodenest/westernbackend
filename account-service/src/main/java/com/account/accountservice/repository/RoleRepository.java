@@ -13,6 +13,7 @@ import com.tourcoreservice.entity.Role;
 public interface RoleRepository extends JpaRepository<Role, Long> {
 	Role findById(long id);
 
-	
+	@Query(value="SELECT r FROM Role r WHERE r.name=:internalDmcRole")
+	List<Role> findInternalb2bRoles(@Param("internalDmcRole") String internalDmcRole);
 
 }

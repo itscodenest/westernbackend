@@ -36,6 +36,11 @@ public class EmployeeRestController {
 		return employeeFacade.getAll();
 
 	}
+	
+	@GetMapping("/internaldmcs")
+	public EmployeePojoListResponse getInternalDMCEmployees() {
+		return employeeFacade.getInternalDMCEmployees();
+	}
 
 	@PutMapping
 	public EmployeePojoResponse update(@RequestBody EmployeePojo employeePojo) {

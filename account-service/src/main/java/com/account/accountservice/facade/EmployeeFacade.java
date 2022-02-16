@@ -35,9 +35,12 @@ public class EmployeeFacade {
 
 	@Value("${employee.deleted.success}")
 	private String employeeDeletedSuccessfully;
-	
+
 	@Value("${role.employee}")
 	private String roleEmployee;
+
+	@Value("${role.internaldmc}")
+	private String roleInternalDmc;
 
 	@Autowired
 	private PasswordEncoder passwordEncoder;
@@ -102,6 +105,24 @@ public class EmployeeFacade {
 		User user = employeeService.findById(employeeId);
 		EmployeePojo employeePojo = ObjectMapperUtils.map(user, EmployeePojo.class);
 		return createDeleteUpdateResponse(employeePojo, "");
+	}
+
+	public EmployeePojoListResponse getInternalDMCEmployees() {
+		EmployeePojoListResponse employeePojoListResponse = new EmployeePojoListResponse();
+		List<User> employeeEntity = employeeService.getInternalDMCEmployees();
+		List<User> employeeList=new ArrayList<User>();
+		employeeEntity.stream().forEach(e -> {
+			e.getRoles().stream().forEach(r -> {
+				if (r.getName().equals(roleInternalDmc)) {
+					employeeList.add(e);
+				}
+
+			});
+
+		});
+		List<EmployeePojo> employeePojoList=ObjectMapperUtils.mapAll(employeeList, EmployeePojo.class);
+		employeePojoListResponse.setEmploeePojo(employeePojoList);
+		return employeePojoListResponse;
 	}
 
 }

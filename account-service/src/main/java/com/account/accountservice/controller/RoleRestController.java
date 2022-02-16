@@ -33,7 +33,11 @@ public class RoleRestController {
 	public RolePojoListResponse allRoles() {
 		return roleFacade.getAllRoles();
 	}
-	
+
+	@GetMapping("/interb2broles")
+	public RolePojoListResponse getInterb2broles() {
+		return roleFacade.getInterb2broles();
+	}
 	@PutMapping
 	public RolePojoResponse update(@RequestBody RolePojo rolePojo) {
 		return roleFacade.update(rolePojo);	
