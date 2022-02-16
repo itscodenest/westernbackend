@@ -17,6 +17,7 @@ import org.springframework.security.oauth2.config.annotation.web.configuration.E
 import org.springframework.security.oauth2.config.annotation.web.configuration.ResourceServerConfigurerAdapter;
 import org.springframework.security.oauth2.provider.authentication.OAuth2AuthenticationManager;
 import org.springframework.security.oauth2.provider.token.ResourceServerTokenServices;
+import org.springframework.security.web.access.AccessDeniedHandler;
 import org.springframework.web.cors.CorsConfiguration;
 import org.springframework.web.cors.CorsConfigurationSource;
 import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
@@ -39,14 +40,21 @@ public class ResourceServerConfiguration extends ResourceServerConfigurerAdapter
 
 	@Override
 	public void configure(HttpSecurity http) throws Exception {
+
 		/*
 		 * http.cors().and().requestMatchers().antMatchers("/**").and().
-		 * authorizeRequests().anyRequest().authenticated();
+		 * authorizeRequests().anyRequest().permitAll();
 		 */
-
-		http.authorizeRequests().antMatchers("/**", "/oauth/**").permitAll().and().formLogin().permitAll()
-		.and().oauth2Login().loginPage("/login")
-		.userInfoEndpoint().userService(oauthUserService);
+		 http.authorizeRequests()
+         .antMatchers("/role/**","/user/**","/employee","/customer/**","/address/**").hasAnyAuthority("ADMIN").and()
+         .exceptionHandling().accessDeniedHandler(accessDeniedHandler());
+        
+		/*
+		 * http.authorizeRequests().antMatchers("/**",
+		 * "/oauth/**").permitAll().and().formLogin().permitAll()
+		 * .and().oauth2Login().loginPage("/login")
+		 * .userInfoEndpoint().userService(oauthUserService);
+		 */
 	}
 
 	@Primary
@@ -88,5 +96,10 @@ public class ResourceServerConfiguration extends ResourceServerConfigurerAdapter
 	public PasswordEncoder encoder() {
 		return new BCryptPasswordEncoder();
 	}
+	@Bean
+	public AccessDeniedHandler accessDeniedHandler(){
+	    return new CustomAccessDeniedHandler();
+	}
+
 
 }

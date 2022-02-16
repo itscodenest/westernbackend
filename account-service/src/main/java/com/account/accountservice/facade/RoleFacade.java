@@ -55,6 +55,9 @@ public class RoleFacade {
 
 	@Value("${parent.roles.cannot.deleted}")
 	private String parentRolesCannotDeleted;
+	
+	@Value("${role.internaldmc}")
+	private String internalDmcRole;
 
 	@Autowired
 	private PrivilegeService privilegeService;
@@ -239,6 +242,14 @@ public class RoleFacade {
 		});
 		rolePojoListResponse.setRolePojoList(filterdRolePojoList);
 
+		return rolePojoListResponse;
+	}
+
+	public RolePojoListResponse getInterb2broles() {
+		RolePojoListResponse rolePojoListResponse = new RolePojoListResponse();
+		List<Role> roleEntityList = roleService.findInternalb2bRoles(internalDmcRole);
+		List<RolePojo> rolePojoList= ObjectMapperUtils.mapAll(roleEntityList, RolePojo.class);
+		rolePojoListResponse.setRolePojoList(rolePojoList);
 		return rolePojoListResponse;
 	}
 

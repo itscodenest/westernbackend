@@ -7,6 +7,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinTable;
+import javax.persistence.Lob;
 import javax.persistence.ManyToOne;
 
 @Entity
@@ -19,6 +20,7 @@ public class Iternery {
 	private String place;
 	private String address;
 	private String dayheading;
+	@Lob
 	private String  daydescription;
 	private boolean ishotel;
 	private boolean ismeal;

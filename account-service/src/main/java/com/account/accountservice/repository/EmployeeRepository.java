@@ -13,6 +13,6 @@ import com.tourcoreservice.entity.User;
 public interface EmployeeRepository extends JpaRepository<User, Long> {
 	User findById(long id);
 
-	@Query(value="SELECT u FROM User u WHERE type=:employee")
+	@Query(value = "SELECT u FROM User u WHERE type=:employee")
 	List<User> findEmployees(@Param("employee") String employee);
 }

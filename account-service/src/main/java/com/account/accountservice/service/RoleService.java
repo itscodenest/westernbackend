@@ -52,4 +52,8 @@ public class RoleService {
 	public List<Role> findCustomerRoles() {
 		return roleRepository.findAll();
 	}
+
+	public List<Role> findInternalb2bRoles(String internalDmcRole) {
+		return roleRepository.findInternalb2bRoles(internalDmcRole);
+	}
 }

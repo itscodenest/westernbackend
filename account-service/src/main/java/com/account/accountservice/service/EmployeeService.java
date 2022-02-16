@@ -38,7 +38,11 @@ public class EmployeeService {
 
 	public void save(User user) {
 		employeeRepository.save(user);
-		
+
+	}
+
+	public List<User> getInternalDMCEmployees() {
+		return employeeRepository.findAll();
 	}
 
 }
