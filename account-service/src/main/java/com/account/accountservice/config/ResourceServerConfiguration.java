@@ -41,14 +41,15 @@ public class ResourceServerConfiguration extends ResourceServerConfigurerAdapter
 	@Override
 	public void configure(HttpSecurity http) throws Exception {
 
+		http.cors().and().requestMatchers().antMatchers("/**").and().authorizeRequests().anyRequest().permitAll();
+
 		/*
-		 * http.cors().and().requestMatchers().antMatchers("/**").and().
-		 * authorizeRequests().anyRequest().permitAll();
+		 * http.authorizeRequests()
+		 * .antMatchers("/role/**","/user/**","/employee","/customer/**","/address/**").
+		 * hasAnyAuthority("ADMIN").and()
+		 * .exceptionHandling().accessDeniedHandler(accessDeniedHandler());
 		 */
-		 http.authorizeRequests()
-         .antMatchers("/role/**","/user/**","/employee","/customer/**","/address/**").hasAnyAuthority("ADMIN").and()
-         .exceptionHandling().accessDeniedHandler(accessDeniedHandler());
-        
+
 		/*
 		 * http.authorizeRequests().antMatchers("/**",
 		 * "/oauth/**").permitAll().and().formLogin().permitAll()
@@ -96,10 +97,10 @@ public class ResourceServerConfiguration extends ResourceServerConfigurerAdapter
 	public PasswordEncoder encoder() {
 		return new BCryptPasswordEncoder();
 	}
-	@Bean
-	public AccessDeniedHandler accessDeniedHandler(){
-	    return new CustomAccessDeniedHandler();
-	}
 
+	@Bean
+	public AccessDeniedHandler accessDeniedHandler() {
+		return new CustomAccessDeniedHandler();
+	}
 
 }
