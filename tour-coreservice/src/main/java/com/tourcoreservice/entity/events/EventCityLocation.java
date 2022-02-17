@@ -22,7 +22,7 @@ public class EventCityLocation {
 	@Column(unique = true)
 	private String name;
 
-	@ManyToOne(cascade = CascadeType.DETACH, fetch = FetchType.LAZY)
+	@ManyToOne(cascade = CascadeType.DETACH, fetch = FetchType.EAGER)
 	@JoinTable(name = "event_citiesJoin")
 	private EventCities city;
 	

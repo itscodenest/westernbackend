@@ -1,7 +1,6 @@
 package com.events.westernevents.controllers;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -16,7 +15,6 @@ import com.tourcoreservice.pojo.events.EventbannerPojo;
 import com.tourcoreservice.response.events.EventsBannerListResponse;
 import com.tourcoreservice.response.events.EventsBannerResponse;
 
-
 @RestController
 @RequestMapping("/EventBanners")
 public class EventBannerController {
@@ -28,8 +26,7 @@ public class EventBannerController {
 	public EventsBannerListResponse getAll() {
 		return eFacad.listAll();
 	}
-	
-	
+
 	@GetMapping("/{id}")
 	public EventsBannerResponse get(@PathVariable long id) {
 		return eFacad.getBanner(id);
@@ -44,6 +41,12 @@ public class EventBannerController {
 	public EventsBannerResponse update(@RequestBody EventbannerPojo ePojo, @PathVariable long id) {
 		ePojo.setId(id);
 		return eFacad.updateBanner(ePojo);
+
+	}
+
+	@PutMapping("isenable/{status}/{id}")
+	public EventsBannerResponse updateenable(@PathVariable boolean status, @PathVariable long id) {
+		return eFacad.updateBannerstatus(status, id);
 
 	}
 

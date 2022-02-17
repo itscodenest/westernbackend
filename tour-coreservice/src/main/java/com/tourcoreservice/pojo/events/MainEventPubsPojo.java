@@ -1,10 +1,14 @@
 package com.tourcoreservice.pojo.events;
 
+import com.tourcoreservice.entity.events.EventCityLocation;
+
 public class MainEventPubsPojo {
 	private long id;
 	private String name;
+	private String smallDiscription;
 	private String discription;
-	private String place;
+	private String address;
+	private EventCityLocation place;
 	private String map;
 	private String image;
 	private boolean isfood;
@@ -12,7 +16,7 @@ public class MainEventPubsPojo {
 	private boolean isparking;
 	private boolean ismusic;
 	private boolean isgarden;
-	private String pubId;
+	private boolean isActive;
 	
 	public long getId() {
 		return id;
@@ -32,10 +36,11 @@ public class MainEventPubsPojo {
 	public void setDiscription(String discription) {
 		this.discription = discription;
 	}
-	public String getPlace() {
+	
+	public EventCityLocation getPlace() {
 		return place;
 	}
-	public void setPlace(String place) {
+	public void setPlace(EventCityLocation place) {
 		this.place = place;
 	}
 	public String getMap() {
@@ -53,6 +58,14 @@ public class MainEventPubsPojo {
 	}
 	public void setImage(String image) {
 		this.image = image;
+	}
+	
+	
+	public String getAddress() {
+		return address;
+	}
+	public void setAddress(String address) {
+		this.address = address;
 	}
 	public void setIsfood(boolean isfood) {
 		this.isfood = isfood;
@@ -81,11 +94,18 @@ public class MainEventPubsPojo {
 	public void setIsgarden(boolean isgarden) {
 		this.isgarden = isgarden;
 	}
-	public String getPubId() {
-		return pubId;
+	public String getSmallDiscription() {
+		return smallDiscription;
 	}
-	public void setPubId(String pubId) {
-		this.pubId = pubId;
+	public void setSmallDiscription(String smallDiscription) {
+		this.smallDiscription = smallDiscription;
 	}
+	public boolean isActive() {
+		return isActive;
+	}
+	public void setActive(boolean isActive) {
+		this.isActive = isActive;
+	}
+	
 	
 }

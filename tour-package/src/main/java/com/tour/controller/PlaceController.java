@@ -65,6 +65,11 @@ public class PlaceController {
 
 	}
 
+	@GetMapping("/main-place/{id}")
+	public MainPlacePojoResponse getMainPlaceById(long id) {
+		return placefacede.getMainPlaceById(id);
+	}
+
 	@PutMapping("/mainplace/update")
 	public MainPlacePojoResponse updateMainPlace(@RequestBody MainPlacePojo mainPlacePojo ) {
 		return placefacede.updateMainPlace(mainPlacePojo);

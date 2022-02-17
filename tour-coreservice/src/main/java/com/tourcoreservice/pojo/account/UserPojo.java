@@ -13,7 +13,9 @@ public class UserPojo  {
 	private long salary;
 
 	private int age;
-	
+	private List<RolePojo> roles;
+
+	private Set<AddressPojo> addresses;
 	
 
 	public long getId() {
@@ -24,9 +26,7 @@ public class UserPojo  {
 		this.id = id;
 	}
 
-	private List<RolePojo> roles;
-
-	private Set<AddressPojo> addresses;
+	
 
 	public String getUsername() {
 		return username;
