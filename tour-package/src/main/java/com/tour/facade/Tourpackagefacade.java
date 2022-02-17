@@ -155,8 +155,10 @@ public class Tourpackagefacade {
 
 	private void deleteExistingIterneries(List<Iternery> existingIternery, long id) {
 		for (Iternery iternery : existingIternery) {
+			if (!ObjectUtils.isEmpty(iternery.getTourpackage())) {
 			if (iternery.getTourpackage().getId() == id) {
 				iterneryService.delete(iternery);
+			}
 			}
 		}
 

@@ -50,7 +50,7 @@ public class UserRestController {
 		return userFacade.update(userPojo);
 	}
 
-	@GetMapping("internaldmc")
+	@GetMapping("/internaldmc")
 	public UserPojoListResponse getAllInternalDMC() {
 		return userFacade.getAllInternalDMC();
 	}
