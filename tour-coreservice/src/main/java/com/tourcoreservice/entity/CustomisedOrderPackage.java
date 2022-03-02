@@ -15,9 +15,11 @@ public class CustomisedOrderPackage {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private long id;
-
-	private String coverheading;
-	private String coverImgCdn;
+    
+	private String name;
+	
+	private Long referPackege;
+	
 	@Column(name = "departure_city")
 	private String departureCity;
 
@@ -30,16 +32,18 @@ public class CustomisedOrderPackage {
 	@Column(name = "transport")
 	private String transport;
 
-	@Column(name = "category")
-	private String category;
 
 	private int adults;
 
 	private int children;
 
 	private int infants;
+	
+	
 
 	private String email;
+	
+	private boolean whatsapp;
 
 	@Column(name = "travel_date")
 	private Date travelDate;
@@ -74,21 +78,7 @@ public class CustomisedOrderPackage {
 	}
 
 	
-	public String getCoverheading() {
-		return coverheading;
-	}
-
-	public void setCoverheading(String coverheading) {
-		this.coverheading = coverheading;
-	}
-
-	public String getCoverImgCdn() {
-		return coverImgCdn;
-	}
-
-	public void setCoverImgCdn(String coverImgCdn) {
-		this.coverImgCdn = coverImgCdn;
-	}
+	
 
 	public String getDepartureCity() {
 		return departureCity;
@@ -114,6 +104,24 @@ public class CustomisedOrderPackage {
 		this.mobileNo = mobileNo;
 	}
 
+
+	
+	public Long getReferPackege() {
+		return referPackege;
+	}
+
+	public void setReferPackege(Long referPackege) {
+		this.referPackege = referPackege;
+	}
+
+	public boolean isWhatsapp() {
+		return whatsapp;
+	}
+
+	public void setWhatsapp(boolean whatsapp) {
+		this.whatsapp = whatsapp;
+	}
+
 	public String getTransport() {
 		return transport;
 	}
@@ -122,20 +130,23 @@ public class CustomisedOrderPackage {
 		this.transport = transport;
 	}
 
-	public String getCategory() {
-		return category;
-	}
-
-	public void setCategory(String category) {
-		this.category = category;
-	}
-
+	
 	public int getAdults() {
 		return adults;
 	}
 
 	public void setAdults(int adults) {
 		this.adults = adults;
+	}
+	
+	
+
+	public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
 	}
 
 	public int getChildren() {

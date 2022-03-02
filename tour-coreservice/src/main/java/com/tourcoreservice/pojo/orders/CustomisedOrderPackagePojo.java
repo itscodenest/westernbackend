@@ -1,15 +1,12 @@
 package com.tourcoreservice.pojo.orders;
 
 import java.util.Date;
-import java.util.Set;
-
-import com.tourcoreservice.entity.CustomisedOrderPackageFlightinfo;
-import com.tourcoreservice.entity.CustomisedOrderPackageHotelInfo;
-import com.tourcoreservice.entity.User;
 
 public class CustomisedOrderPackagePojo {
 
 	private long id;
+
+	private String name;
 
 	private String departureCity;
 
@@ -19,9 +16,9 @@ public class CustomisedOrderPackagePojo {
 
 	private String transport;
 
-	private String category;
-
 	private int adults;
+
+	private Long referPackege;
 
 	private int children;
 
@@ -29,18 +26,15 @@ public class CustomisedOrderPackagePojo {
 
 	private String email;
 
+	private boolean whatsapp;
+
+	private String totalPrice;
 	private Date travelDate;
 
 	private String travelDuration;
 
-	private User user;
-
-	private Set<CustomisedOrderPackageFlightinfo> flightInfo;
-
-	private Set<CustomisedOrderPackageHotelInfo> hotel_info;
-	
-
-	private String totalPrice;
+	private long userId;
+	private long status;
 
 	private String inclusiontext;
 
@@ -60,6 +54,14 @@ public class CustomisedOrderPackagePojo {
 		this.id = id;
 	}
 
+	public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
+	}
+
 	public String getDepartureCity() {
 		return departureCity;
 	}
@@ -76,6 +78,15 @@ public class CustomisedOrderPackagePojo {
 		this.destination = destination;
 	}
 
+	
+	public Long getReferPackege() {
+		return referPackege;
+	}
+
+	public void setReferPackege(Long referPackege) {
+		this.referPackege = referPackege;
+	}
+
 	public String getMobileNo() {
 		return mobileNo;
 	}
@@ -90,14 +101,6 @@ public class CustomisedOrderPackagePojo {
 
 	public void setTransport(String transport) {
 		this.transport = transport;
-	}
-
-	public String getCategory() {
-		return category;
-	}
-
-	public void setCategory(String category) {
-		this.category = category;
 	}
 
 	public int getAdults() {
@@ -132,6 +135,22 @@ public class CustomisedOrderPackagePojo {
 		this.email = email;
 	}
 
+	public boolean isWhatsapp() {
+		return whatsapp;
+	}
+
+	public void setWhatsapp(boolean whatsapp) {
+		this.whatsapp = whatsapp;
+	}
+
+	public String getTotalPrice() {
+		return totalPrice;
+	}
+
+	public void setTotalPrice(String totalPrice) {
+		this.totalPrice = totalPrice;
+	}
+
 	public Date getTravelDate() {
 		return travelDate;
 	}
@@ -148,36 +167,20 @@ public class CustomisedOrderPackagePojo {
 		this.travelDuration = travelDuration;
 	}
 
-	public User getUser() {
-		return user;
+	public long getUserId() {
+		return userId;
 	}
 
-	public void setUser(User user) {
-		this.user = user;
+	public void setUserId(long userId) {
+		this.userId = userId;
 	}
 
-	public Set<CustomisedOrderPackageFlightinfo> getFlightInfo() {
-		return flightInfo;
+	public long getStatus() {
+		return status;
 	}
 
-	public void setFlightInfo(Set<CustomisedOrderPackageFlightinfo> flightInfo) {
-		this.flightInfo = flightInfo;
-	}
-
-	public Set<CustomisedOrderPackageHotelInfo> getHotel_info() {
-		return hotel_info;
-	}
-
-	public void setHotel_info(Set<CustomisedOrderPackageHotelInfo> hotel_info) {
-		this.hotel_info = hotel_info;
-	}
-
-	public String getTotalPrice() {
-		return totalPrice;
-	}
-
-	public void setTotalPrice(String totalPrice) {
-		this.totalPrice = totalPrice;
+	public void setStatus(long status) {
+		this.status = status;
 	}
 
 	public String getInclusiontext() {

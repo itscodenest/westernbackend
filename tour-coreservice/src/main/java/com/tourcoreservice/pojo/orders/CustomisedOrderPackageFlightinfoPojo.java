@@ -5,8 +5,7 @@ import java.util.Date;
 public class CustomisedOrderPackageFlightinfoPojo {
 
 	private long id;
-
-	
+    private String flightname;
 	private String flightDepartureCity;
 
 	private String flightArrivalCity;
@@ -23,7 +22,7 @@ public class CustomisedOrderPackageFlightinfoPojo {
 
 	private String arrivalTime;
 
-	private String Members;
+	private String members;
 	
 	public long getId() {
 		return id;
@@ -34,6 +33,14 @@ public class CustomisedOrderPackageFlightinfoPojo {
 	}
 
 	
+	public String getFlightname() {
+		return flightname;
+	}
+
+	public void setFlightname(String flightname) {
+		this.flightname = flightname;
+	}
+
 	public String getFlightDepartureCity() {
 		return flightDepartureCity;
 	}
@@ -99,12 +106,13 @@ public class CustomisedOrderPackageFlightinfoPojo {
 	}
 
 	public String getMembers() {
-		return Members;
+		return members;
 	}
 
 	public void setMembers(String members) {
-		Members = members;
+		this.members = members;
 	}
 
+	
 	
 }

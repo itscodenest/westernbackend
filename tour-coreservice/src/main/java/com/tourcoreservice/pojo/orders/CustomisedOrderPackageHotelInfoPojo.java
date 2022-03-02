@@ -16,6 +16,8 @@ public class CustomisedOrderPackageHotelInfoPojo {
 	private Date roomCheckoutDate;
 	private String roomCheckoutTime;
 	private String hotelNote;
+	private int star;
+	private int reviews;
 	private String bookingMembersRoom;
 	private String hotelImageurl1;
 	private String hotelImageurl2;
@@ -34,6 +36,20 @@ public class CustomisedOrderPackageHotelInfoPojo {
 	}
 	public void setHeading(String heading) {
 		this.heading = heading;
+	}
+	
+	
+	public int getStar() {
+		return star;
+	}
+	public void setStar(int star) {
+		this.star = star;
+	}
+	public int getReviews() {
+		return reviews;
+	}
+	public void setReviews(int reviews) {
+		this.reviews = reviews;
 	}
 	public String getHotelName() {
 		return hotelName;

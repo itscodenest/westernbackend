@@ -35,7 +35,9 @@ public class CustomerQoutes {
 	private String totalcost;
 	private long userId;
 	private long status;
-	// need to connect with order table
+	private int agentStatus;
+	private boolean isflight;
+	private boolean ishotel;
 	private long orderId;
 	private String createddate;
 	private String updateddate;
@@ -109,6 +111,23 @@ public class CustomerQoutes {
 		return departure;
 	}
 
+	
+	public boolean isIsflight() {
+		return isflight;
+	}
+
+	public void setIsflight(boolean isflight) {
+		this.isflight = isflight;
+	}
+
+	public boolean isIshotel() {
+		return ishotel;
+	}
+
+	public void setIshotel(boolean ishotel) {
+		this.ishotel = ishotel;
+	}
+
 	public void setDeparture(String departure) {
 		this.departure = departure;
 	}
@@ -127,6 +146,15 @@ public class CustomerQoutes {
 
 	public void setTransport(String transport) {
 		this.transport = transport;
+	}
+
+	
+	public int getAgentStatus() {
+		return agentStatus;
+	}
+
+	public void setAgentStatus(int agentStatus) {
+		this.agentStatus = agentStatus;
 	}
 
 	public long getUserId() {
@@ -205,10 +233,13 @@ public class CustomerQoutes {
 		return travdate;
 	}
 
+	
+	
 	public void setTravdate(String travdate) {
 		this.travdate = travdate;
 	}
 
+	
 	public String getDuration() {
 		return duration;
 	}

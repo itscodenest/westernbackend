@@ -74,6 +74,8 @@ public class CustomerQoutesController {
 		customerQoutesFacade.delete(id);
 	}
 
+	
+	
 	@PutMapping
 	public CustomerQoutesPojoResponse updateCustomisePackageById(@RequestBody CustomerQoutesPojo cQoutesPojo) {
 		return customerQoutesFacade.update(cQoutesPojo);
@@ -84,4 +86,28 @@ public class CustomerQoutesController {
 		cQoutesPojo.setId(id);
 		return customerQoutesFacade.updateextra(cQoutesPojo);
 	}
+	
+	@PutMapping("/updateflight/{id}")
+	public CustomerQoutesPojoResponse updateflightById(@RequestBody List<CustomisedOrderPackageFlightinfoPojo> customisePackageItenaryPojo,@PathVariable Long id) {
+		return customerQoutesFacade.updateFlight(customisePackageItenaryPojo,id);
+	}
+	
+	@PutMapping("/updatehlotel/{id}")
+	public CustomerQoutesPojoResponse updateHotelById(@RequestBody List<CustomisedOrderPackageHotelInfoPojo> hotelPojo,@PathVariable Long id) {
+		return customerQoutesFacade.updateHotel(hotelPojo,id);
+	}
+	
+	@PutMapping("/updateIterneries/{id}")
+	public CustomerQoutesPojoResponse updateQoutesIterneries(@RequestBody List<CustomisedOrderPackageIteneryPojo> iteneryPojos,@PathVariable Long id) {
+		return customerQoutesFacade.updateIterneris(iteneryPojos,id);
+	}
+	
+	@PutMapping("/statusupdate/{id}/{status}")
+	public Object updateQoutesstatusAccept(@PathVariable("id") Long id,@PathVariable("status") Long status) {
+		return customerQoutesFacade.updateStatus(id,status);
+	}
+	
+	
+	
 }
+

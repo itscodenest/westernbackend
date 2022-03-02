@@ -34,8 +34,9 @@ public class CustomisedOrderPackageHotelInfo {
 	private String hotelImageurl2;
 	@Lob
 	private String hotelImageurl3;
-	@Lob
-	private String hotelImageurl4;
+	private int star;
+	private int reviews;
+	
 	public long getId() {
 		return id;
 	}
@@ -120,11 +121,17 @@ public class CustomisedOrderPackageHotelInfo {
 	public void setHotelImageurl3(String hotelImageurl3) {
 		this.hotelImageurl3 = hotelImageurl3;
 	}
-	public String getHotelImageurl4() {
-		return hotelImageurl4;
+	public int getStar() {
+		return star;
 	}
-	public void setHotelImageurl4(String hotelImageurl4) {
-		this.hotelImageurl4 = hotelImageurl4;
+	public void setStar(int star) {
+		this.star = star;
+	}
+	public int getReviews() {
+		return reviews;
+	}
+	public void setReviews(int reviews) {
+		this.reviews = reviews;
 	}
 	
 	

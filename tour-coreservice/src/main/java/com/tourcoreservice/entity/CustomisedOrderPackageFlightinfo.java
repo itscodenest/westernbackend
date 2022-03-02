@@ -14,24 +14,18 @@ public class CustomisedOrderPackageFlightinfo {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private long id;
 
+	private String flightname;
 	private String flightDepartureCity;
-
 	private String flightArrivalCity;
-
 	private String baggageCheckinCapacity;
-
 	private String baggageCabinCapacity;
-
 	private Date departureDate;
-
 	private String departureTime;
-
 	private Date arrivalDate;
-
 	private String arrivalTime;
+	private String members;
 	
-	private String Members;
-
+	
 	public long getId() {
 		return id;
 	}
@@ -40,7 +34,13 @@ public class CustomisedOrderPackageFlightinfo {
 		this.id = id;
 	}
 
-	
+	public String getFlightname() {
+		return flightname;
+	}
+
+	public void setFlightname(String flightname) {
+		this.flightname = flightname;
+	}
 
 	public String getFlightDepartureCity() {
 		return flightDepartureCity;
@@ -107,12 +107,14 @@ public class CustomisedOrderPackageFlightinfo {
 	}
 
 	public String getMembers() {
-		return Members;
+		return members;
 	}
 
 	public void setMembers(String members) {
-		Members = members;
+		this.members = members;
 	}
+
+	
 	
 	
 
