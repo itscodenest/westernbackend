@@ -1,0 +1,10 @@
+Manifest-Version: 1.0
+Implementation-Title: spring-boot-mailing-example
+Implementation-Version: 0.0.1-SNAPSHOT
+Built-By: A1
+Implementation-Vendor-Id: com.asb.example
+Build-Jdk: 1.8.0_291
+Implementation-URL: https://spring.io/projects/spring-boot/spring-boot
+ -mailing-example
+Created-By: Maven Integration for Eclipse
+
