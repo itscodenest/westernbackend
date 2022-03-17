@@ -74,7 +74,7 @@ public class CustomerQoutesFacade {
 		return cResponse;
 	}
 	
-	public CustomerQoutesPartialPojoListResponse listAllPartial(Long customerid) {
+	public CustomerQoutesPartialPojoListResponse listAllPartial(String customerid) {
 		CustomerQoutesPartialPojoListResponse cPojoListResponse = new CustomerQoutesPartialPojoListResponse();
 		List<CustomerQoutes> cQoutes = qoutesService.listallONcustomer(customerid);
 		

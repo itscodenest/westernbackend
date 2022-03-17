@@ -60,7 +60,8 @@ public class CustomerQoutesController {
 	}
 
 	@GetMapping("/Partial/{Customerid}")
-	public CustomerQoutesPartialPojoListResponse getAllQoutesPartialData(@PathVariable Long Customerid) {
+	public CustomerQoutesPartialPojoListResponse getAllQoutesPartialData(@PathVariable String Customerid) {
+		
 		return customerQoutesFacade.listAllPartial(Customerid);
 	}
 	

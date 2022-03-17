@@ -13,7 +13,7 @@ import com.tourcoreservice.entity.CustomerQoutes;
 public interface CustomerQoutesRepository extends JpaRepository<CustomerQoutes, Long>{
     
 	@Query("Select q from CustomerQoutes q where q.userId=:customerid")
-	List<CustomerQoutes> findAllOnCutomers(@Param("customerid") Long customerid);
+	List<CustomerQoutes> findAllOnCutomers(@Param("customerid") String customerid);
 
 	@Query("Select q from CustomerQoutes q where q.orderId=:orderid")
 	List<CustomerQoutes> findAllOnOrder(@Param("orderid") Long orderid);

@@ -35,5 +35,10 @@ public class CustomisedOrderPackageService {
 
 		return customisePackageRepository.save(customisePackage);
 	}
+	
+	public List<CustomisedOrderPackage> getallbyuserid(String userid) {
+
+		return customisePackageRepository.findAllOnCutomersid(userid);
+	}
 
 }

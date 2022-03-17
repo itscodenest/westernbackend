@@ -14,6 +14,7 @@ import com.order.orderservice.facade.CustomisedOrderPackageFacade;
 import com.tourcoreservice.pojo.orders.CustomisedOrderPackagePojo;
 import com.tourcoreservice.response.orders.CustomisePackagePojoListResponse;
 import com.tourcoreservice.response.orders.CustomisePackagePojoRespone;
+import com.tourcoreservice.response.orders.CustomisedPartialOrderPackagePojoResponse;
 
 @RestController
 @RequestMapping("/custamise-package")
@@ -38,6 +39,11 @@ public class CustomisedOrderPackageController {
 		return customisePackageFacade.getData(id);
 	}
 
+	@GetMapping("/byuserid/{userid}")
+	public CustomisedPartialOrderPackagePojoResponse getCustomisePackageByuserid(@PathVariable String userid) {
+		return customisePackageFacade.getbyuserid(userid);
+	}
+	
 	@DeleteMapping("/{id}")
 	public void delete(@PathVariable long id) {
 		customisePackageFacade.delete(id);
@@ -46,6 +52,11 @@ public class CustomisedOrderPackageController {
 	@PutMapping
 	public CustomisePackagePojoRespone updateCustomisePackageById(@RequestBody CustomisedOrderPackagePojo customisePackagePojo) {
 		return customisePackageFacade.update(customisePackagePojo);
+	}
+	
+	@PutMapping("/orderid/{id}/{orderid}")
+	public CustomisePackagePojoRespone updateorderid(@PathVariable Long id,@PathVariable String orderid) {
+		return customisePackageFacade.updateOrderid(id,orderid);
 	}
 	
 }

@@ -29,6 +29,8 @@ public class CustomerPojo {
 	private String photoUrl;
 	private String provider;
 	private String email;
+	private String idToken;
+	private String authToken;
 
 	public String getUsername() {
 		return username;
@@ -149,5 +151,23 @@ public class CustomerPojo {
 	public void setEmail(String email) {
 		this.email = email;
 	}
+
+	public String getIdToken() {
+		return idToken;
+	}
+
+	public void setIdToken(String idToken) {
+		this.idToken = idToken;
+	}
+
+	public String getAuthToken() {
+		return authToken;
+	}
+
+	public void setAuthToken(String authToken) {
+		this.authToken = authToken;
+	}
+	
+	
 
 }

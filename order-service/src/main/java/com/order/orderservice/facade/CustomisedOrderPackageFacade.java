@@ -11,8 +11,10 @@ import com.order.orderservice.service.CustomisedOrderPackageService;
 import com.tourcoreservice.entity.CustomisedOrderPackage;
 import com.tourcoreservice.pojo.generic.ResponseMessagePojo;
 import com.tourcoreservice.pojo.orders.CustomisedOrderPackagePojo;
+import com.tourcoreservice.pojo.orders.CustomisedPartialOrderPackagePojo;
 import com.tourcoreservice.response.orders.CustomisePackagePojoListResponse;
 import com.tourcoreservice.response.orders.CustomisePackagePojoRespone;
+import com.tourcoreservice.response.orders.CustomisedPartialOrderPackagePojoResponse;
 import com.tourcoreservice.util.ObjectMapperUtils;
 
 @Component
@@ -73,5 +75,24 @@ public class CustomisedOrderPackageFacade {
 
 		customisePackagePojoRespone.setSuccessMessaages(successMessages);
 		return customisePackagePojoRespone;
+	}
+
+	public CustomisePackagePojoRespone updateOrderid(Long id, String orderid) {
+		CustomisedOrderPackage customisePackage = customisePackageService.getDataId(id);
+		CustomisedOrderPackagePojo cPojo=ObjectMapperUtils.map(customisePackage, CustomisedOrderPackagePojo.class);
+		cPojo.setOrderid(orderid);
+		customisePackage=ObjectMapperUtils.map(cPojo, customisePackage);
+		customisePackage = customisePackageService.Update(customisePackage);
+		cPojo=ObjectMapperUtils.map(customisePackage,cPojo);
+		return createDeleteUpdateResponse(cPojo, "Updated successfully");
+	}
+	
+	public CustomisedPartialOrderPackagePojoResponse getbyuserid(String userid) {
+		CustomisedPartialOrderPackagePojoResponse customisePackagePojoListResponse = new CustomisedPartialOrderPackagePojoResponse();
+		List<CustomisedOrderPackage> customisePackage = customisePackageService.getallbyuserid(userid);
+		List<CustomisedPartialOrderPackagePojo> customisePackagePojo = ObjectMapperUtils.mapAll(customisePackage,CustomisedPartialOrderPackagePojo.class);
+		customisePackagePojoListResponse.setcList(customisePackagePojo);
+
+		return customisePackagePojoListResponse;
 	}
 }

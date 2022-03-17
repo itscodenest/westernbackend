@@ -9,13 +9,15 @@ import javax.persistence.Entity;
 public class Customer extends User {
 	
 private long customerId;
-
-
 private String firstName;
 private String lastName;
 private String name;
 private String photoUrl;
 private String provider;
+private String email;
+private String idToken;
+private String authToken;
+
 
 public long getCustomerId() {
 	return customerId;
@@ -61,9 +63,35 @@ public String getProvider() {
 	return provider;
 }
 
+public String getEmail() {
+	return email;
+}
+
+public void setEmail(String email) {
+	this.email = email;
+}
+
+public String getIdToken() {
+	return idToken;
+}
+
+public void setIdToken(String idToken) {
+	this.idToken = idToken;
+}
+
+public String getAuthToken() {
+	return authToken;
+}
+
+public void setAuthToken(String authToken) {
+	this.authToken = authToken;
+}
+
 public void setProvider(String provider) {
 	this.provider = provider;
 }
+
+
 
 
 

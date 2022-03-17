@@ -33,7 +33,7 @@ public class CustomerQoutes {
 	private String travdate;
 	private String duration;
 	private String totalcost;
-	private long userId;
+	private String userId;
 	private long status;
 	private int agentStatus;
 	private boolean isflight;
@@ -157,11 +157,12 @@ public class CustomerQoutes {
 		this.agentStatus = agentStatus;
 	}
 
-	public long getUserId() {
+	
+	public String getUserId() {
 		return userId;
 	}
 
-	public void setUserId(long userId) {
+	public void setUserId(String userId) {
 		this.userId = userId;
 	}
 

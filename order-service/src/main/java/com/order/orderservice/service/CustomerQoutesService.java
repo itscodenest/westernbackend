@@ -22,7 +22,7 @@ public class CustomerQoutesService {
 		return qoutesRepository.findAll();
 	}
 
-	public List<CustomerQoutes> listallONcustomer(Long customerid){
+	public List<CustomerQoutes> listallONcustomer(String customerid){
 		return qoutesRepository.findAllOnCutomers(customerid);
 	}
 	

@@ -29,7 +29,7 @@ public class CustomerQoutesPojo {
 	private String createddate;
 	private String updateddate;
 	// need to connect with user table
-	private long userId;
+	private String userId;
 	private long status;
 	private int agentStatus;
 	// need to connect with user table
@@ -214,11 +214,13 @@ public class CustomerQoutesPojo {
 		return paymentPolicy;
 	}
 
-	public long getUserId() {
+	
+
+	public String getUserId() {
 		return userId;
 	}
 
-	public void setUserId(long userId) {
+	public void setUserId(String userId) {
 		this.userId = userId;
 	}
 

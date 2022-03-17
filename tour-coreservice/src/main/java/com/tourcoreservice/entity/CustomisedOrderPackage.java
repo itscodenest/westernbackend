@@ -18,6 +18,9 @@ public class CustomisedOrderPackage {
     
 	private String name;
 	
+	@Column(unique = true)
+	private String orderid;
+	
 	private Long referPackege;
 	
 	@Column(name = "departure_city")
@@ -51,7 +54,7 @@ public class CustomisedOrderPackage {
 	@Column(name = "travel_duration")
 	private String travelDuration;
 
-	private long userId;
+	private String userId;
 	private long status;
 
 	
@@ -191,6 +194,14 @@ public class CustomisedOrderPackage {
 
 	
 
+	public String getOrderid() {
+		return orderid;
+	}
+
+	public void setOrderid(String orderid) {
+		this.orderid = orderid;
+	}
+
 	public String getTotalPrice() {
 		return totalPrice;
 	}
@@ -239,11 +250,13 @@ public class CustomisedOrderPackage {
 		this.aditionalinfo = aditionalinfo;
 	}
 
-	public long getUserId() {
+	
+
+	public String getUserId() {
 		return userId;
 	}
 
-	public void setUserId(long userId) {
+	public void setUserId(String userId) {
 		this.userId = userId;
 	}
 

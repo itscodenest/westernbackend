@@ -23,6 +23,8 @@ public class CustomisedOrderPackagePojo {
 	private int children;
 
 	private int infants;
+	
+	private String orderid;
 
 	private String email;
 
@@ -33,7 +35,7 @@ public class CustomisedOrderPackagePojo {
 
 	private String travelDuration;
 
-	private long userId;
+	private String userId;
 	private long status;
 
 	private String inclusiontext;
@@ -79,6 +81,14 @@ public class CustomisedOrderPackagePojo {
 	}
 
 	
+	public String getOrderid() {
+		return orderid;
+	}
+
+	public void setOrderid(String orderid) {
+		this.orderid = orderid;
+	}
+
 	public Long getReferPackege() {
 		return referPackege;
 	}
@@ -159,6 +169,7 @@ public class CustomisedOrderPackagePojo {
 		this.travelDate = travelDate;
 	}
 
+	
 	public String getTravelDuration() {
 		return travelDuration;
 	}
@@ -167,11 +178,12 @@ public class CustomisedOrderPackagePojo {
 		this.travelDuration = travelDuration;
 	}
 
-	public long getUserId() {
+	
+	public String getUserId() {
 		return userId;
 	}
 
-	public void setUserId(long userId) {
+	public void setUserId(String userId) {
 		this.userId = userId;
 	}
 
