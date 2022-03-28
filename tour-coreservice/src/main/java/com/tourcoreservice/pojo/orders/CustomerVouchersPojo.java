@@ -10,7 +10,7 @@ public class CustomerVouchersPojo {
 	private String confirmationNote;
 	private String confirmationNum;
 	private String moredetails;
-	private long customerid;
+	private String customerid;
 	private long orderid;
 	private String createddate;
 	private String createrby;
@@ -53,10 +53,13 @@ public class CustomerVouchersPojo {
 	public void setcVoucherMemberDetails(List<CustomerVoucherMemberDetailsPojo> cVoucherMemberDetails) {
 		this.cVoucherMemberDetails = cVoucherMemberDetails;
 	}
-	public long getCustomerid() {
+	
+	
+	
+	public String getCustomerid() {
 		return customerid;
 	}
-	public void setCustomerid(long customerid) {
+	public void setCustomerid(String customerid) {
 		this.customerid = customerid;
 	}
 	public long getOrderid() {

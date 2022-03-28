@@ -36,7 +36,7 @@ public class CustomerPaymentHistoryService {
 		return cRepository.save(cHistory);
 	}
 	
-	public List<CustomerPaymentHistory> listallONcustomer(Long customerid){
+	public List<CustomerPaymentHistory> listallONcustomer(String customerid){
 		return cRepository.findAllOnCutomers(customerid);
 	}
 	

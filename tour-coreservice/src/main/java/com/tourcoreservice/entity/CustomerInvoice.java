@@ -25,7 +25,7 @@ public class CustomerInvoice {
 	private String pricewithtax;
 	private String moreInfo;
 	private String Invoiceheading;
-	private long userId;
+	private String userId;
 	private long status;
 	private long orderId;
 	private boolean isproforma;
@@ -100,20 +100,22 @@ public class CustomerInvoice {
 	public void setPricewithtax(String pricewithtax) {
 		this.pricewithtax = pricewithtax;
 	}
-	public long getUserId() {
+	
+	
+	
+	public String getUserId() {
 		return userId;
 	}
-	
-	
+	public void setUserId(String userId) {
+		this.userId = userId;
+	}
 	public String getInvoicenumber() {
 		return invoicenumber;
 	}
 	public void setInvoicenumber(String invoicenumber) {
 		this.invoicenumber = invoicenumber;
 	}
-	public void setUserId(long userId) {
-		this.userId = userId;
-	}
+	
 	public long getStatus() {
 		return status;
 	}

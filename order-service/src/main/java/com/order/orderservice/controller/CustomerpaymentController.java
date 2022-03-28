@@ -40,8 +40,8 @@ public class CustomerpaymentController {
 	}
 	
 	@GetMapping("/bycustomer/{Customerid}")
-	public CustomerPaymentPojoListResponse getAllQoutesPartialData(@PathVariable Long customerid) {
-		return cFacade.listAllbycustomer(customerid);
+	public CustomerPaymentPojoListResponse getAllQoutesPartialData(@PathVariable String Customerid) {
+		return cFacade.listAllbycustomer(Customerid);
 	}
 	
 	@GetMapping("/byorder/{Orderid}")

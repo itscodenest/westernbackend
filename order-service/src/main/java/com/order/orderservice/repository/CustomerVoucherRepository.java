@@ -13,7 +13,7 @@ import com.tourcoreservice.entity.CustomerVoucher;
 public interface CustomerVoucherRepository extends JpaRepository<CustomerVoucher, Long>{
 
 	@Query("Select q from CustomerVoucher q where q.customerid=:customerid")
-	List<CustomerVoucher> findAllOnCutomers(@Param("customerid") Long customerid);
+	List<CustomerVoucher> findAllOnCutomers(@Param("customerid") String id);
 
 	@Query("Select q from CustomerVoucher q where q.orderid=:orderid")
 	List<CustomerVoucher> findAllOnOrder(@Param("orderid") Long orderid);

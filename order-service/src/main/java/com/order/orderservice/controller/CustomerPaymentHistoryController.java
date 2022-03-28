@@ -41,8 +41,8 @@ public class CustomerPaymentHistoryController {
 	}
 	
 	@GetMapping("/bycustomer/{Customerid}")
-	public CustomerPaymentHistoryListPojoResponse getAllpayHistoryData(@PathVariable Long customerid) {
-		return cFacade.listAllbycustomer(customerid);
+	public CustomerPaymentHistoryListPojoResponse getAllpayHistoryData(@PathVariable String Customerid) {
+		return cFacade.listAllbycustomer(Customerid);
 	}
 	
 	@GetMapping("/byorder/{Orderid}")

@@ -12,7 +12,7 @@ public class CustomerPaymentHistoryPojo {
 	private float amount;
 	private float tax;
 	private long orderid;
-	private long userid;
+	private String userid;
 	
 	
 	public long getId() {
@@ -75,10 +75,10 @@ public class CustomerPaymentHistoryPojo {
 	public void setOrderid(long orderid) {
 		this.orderid = orderid;
 	}
-	public long getUserid() {
+	public String getUserid() {
 		return userid;
 	}
-	public void setUserid(long userid) {
+	public void setUserid(String userid) {
 		this.userid = userid;
 	}
 	

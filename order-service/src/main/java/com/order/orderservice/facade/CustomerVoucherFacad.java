@@ -53,9 +53,9 @@ public class CustomerVoucherFacad {
 		return cPojoListResponse;
 	}
 	
-	public CustomerVoucherPojoListResponse listAllbycustomer(Long customerid) {
+	public CustomerVoucherPojoListResponse listAllbycustomer(String id) {
 		CustomerVoucherPojoListResponse cPojoListResponse = new CustomerVoucherPojoListResponse();
-		List<CustomerVoucher> cList = cService.listallONcustomer(customerid);
+		List<CustomerVoucher> cList = cService.listallONcustomer(id);
 		List<CustomerVouchersPojo> cVouchersPojos = ObjectMapperUtils.mapAll(cList, CustomerVouchersPojo.class);
 		cPojoListResponse.setcList(cVouchersPojos);
 		return cPojoListResponse;

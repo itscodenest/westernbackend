@@ -9,7 +9,7 @@ public class CustomerPaymentPojo {
 	private String duedate;
 	private float dueamount;
 	private boolean status;
-	private long userid;
+	private String userid;
 	private long orderid;
 	private String createdby;
 	private String createddate;
@@ -58,10 +58,11 @@ public class CustomerPaymentPojo {
 	public void setStatus(boolean status) {
 		this.status = status;
 	}
-	public long getUserid() {
+	
+	public String getUserid() {
 		return userid;
 	}
-	public void setUserid(long userid) {
+	public void setUserid(String userid) {
 		this.userid = userid;
 	}
 	public long getOrderid() {

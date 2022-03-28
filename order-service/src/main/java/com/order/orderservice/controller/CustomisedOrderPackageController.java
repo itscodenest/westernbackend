@@ -59,4 +59,8 @@ public class CustomisedOrderPackageController {
 		return customisePackageFacade.updateOrderid(id,orderid);
 	}
 	
+	@PutMapping("/status/{id}/{status}")
+	public CustomisePackagePojoRespone updatestatus(@PathVariable Long id,@PathVariable Long status) {
+		return customisePackageFacade.updatestatus(id,status);
+	}
 }

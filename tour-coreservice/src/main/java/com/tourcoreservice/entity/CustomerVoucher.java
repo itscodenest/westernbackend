@@ -17,12 +17,11 @@ public class CustomerVoucher {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private long id;
-	
 	private String arrangement;
 	private String confirmationNote;
 	private String confirmationNum;
 	private String moredetails;
-	private long customerid;
+	private String customerid;
 	private long orderid;
 	private String createddate;
 	private String createrby;
@@ -39,11 +38,13 @@ public class CustomerVoucher {
 		this.id = id;
 	}
 
-	public long getCustomerid() {
+	
+
+	public String getCustomerid() {
 		return customerid;
 	}
 
-	public void setCustomerid(long customerid) {
+	public void setCustomerid(String customerid) {
 		this.customerid = customerid;
 	}
 

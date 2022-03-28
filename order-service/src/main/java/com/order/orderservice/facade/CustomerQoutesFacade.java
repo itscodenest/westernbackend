@@ -32,37 +32,36 @@ public class CustomerQoutesFacade {
 			customerQoutes = qoutesService.create(customerQoutes);
 			cQoutesPojo = ObjectMapperUtils.map(customerQoutes, CustomerQoutesPojo.class);
 			return createDeleteUpdateResponse(cQoutesPojo, "CustomisePackage created Successfully ");
-		}
-		catch(Exception e) {
+		} catch (Exception e) {
 			return createDeleteUpdateResponse(null, e.toString());
 		}
-			
+
 	}
 
 	public CustomerQoutesPojoResponse createflights(List<CustomisedOrderPackageFlightinfoPojo> flightSet, Long id) {
 		CustomerQoutes cQoutes = qoutesService.getDataId(id);
 		CustomerQoutesPojo cQoutesPojo = ObjectMapperUtils.map(cQoutes, CustomerQoutesPojo.class);
-		cQoutesPojo.setCustomerQoutesFlight(flightSet);	
+		cQoutesPojo.setCustomerQoutesFlight(flightSet);
 		CustomerQoutes cQoutesentity = ObjectMapperUtils.map(cQoutesPojo, CustomerQoutes.class);
-		qoutesService.Update(cQoutesentity) ;
+		qoutesService.Update(cQoutesentity);
 		return createDeleteUpdateResponse(null, "Created flights successfully");
 	}
-	
+
 	public CustomerQoutesPojoResponse createHotels(List<CustomisedOrderPackageHotelInfoPojo> HotelList, Long id) {
 		CustomerQoutes cQoutes = qoutesService.getDataId(id);
 		CustomerQoutesPojo cQoutesPojo = ObjectMapperUtils.map(cQoutes, CustomerQoutesPojo.class);
 		cQoutesPojo.setCustomerQoutesHotel(HotelList);
 		CustomerQoutes cQoutesentity = ObjectMapperUtils.map(cQoutesPojo, CustomerQoutes.class);
-		qoutesService.Update(cQoutesentity) ;
+		qoutesService.Update(cQoutesentity);
 		return createDeleteUpdateResponse(null, "Created Hotels successfully");
 	}
-	
+
 	public CustomerQoutesPojoResponse createIterneris(List<CustomisedOrderPackageIteneryPojo> iteneryPojos, Long id) {
 		CustomerQoutes cQoutes = qoutesService.getDataId(id);
 		CustomerQoutesPojo cQoutesPojo = ObjectMapperUtils.map(cQoutes, CustomerQoutesPojo.class);
 		cQoutesPojo.setCustomerQoutesiternery(iteneryPojos);
 		CustomerQoutes cQoutesentity = ObjectMapperUtils.map(cQoutesPojo, CustomerQoutes.class);
-		qoutesService.Update(cQoutesentity) ;
+		qoutesService.Update(cQoutesentity);
 		return createDeleteUpdateResponse(null, "Created Hotels successfully");
 	}
 
@@ -73,12 +72,13 @@ public class CustomerQoutesFacade {
 		cResponse.setcPojos(cQoutesPojos);
 		return cResponse;
 	}
-	
+
 	public CustomerQoutesPartialPojoListResponse listAllPartial(String customerid) {
 		CustomerQoutesPartialPojoListResponse cPojoListResponse = new CustomerQoutesPartialPojoListResponse();
 		List<CustomerQoutes> cQoutes = qoutesService.listallONcustomer(customerid);
-		
-		List<CustomerQoutesPartialPojo> cQoutesPojos = ObjectMapperUtils.mapAll(cQoutes, CustomerQoutesPartialPojo.class);
+
+		List<CustomerQoutesPartialPojo> cQoutesPojos = ObjectMapperUtils.mapAll(cQoutes,
+				CustomerQoutesPartialPojo.class);
 		cPojoListResponse.setcPojos(cQoutesPojos);
 		return cPojoListResponse;
 	}
@@ -86,23 +86,40 @@ public class CustomerQoutesFacade {
 	public CustomerQoutesPartialPojoListResponse listbyOrder(Long orderid) {
 		CustomerQoutesPartialPojoListResponse cPojoListResponse = new CustomerQoutesPartialPojoListResponse();
 		List<CustomerQoutes> cQoutes = qoutesService.listallOnOrder(orderid);
-		
-		List<CustomerQoutesPartialPojo> cQoutesPojos = ObjectMapperUtils.mapAll(cQoutes, CustomerQoutesPartialPojo.class);
+
+		List<CustomerQoutesPartialPojo> cQoutesPojos = ObjectMapperUtils.mapAll(cQoutes,
+				CustomerQoutesPartialPojo.class);
 		cPojoListResponse.setcPojos(cQoutesPojos);
 		return cPojoListResponse;
 	}
+
 	public CustomerQoutesPojoResponse getData(Long id) {
 		CustomerQoutesPojoResponse cResponse = new CustomerQoutesPojoResponse();
-		CustomerQoutes cQoutes = qoutesService.getDataId(id);
-		CustomerQoutesPojo cQoutesPojo = ObjectMapperUtils.map(cQoutes, CustomerQoutesPojo.class);
-		cResponse.setQoutesPojo(cQoutesPojo);
+		try {
+			CustomerQoutes cQoutes = qoutesService.getDataId(id);
+			CustomerQoutesPojo cQoutesPojo = ObjectMapperUtils.map(cQoutes, CustomerQoutesPojo.class);
+			cResponse.setQoutesPojo(cQoutesPojo);
+		} catch (Exception e) {
+			cResponse.setQoutesPojo(null);
+			ResponseMessagePojo responseMessagePojo = new ResponseMessagePojo();
+			responseMessagePojo.setErrorMessage(e.getMessage());
+			List<ResponseMessagePojo> errMessages = new ArrayList<>();
+			errMessages.add(responseMessagePojo);
+			cResponse.setErorrMessagePojo(errMessages);
+		}
+		
+		
 
 		return cResponse;
 	}
 
 	public CustomerQoutesPojoResponse delete(long id) {
-		qoutesService.deletePacakge(id);
-		return createDeleteUpdateResponse(null, "Deleted successfully");
+		try {
+			qoutesService.deletePacakge(id);
+			return createDeleteUpdateResponse(null, "Deleted successfully");
+		} catch (Exception e) {
+			return createDeleteUpdateResponse(null, e.getMessage());
+		}
 
 	}
 
@@ -113,13 +130,12 @@ public class CustomerQoutesFacade {
 		cQoutesPojo = ObjectMapperUtils.map(cQoutes, CustomerQoutesPojo.class);
 		return createDeleteUpdateResponse(cQoutesPojo, "Updated successfully");
 	}
-	
-	
+
 	public CustomerQoutesPojoResponse updateextra(CustomerQoutesPojo cQoutesPojo) {
 		CustomerQoutes cQoutes = qoutesService.getDataId(cQoutesPojo.getId());
 		CustomerQoutesPojo olddatapojo = ObjectMapperUtils.map(cQoutes, CustomerQoutesPojo.class);
 		olddatapojo.setTotalcost(cQoutesPojo.getTotalcost());
-		olddatapojo.setAditionalinfo(cQoutesPojo.getAditionalinfo());//additional info
+		olddatapojo.setAditionalinfo(cQoutesPojo.getAditionalinfo());// additional info
 		olddatapojo.setInclusiontext(cQoutesPojo.getInclusiontext());
 		olddatapojo.setExlusionText(cQoutesPojo.getExlusionText());
 		olddatapojo.setPaymentPolicy(cQoutesPojo.getPaymentPolicy());
@@ -146,9 +162,9 @@ public class CustomerQoutesFacade {
 	public CustomerQoutesPojoResponse updateFlight(List<CustomisedOrderPackageFlightinfoPojo> flightSet, Long id) {
 		CustomerQoutes cQoutes = qoutesService.getDataId(id);
 		CustomerQoutesPojo cQoutesPojo = ObjectMapperUtils.map(cQoutes, CustomerQoutesPojo.class);
-		cQoutesPojo.setCustomerQoutesFlight(flightSet);	
+		cQoutesPojo.setCustomerQoutesFlight(flightSet);
 		CustomerQoutes cQoutesentity = ObjectMapperUtils.map(cQoutesPojo, CustomerQoutes.class);
-		qoutesService.Update(cQoutesentity) ;
+		qoutesService.Update(cQoutesentity);
 		return createDeleteUpdateResponse(null, "Update flights successfully");
 	}
 
@@ -157,7 +173,7 @@ public class CustomerQoutesFacade {
 		CustomerQoutesPojo cQoutesPojo = ObjectMapperUtils.map(cQoutes, CustomerQoutesPojo.class);
 		cQoutesPojo.setCustomerQoutesHotel(hotelPojo);
 		CustomerQoutes cQoutesentity = ObjectMapperUtils.map(cQoutesPojo, CustomerQoutes.class);
-		qoutesService.Update(cQoutesentity) ;
+		qoutesService.Update(cQoutesentity);
 		return createDeleteUpdateResponse(null, "Update Hotels successfully");
 	}
 
@@ -166,27 +182,17 @@ public class CustomerQoutesFacade {
 		CustomerQoutesPojo cQoutesPojo = ObjectMapperUtils.map(cQoutes, CustomerQoutesPojo.class);
 		cQoutesPojo.setCustomerQoutesiternery(iteneryPojos);
 		CustomerQoutes cQoutesentity = ObjectMapperUtils.map(cQoutesPojo, CustomerQoutes.class);
-		qoutesService.Update(cQoutesentity) ;
+		qoutesService.Update(cQoutesentity);
 		return createDeleteUpdateResponse(null, "Updated Hotels successfully");
 	}
 
-	public Object updateStatus(Long id,Long status) {
+	public Object updateStatus(Long id, Long status) {
 		CustomerQoutes cQoutes = qoutesService.getDataId(id);
 		CustomerQoutesPojo cQoutesPojo = ObjectMapperUtils.map(cQoutes, CustomerQoutesPojo.class);
 		cQoutesPojo.setStatus(status);
 		CustomerQoutes cQoutesentity = ObjectMapperUtils.map(cQoutesPojo, CustomerQoutes.class);
-		qoutesService.Update(cQoutesentity) ;
+		qoutesService.Update(cQoutesentity);
 		return createDeleteUpdateResponse(null, "Updated status successfully");
 	}
 
-	
-
-	
-
-	
-
-	
-
-	
-	
 }

@@ -16,7 +16,7 @@ public class CustomerInvoicePojo {
 	private String Invoiceheading;
 	private String pricewithtax;
 	private String moreInfo;
-	private long userId;
+	private String userId;
 	private long status;
 	private long orderId;
 	private boolean isproforma;
@@ -111,11 +111,13 @@ public class CustomerInvoicePojo {
 		this.pricewithtax = pricewithtax;
 	}
 
-	public long getUserId() {
+	
+
+	public String getUserId() {
 		return userId;
 	}
 
-	public void setUserId(long userId) {
+	public void setUserId(String userId) {
 		this.userId = userId;
 	}
 

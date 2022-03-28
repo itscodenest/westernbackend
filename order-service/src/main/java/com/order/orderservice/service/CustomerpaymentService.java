@@ -36,7 +36,7 @@ public class CustomerpaymentService {
 		return cRepository.save(cQoutes);
 	}
 	
-	public List<CustomerPayment> listallONcustomer(Long customerid){
+	public List<CustomerPayment> listallONcustomer(String customerid){
 		return cRepository.findAllOnCutomers(customerid);
 	}
 	

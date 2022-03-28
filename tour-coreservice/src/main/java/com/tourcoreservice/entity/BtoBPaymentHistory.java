@@ -14,14 +14,14 @@ public class BtoBPaymentHistory {
 	private String discription;
 	private float amount;
 	private String paidfor;
-	private long btobid;
+	private String btobid;
 	private String createrid;
 	private String createddate;
 	private String paidby;
 	private boolean status;
 	private String modeofpay;
 	private long orderid;
-	private long userid;
+	private String userid;
 	private String extranote;
 	
 	public long getId() {
@@ -55,12 +55,7 @@ public class BtoBPaymentHistory {
 	public void setExtranote(String extranote) {
 		this.extranote = extranote;
 	}
-	public long getBtobid() {
-		return btobid;
-	}
-	public void setBtobid(long btobid) {
-		this.btobid = btobid;
-	}
+	
 	public String getCreaterid() {
 		return createrid;
 	}
@@ -97,12 +92,19 @@ public class BtoBPaymentHistory {
 	public void setOrderid(long orderid) {
 		this.orderid = orderid;
 	}
-	public long getUserid() {
+	public String getBtobid() {
+		return btobid;
+	}
+	public void setBtobid(String btobid) {
+		this.btobid = btobid;
+	}
+	public String getUserid() {
 		return userid;
 	}
-	public void setUserid(long userid) {
+	public void setUserid(String userid) {
 		this.userid = userid;
 	}
+	
 	
 	
 	

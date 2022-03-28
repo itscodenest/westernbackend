@@ -67,7 +67,7 @@ public class CustomerPaymentHistoryFacad {
 		return cPojoListResponse;
 	}
 
-	public CustomerPaymentHistoryListPojoResponse listAllbycustomer(Long customerid) {
+	public CustomerPaymentHistoryListPojoResponse listAllbycustomer(String customerid) {
 		CustomerPaymentHistoryListPojoResponse cPojoListResponse = new CustomerPaymentHistoryListPojoResponse();
 		List<CustomerPaymentHistory> cPayments = cService.listallONcustomer(customerid);
 		List<CustomerPaymentHistoryPojo> cPaymentPojos = ObjectMapperUtils.mapAll(cPayments, CustomerPaymentHistoryPojo.class);

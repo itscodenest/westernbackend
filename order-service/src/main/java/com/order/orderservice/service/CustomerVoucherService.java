@@ -34,8 +34,8 @@ public class CustomerVoucherService {
 		return cRepository.save(cQoutes);
 	}
 	
-	public List<CustomerVoucher> listallONcustomer(Long customerid){
-		return cRepository.findAllOnCutomers(customerid);
+	public List<CustomerVoucher> listallONcustomer(String id){
+		return cRepository.findAllOnCutomers(id);
 	}
 	
 	public List<CustomerVoucher> listallOnOrder(Long orderid) {

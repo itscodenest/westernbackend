@@ -43,7 +43,7 @@ public class CustomerVoucherController {
 	}
 	
 	@GetMapping("/bycustomer/{id}")
-	public CustomerVoucherPojoListResponse getVouchersbycustomer(@PathVariable Long id) {
+	public CustomerVoucherPojoListResponse getVouchersbycustomer(@PathVariable String id) {
 		return cFacad.listAllbycustomer(id);
 	}
 	

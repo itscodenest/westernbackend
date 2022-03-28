@@ -18,7 +18,7 @@ public class CustomerPayment {
 	private float dueamount;
 	private float tax;
 	private boolean status;
-	private long userid;
+	private String userid;
 	@Column(unique = true)
 	private long orderid;
 	private String extranote;
@@ -76,10 +76,11 @@ public class CustomerPayment {
 	public void setStatus(boolean status) {
 		this.status = status;
 	}
-	public long getUserid() {
+	
+	public String getUserid() {
 		return userid;
 	}
-	public void setUserid(long userid) {
+	public void setUserid(String userid) {
 		this.userid = userid;
 	}
 	public long getOrderid() {

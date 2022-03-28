@@ -23,3 +23,4 @@ public interface CustomerRepository extends JpaRepository<User,Long>{
 	User findByemail(String email);
 
 }
+    

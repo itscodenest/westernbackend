@@ -95,4 +95,14 @@ public class CustomisedOrderPackageFacade {
 
 		return customisePackagePojoListResponse;
 	}
+
+	public CustomisePackagePojoRespone updatestatus(Long id, Long status) {
+		CustomisedOrderPackage customisePackage = customisePackageService.getDataId(id);
+		CustomisedOrderPackagePojo cPojo=ObjectMapperUtils.map(customisePackage, CustomisedOrderPackagePojo.class);
+		cPojo.setStatus(status);
+		customisePackage=ObjectMapperUtils.map(cPojo, customisePackage);
+		customisePackage = customisePackageService.Update(customisePackage);
+		cPojo=ObjectMapperUtils.map(customisePackage,cPojo);
+		return createDeleteUpdateResponse(cPojo, "Updated successfully");
+	}
 }
