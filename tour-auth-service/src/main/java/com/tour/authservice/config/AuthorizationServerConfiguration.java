@@ -6,14 +6,15 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.Primary;
 import org.springframework.security.authentication.AuthenticationManager;
-import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.oauth2.config.annotation.configurers.ClientDetailsServiceConfigurer;
 import org.springframework.security.oauth2.config.annotation.web.configuration.AuthorizationServerConfigurerAdapter;
 import org.springframework.security.oauth2.config.annotation.web.configuration.EnableAuthorizationServer;
 import org.springframework.security.oauth2.config.annotation.web.configurers.AuthorizationServerEndpointsConfigurer;
 import org.springframework.security.oauth2.config.annotation.web.configurers.AuthorizationServerSecurityConfigurer;
+import org.springframework.security.oauth2.provider.token.DefaultTokenServices;
 import org.springframework.security.oauth2.provider.token.TokenStore;
 import org.springframework.security.oauth2.provider.token.store.JdbcTokenStore;
 
@@ -35,6 +36,9 @@ public class AuthorizationServerConfiguration extends AuthorizationServerConfigu
 	private DataSource dataSource;
 
 	@Autowired
+	DefaultTokenServices tokenServices;
+
+	@Autowired
 	private AuthClientDetailsService authClientDetailsService;
 
 	@Autowired
@@ -50,6 +54,7 @@ public class AuthorizationServerConfiguration extends AuthorizationServerConfigu
 	public void configure(ClientDetailsServiceConfigurer clients) throws Exception {
 
 		clients.withClientDetails(authClientDetailsService);
+		// clients.jdbc(dataSource);
 		/*
 		 * clients.inMemory().withClient("tour-client").secret(passwordEncoder.encode(
 		 * "secret")) .authorizedGrantTypes("password", "client_credentials",
@@ -67,6 +72,15 @@ public class AuthorizationServerConfiguration extends AuthorizationServerConfigu
 	@Bean
 	public TokenStore tokenStore() {
 		return new JdbcTokenStore(dataSource);
+	}
+
+	@Bean
+	@Primary
+	public DefaultTokenServices tokenServices() {
+		OAuthTokenServices tokenService = new OAuthTokenServices();
+		tokenService.setTokenStore(tokenStore());
+		tokenService.setSupportRefreshToken(true);
+		return tokenService;
 	}
 
 }

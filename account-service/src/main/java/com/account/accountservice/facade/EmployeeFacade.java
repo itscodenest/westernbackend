@@ -2,7 +2,6 @@ package com.account.accountservice.facade;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Set;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
@@ -11,7 +10,6 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Component;
 
 import com.account.accountservice.service.EmployeeService;
-import com.tourcoreservice.entity.Address;
 import com.tourcoreservice.entity.Employee;
 import com.tourcoreservice.entity.Role;
 import com.tourcoreservice.entity.User;
@@ -35,9 +33,12 @@ public class EmployeeFacade {
 
 	@Value("${employee.deleted.success}")
 	private String employeeDeletedSuccessfully;
-	
+
 	@Value("${role.employee}")
 	private String roleEmployee;
+
+	@Value("${role.internaldmc}")
+	private String roleInternalDmc;
 
 	@Autowired
 	private PasswordEncoder passwordEncoder;
@@ -73,7 +74,7 @@ public class EmployeeFacade {
 	public EmployeePojoResponse update(EmployeePojo employeePojo) {
 		User user = employeeService.findById(employeePojo.getId());
 		deleteExistingRoles(user, user.getRoles());
-		deleteExistingAddresses(user, user.getAddresses());
+		
 		ObjectMapperUtils.map(employeePojo, user);
 		String hashPassword = passwordEncoder.encode(employeePojo.getPassword());
 		user.setPassword(hashPassword);
@@ -82,10 +83,7 @@ public class EmployeeFacade {
 		return createDeleteUpdateResponse(employee, employeeUpdated);
 	}
 
-	private void deleteExistingAddresses(User user, Set<Address> addresses) {
-		user.getAddresses().removeAll(addresses);
-		employeeService.save(user);
-	}
+	
 
 	private void deleteExistingRoles(User user, List<Role> roles) {
 		user.getRoles().removeAll(roles);
@@ -102,6 +100,24 @@ public class EmployeeFacade {
 		User user = employeeService.findById(employeeId);
 		EmployeePojo employeePojo = ObjectMapperUtils.map(user, EmployeePojo.class);
 		return createDeleteUpdateResponse(employeePojo, "");
+	}
+
+	public EmployeePojoListResponse getInternalDMCEmployees() {
+		EmployeePojoListResponse employeePojoListResponse = new EmployeePojoListResponse();
+		List<User> employeeEntity = employeeService.getInternalDMCEmployees();
+		List<User> employeeList=new ArrayList<User>();
+		employeeEntity.stream().forEach(e -> {
+			e.getRoles().stream().forEach(r -> {
+				if (r.getName().equals(roleInternalDmc)) {
+					employeeList.add(e);
+				}
+
+			});
+
+		});
+		List<EmployeePojo> employeePojoList=ObjectMapperUtils.mapAll(employeeList, EmployeePojo.class);
+		employeePojoListResponse.setEmploeePojo(employeePojoList);
+		return employeePojoListResponse;
 	}
 
 }

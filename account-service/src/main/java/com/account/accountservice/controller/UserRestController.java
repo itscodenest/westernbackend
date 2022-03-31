@@ -32,6 +32,11 @@ public class UserRestController {
 		return userFacade.listAll();
 	}
 
+	@GetMapping("/{id}")
+	public UserPojoResponse getUserById(Long id) {
+		return userFacade.getById(id);
+	}
+	
 	@DeleteMapping("/{id}")
 	public void delete(@PathVariable long id) {
 		userFacade.delete(id);
@@ -43,7 +48,7 @@ public class UserRestController {
 		return userFacade.update(userPojo);
 	}
 
-	@GetMapping("internaldmc")
+	@GetMapping("/internaldmc")
 	public UserPojoListResponse getAllInternalDMC() {
 		return userFacade.getAllInternalDMC();
 	}

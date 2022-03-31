@@ -1,7 +1,6 @@
 package com.tourcoreservice.entity;
 
 import java.util.List;
-import java.util.Set;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
@@ -13,8 +12,8 @@ import javax.persistence.FetchType;
 import javax.persistence.Inheritance;
 import javax.persistence.InheritanceType;
 import javax.persistence.JoinTable;
+import javax.persistence.Lob;
 import javax.persistence.ManyToMany;
-import javax.persistence.OneToMany;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
@@ -28,23 +27,19 @@ public class User extends BaseEntity {
 	@Column
 	@JsonIgnore
 	private String password;
-	@Column
-	private long salary;
-	@Column
-	private int age;
-	
-	@Column(updatable=false,insertable=false)
-	private String type;
-	private String email;
-
-
+	private String phoneno;
+	private String joindate;
+	private String city;
+	private String gender;
+	@Lob
+	private String address;
+	private String name;
+    
 	@ManyToMany(targetEntity = Role.class, cascade = CascadeType.DETACH, fetch = FetchType.EAGER)
 	@JoinTable(name = "users_roles")
 	private List<Role> roles;
 	
-	@OneToMany(cascade=CascadeType.DETACH, fetch=FetchType.LAZY)
-	@JoinTable(name="user_addresses")
-	private Set<Address> addresses;
+	
 
 	public String getUsername() {
 		return username;
@@ -62,21 +57,7 @@ public class User extends BaseEntity {
 		this.password = password;
 	}
 
-	public long getSalary() {
-		return salary;
-	}
-
-	public void setSalary(long salary) {
-		this.salary = salary;
-	}
-
-	public int getAge() {
-		return age;
-	}
-
-	public void setAge(int age) {
-		this.age = age;
-	}
+	
 
 	public List<Role> getRoles() {
 		return roles;
@@ -86,29 +67,56 @@ public class User extends BaseEntity {
 		this.roles = roles;
 	}
 
-	public Set<Address> getAddresses() {
-		return addresses;
+
+	public String getPhoneno() {
+		return phoneno;
 	}
 
-	public void setAddresses(Set<Address> addresses) {
-		this.addresses = addresses;
+	public void setPhoneno(String phoneno) {
+		this.phoneno = phoneno;
 	}
 
-	public String getType() {
-		return type;
+	public String getJoindate() {
+		return joindate;
 	}
 
-	public void setType(String type) {
-		this.type = type;
+	public void setJoindate(String joindate) {
+		this.joindate = joindate;
 	}
 
-	public String getEmail() {
-		return email;
+	public String getCity() {
+		return city;
 	}
 
-	public void setEmail(String email) {
-		this.email = email;
+	public void setCity(String city) {
+		this.city = city;
 	}
+
+	public String getGender() {
+		return gender;
+	}
+
+	public void setGender(String gender) {
+		this.gender = gender;
+	}
+
+	public String getAddress() {
+		return address;
+	}
+
+	public void setAddress(String address) {
+		this.address = address;
+	}
+
+	public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
+	}
+
+	
 	
 
 }

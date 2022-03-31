@@ -18,6 +18,7 @@ import com.tourcoreservice.entity.Asset;
 import com.tourcoreservice.entity.Hotel;
 import com.tourcoreservice.entity.Iternery;
 import com.tourcoreservice.entity.Tourpackage;
+import com.tourcoreservice.exception.tourpackage.DataDoesNotExistException;
 import com.tourcoreservice.pojo.generic.ResponseMessagePojo;
 import com.tourcoreservice.pojo.tourpackage.AssetPojo;
 import com.tourcoreservice.pojo.tourpackage.IterneryPojo;
@@ -59,13 +60,13 @@ public class IterneryFacade {
 		List<Iternery> iterneryList=iterneryService.getIterneries();
 
 		for (Iternery iternery : iterneryList) {
-			if(!ObjectUtils.isEmpty(iternery.getTourpackage().getId())) {
+			if (!ObjectUtils.isEmpty(iternery.getTourpackage())) {
 			if (iternery.getTourpackage().getId()==id) {
 				if (iternery.getDay()==day) {
 					throw new DataAlreadyExistsException();
 				}
 			}
-			}
+		}
 		}
 	}
 
@@ -89,6 +90,7 @@ public class IterneryFacade {
 	}
 	
 	public IterneryPojoListResponse getByPackageID(long packid) {
+		ifDataDoesNotExists(packid);
 		IterneryPojoListResponse iterneryPojoListResponse = new IterneryPojoListResponse();
 		List<Iternery> iList = iterneryService.findAllIterneryByPackId(packid);
 		List<IterneryPojo> iterneryPojos = ObjectMapperUtils.mapAll(iList, IterneryPojo.class);
@@ -96,7 +98,15 @@ public class IterneryFacade {
 		return iterneryPojoListResponse;
 	}
 
+	private void ifDataDoesNotExists(long packid) {
+		Iternery iternery = iterneryService.findIterneryById(packid);
+		if(ObjectUtils.isEmpty(iternery)) {
+			throw new DataDoesNotExistException("Data doesn't exist");
+		}
+	}
+
 	public IterneryPojoResponse update(IterneryPojo iterneryPojo) {
+		ifDataDoesNotExists(iterneryPojo.getId());
 		Iternery iternery = iterneryService.findIterneryById(iterneryPojo.getId());
 //		Set<Asset> existImage = iternery.getImages();
 //		Set<Hotel> hotel = iternery.getHotels();
@@ -128,18 +138,28 @@ public class IterneryFacade {
 		
 	}
 	public IterneryPojoResponse delete(long id) {
+		ifDataDoesNotExists(id);
 		Iternery iternery=iterneryService.findIterneryById(id);
 		iterneryService.delete(iternery);
 		return CreateDeleteUpdateResponse(null,"Deleted Successfully");
 	}
 
 	public IterneryPojoResponse deleteAsset(long id, long iterneryid) {
+		ifAssetDoesNotExist(id);
 		Iternery iternery=iterneryService.findIterneryById(iterneryid);
 		Asset asset = assetService.getAssetById(id);
 //		iternery.getImages().remove(asset);
 		iterneryService.update(iternery);
 		assetService.deleteAssetById(id);
 		return CreateDeleteUpdateResponse(null, "Deleted Asset successfully");
+		
+	}
+
+	private void ifAssetDoesNotExist(long id) {
+		Asset asset = assetService.getAssetById(id);
+		if(ObjectUtils.isEmpty(asset)) {
+			throw new DataDoesNotExistException("Data doesn't exist");
+		}
 		
 	}
 

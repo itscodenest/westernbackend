@@ -1,22 +1,20 @@
 package com.tourcoreservice.pojo.account;
 
 import java.util.List;
-import java.util.Set;
 
-public class UserPojo  {
+public class UserPojo {
 	private long id;
-	
+
 	private String username;
-
 	private String password;
+	private String phoneno;
+	private String joindate;
+	private String city;
+	private String gender;
+	private String address;
+	private String name;
 
-	private long salary;
-
-	private int age;
 	private List<RolePojo> roles;
-
-	private Set<AddressPojo> addresses;
-	
 
 	public long getId() {
 		return id;
@@ -25,8 +23,6 @@ public class UserPojo  {
 	public void setId(long id) {
 		this.id = id;
 	}
-
-	
 
 	public String getUsername() {
 		return username;
@@ -44,22 +40,6 @@ public class UserPojo  {
 		this.password = password;
 	}
 
-	public long getSalary() {
-		return salary;
-	}
-
-	public void setSalary(long salary) {
-		this.salary = salary;
-	}
-
-	public int getAge() {
-		return age;
-	}
-
-	public void setAge(int age) {
-		this.age = age;
-	}
-
 	public List<RolePojo> getRoles() {
 		return roles;
 	}
@@ -68,12 +48,53 @@ public class UserPojo  {
 		this.roles = roles;
 	}
 
-	public Set<AddressPojo> getAddresses() {
-		return addresses;
+	public String getPhoneno() {
+		return phoneno;
 	}
 
-	public void setAddresses(Set<AddressPojo> addresses) {
-		this.addresses = addresses;
+	public void setPhoneno(String phoneno) {
+		this.phoneno = phoneno;
 	}
 
+	public String getJoindate() {
+		return joindate;
+	}
+
+	public void setJoindate(String joindate) {
+		this.joindate = joindate;
+	}
+
+	public String getCity() {
+		return city;
+	}
+
+	public void setCity(String city) {
+		this.city = city;
+	}
+
+	public String getGender() {
+		return gender;
+	}
+
+	public void setGender(String gender) {
+		this.gender = gender;
+	}
+
+	public String getAddress() {
+		return address;
+	}
+
+	public void setAddress(String address) {
+		this.address = address;
+	}
+
+	public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
+	}
+
+	
 }

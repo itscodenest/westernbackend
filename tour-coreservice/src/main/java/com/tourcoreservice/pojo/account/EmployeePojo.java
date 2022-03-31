@@ -1,24 +1,23 @@
 package com.tourcoreservice.pojo.account;
 
 import java.util.List;
-import java.util.Set;
 
 public class EmployeePojo {
 	private long employeeId;
 	private String username;
-
 	private String password;
-
-	private long salary;
-
-	private int age;
-
+	private String phoneno;
+	private String joindate;
+	private String city;
+	private String gender;
+	private String address;
+	private String name;
 	private List<RolePojo> roles;
-	private Set<AddressPojo> addresses;
+	
 
 	private long id;
 	
-	private String type;
+	
 
 	public long getEmployeeId() {
 		return employeeId;
@@ -44,20 +43,54 @@ public class EmployeePojo {
 		this.password = password;
 	}
 
-	public long getSalary() {
-		return salary;
+	
+
+	public String getPhoneno() {
+		return phoneno;
 	}
 
-	public void setSalary(long salary) {
-		this.salary = salary;
+	public void setPhoneno(String phoneno) {
+		this.phoneno = phoneno;
 	}
 
-	public int getAge() {
-		return age;
+	public String getJoindate() {
+		return joindate;
 	}
 
-	public void setAge(int age) {
-		this.age = age;
+	public void setJoindate(String joindate) {
+		this.joindate = joindate;
+	}
+
+	public String getCity() {
+		return city;
+	}
+
+	public void setCity(String city) {
+		this.city = city;
+	}
+
+	public String getGender() {
+		return gender;
+	}
+
+	public void setGender(String gender) {
+		this.gender = gender;
+	}
+
+	public String getAddress() {
+		return address;
+	}
+
+	public void setAddress(String address) {
+		this.address = address;
+	}
+
+	public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
 	}
 
 	public List<RolePojo> getRoles() {
@@ -76,20 +109,6 @@ public class EmployeePojo {
 		this.id = id;
 	}
 
-	public Set<AddressPojo> getAddresses() {
-		return addresses;
-	}
-
-	public void setAddresses(Set<AddressPojo> addresses) {
-		this.addresses = addresses;
-	}
-
-	public String getType() {
-		return type;
-	}
-
-	public void setType(String type) {
-		this.type = type;
-	}
+	
 
 }
