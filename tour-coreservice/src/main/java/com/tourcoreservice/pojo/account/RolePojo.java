@@ -1,7 +1,6 @@
 package com.tourcoreservice.pojo.account;
 
 import java.util.List;
-import java.util.Set;
 
 public class RolePojo {
 	private long id;

@@ -1,6 +1,6 @@
 package com.tourcoreservice.entity;
 
-import java.util.List;
+import java.util.Set;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
@@ -37,7 +37,7 @@ public class User extends BaseEntity {
     
 	@ManyToMany(targetEntity = Role.class, cascade = CascadeType.DETACH, fetch = FetchType.EAGER)
 	@JoinTable(name = "users_roles")
-	private List<Role> roles;
+	private Set<Role> roles;
 	
 	
 
@@ -59,14 +59,13 @@ public class User extends BaseEntity {
 
 	
 
-	public List<Role> getRoles() {
+	public Set<Role> getRoles() {
 		return roles;
 	}
 
-	public void setRoles(List<Role> roles) {
+	public void setRoles(Set<Role> roles) {
 		this.roles = roles;
 	}
-
 
 	public String getPhoneno() {
 		return phoneno;

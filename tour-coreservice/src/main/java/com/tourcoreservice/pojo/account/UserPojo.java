@@ -1,6 +1,6 @@
 package com.tourcoreservice.pojo.account;
 
-import java.util.List;
+import java.util.Set;
 
 public class UserPojo {
 	private long id;
@@ -14,7 +14,7 @@ public class UserPojo {
 	private String address;
 	private String name;
 
-	private List<RolePojo> roles;
+	private Set<RolePojo> roles;
 
 	public long getId() {
 		return id;
@@ -40,11 +40,13 @@ public class UserPojo {
 		this.password = password;
 	}
 
-	public List<RolePojo> getRoles() {
+	
+
+	public Set<RolePojo> getRoles() {
 		return roles;
 	}
 
-	public void setRoles(List<RolePojo> roles) {
+	public void setRoles(Set<RolePojo> roles) {
 		this.roles = roles;
 	}
 

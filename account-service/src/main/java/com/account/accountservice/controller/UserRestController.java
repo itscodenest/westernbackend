@@ -1,5 +1,7 @@
 package com.account.accountservice.controller;
 
+import java.lang.reflect.InvocationTargetException;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -33,8 +35,13 @@ public class UserRestController {
 	}
 
 	@GetMapping("/{id}")
-	public UserPojoResponse getUserById(Long id) {
+	public UserPojoResponse getUserById(@PathVariable long id) throws InvocationTargetException {
 		return userFacade.getById(id);
+	}
+	
+	@GetMapping("byusername/{username}")
+	public UserPojoResponse getUserById(@PathVariable String username) throws InvocationTargetException {
+		return userFacade.getByuserName(username);
 	}
 	
 	@DeleteMapping("/{id}")

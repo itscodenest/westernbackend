@@ -2,6 +2,7 @@ package com.account.accountservice.facade;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Set;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
@@ -69,6 +70,7 @@ public class UserFacade {
 		successMessages.add(responseMessagePojo);
 		userPojoResponse.setUserPojo(userPojo);
 		userPojoResponse.setSuccessMessaages(successMessages);
+		
 		return userPojoResponse;
 	}
 
@@ -106,7 +108,7 @@ public class UserFacade {
 
 	
 
-	private void deleteExisistingRole(User user, List<Role> roles) {
+	private void deleteExisistingRole(User user, Set<Role> roles) {
 		user.getRoles().removeAll(roles);
 		userService.save(user);
 	}
@@ -128,9 +130,28 @@ public class UserFacade {
 		
 	}
 	public UserPojoResponse getById(Long id) {
-		ifUserDoesNotExist(id);
-		User user = userService.getById(id);
-		UserPojo userPojo = ObjectMapperUtils.map(user, UserPojo.class);
-		return createDeleteUpdateResponse(userPojo, "");
+		try {
+			ifUserDoesNotExist(id);
+			User user = userService.getById(id);
+			UserPojo userPojo = ObjectMapperUtils.map(user, UserPojo.class);
+			return createDeleteUpdateResponse(userPojo, "");
+		}
+		catch(Exception e) {
+			 e.printStackTrace();
+			 return createDeleteUpdateResponse(null, e.toString());
+		}
+		
+	}
+
+	public UserPojoResponse getByuserName(String username) {
+		try {
+			User user = userService.getByUsername(username);
+			UserPojo userPojo = ObjectMapperUtils.map(user, UserPojo.class);
+			return createDeleteUpdateResponse(userPojo, "");
+		}
+		catch(Exception e) {
+			 e.printStackTrace();
+			 return createDeleteUpdateResponse(null, e.toString());
+		}
 	}
 }

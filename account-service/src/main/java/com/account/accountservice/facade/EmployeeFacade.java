@@ -2,6 +2,7 @@ package com.account.accountservice.facade;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Set;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
@@ -85,7 +86,7 @@ public class EmployeeFacade {
 
 	
 
-	private void deleteExistingRoles(User user, List<Role> roles) {
+	private void deleteExistingRoles(User user, Set<Role> roles) {
 		user.getRoles().removeAll(roles);
 		employeeService.save(user);
 	}
