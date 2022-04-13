@@ -44,6 +44,11 @@ public class CustomisedOrderPackageController {
 		return customisePackageFacade.getbyuserid(userid);
 	}
 	
+	@GetMapping("/byemployemail/{employemail}")
+	public CustomisedPartialOrderPackagePojoResponse getCustomisedPackageByEmployid(@PathVariable String employemail) {
+		return customisePackageFacade.getByemployid(employemail);
+	}
+	
 	@DeleteMapping("/{id}")
 	public void delete(@PathVariable long id) {
 		customisePackageFacade.delete(id);
@@ -62,5 +67,10 @@ public class CustomisedOrderPackageController {
 	@PutMapping("/status/{id}/{status}")
 	public CustomisePackagePojoRespone updatestatus(@PathVariable Long id,@PathVariable Long status) {
 		return customisePackageFacade.updatestatus(id,status);
+	}
+	
+	@PutMapping("/acceptedby/{orderid}/{empid}")
+	public CustomisePackagePojoRespone updateacceptedby(@PathVariable String empid,@PathVariable Long orderid) {
+		return customisePackageFacade.updateacceptedby(empid,orderid);
 	}
 }

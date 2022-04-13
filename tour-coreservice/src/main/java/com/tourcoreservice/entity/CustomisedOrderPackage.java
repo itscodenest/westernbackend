@@ -18,6 +18,9 @@ public class CustomisedOrderPackage {
     
 	private String name;
 	
+	private String accepetedby;
+	private String assignedto;
+	
 	@Column(unique = true)
 	private String orderid;
 	
@@ -82,6 +85,22 @@ public class CustomisedOrderPackage {
 
 	
 	
+
+	public String getAccepetedby() {
+		return accepetedby;
+	}
+
+	public void setAccepetedby(String accepetedby) {
+		this.accepetedby = accepetedby;
+	}
+
+	public String getAssignedto() {
+		return assignedto;
+	}
+
+	public void setAssignedto(String assignedto) {
+		this.assignedto = assignedto;
+	}
 
 	public String getDepartureCity() {
 		return departureCity;

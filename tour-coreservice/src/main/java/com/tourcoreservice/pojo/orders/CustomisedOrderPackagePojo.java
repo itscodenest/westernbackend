@@ -13,6 +13,9 @@ public class CustomisedOrderPackagePojo {
 	private String destination;
 
 	private String mobileNo;
+	
+	private String accepetedby;
+	private String assignedto;
 
 	private String transport;
 
@@ -95,6 +98,23 @@ public class CustomisedOrderPackagePojo {
 
 	public void setReferPackege(Long referPackege) {
 		this.referPackege = referPackege;
+	}
+
+	
+	public String getAccepetedby() {
+		return accepetedby;
+	}
+
+	public void setAccepetedby(String accepetedby) {
+		this.accepetedby = accepetedby;
+	}
+
+	public String getAssignedto() {
+		return assignedto;
+	}
+
+	public void setAssignedto(String assignedto) {
+		this.assignedto = assignedto;
 	}
 
 	public String getMobileNo() {

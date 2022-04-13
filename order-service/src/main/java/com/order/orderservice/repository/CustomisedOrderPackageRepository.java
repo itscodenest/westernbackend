@@ -14,4 +14,7 @@ public interface CustomisedOrderPackageRepository extends JpaRepository<Customis
 
 	@Query("Select q from CustomisedOrderPackage q where q.userId=:userId")
 	List<CustomisedOrderPackage> findAllOnCutomersid(@Param("userId") String userId);
+
+	@Query("Select q from CustomisedOrderPackage q where q.accepetedby=:employid")
+	List<CustomisedOrderPackage> findAllOnemployid(@Param("employid")String employid);
 }

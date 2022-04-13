@@ -41,4 +41,9 @@ public class CustomisedOrderPackageService {
 		return customisePackageRepository.findAllOnCutomersid(userid);
 	}
 
+	public List<CustomisedOrderPackage> getallbyemployid(String employid) {
+		
+		return customisePackageRepository.findAllOnemployid(employid);
+	}
+
 }

@@ -48,6 +48,8 @@ public class CustomisedOrderPackageFacade {
 
 		return customisePackagePojoRespone;
 	}
+	
+	
 
 	public CustomisePackagePojoRespone delete(long id) {
 		customisePackageService.deletePacakge(id);
@@ -95,6 +97,14 @@ public class CustomisedOrderPackageFacade {
 
 		return customisePackagePojoListResponse;
 	}
+	
+	public CustomisedPartialOrderPackagePojoResponse getByemployid(String employid) {
+		CustomisedPartialOrderPackagePojoResponse customisePackagePojoListResponse = new CustomisedPartialOrderPackagePojoResponse();
+		List<CustomisedOrderPackage> customisePackage = customisePackageService.getallbyemployid(employid);
+		List<CustomisedPartialOrderPackagePojo> customisePackagePojo = ObjectMapperUtils.mapAll(customisePackage,CustomisedPartialOrderPackagePojo.class);
+		customisePackagePojoListResponse.setcList(customisePackagePojo);
+		return customisePackagePojoListResponse;
+	}
 
 	public CustomisePackagePojoRespone updatestatus(Long id, Long status) {
 		CustomisedOrderPackage customisePackage = customisePackageService.getDataId(id);
@@ -105,4 +115,16 @@ public class CustomisedOrderPackageFacade {
 		cPojo=ObjectMapperUtils.map(customisePackage,cPojo);
 		return createDeleteUpdateResponse(cPojo, "Updated successfully");
 	}
+
+	public CustomisePackagePojoRespone updateacceptedby(String empid, Long orderid) {
+		CustomisedOrderPackage customisePackage = customisePackageService.getDataId(orderid);
+		CustomisedOrderPackagePojo cPojo=ObjectMapperUtils.map(customisePackage, CustomisedOrderPackagePojo.class);
+		cPojo.setAccepetedby(empid);
+		customisePackage=ObjectMapperUtils.map(cPojo, customisePackage);
+		customisePackage = customisePackageService.Update(customisePackage);
+		cPojo=ObjectMapperUtils.map(customisePackage,cPojo);
+		return createDeleteUpdateResponse(cPojo, "Updated successfully");
+	}
+
+	
 }
