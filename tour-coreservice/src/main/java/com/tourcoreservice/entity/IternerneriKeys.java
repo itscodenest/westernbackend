@@ -2,7 +2,7 @@ package com.tourcoreservice.entity;
 
 import java.io.Serializable;
 
-public class IternerneriKeys implements Serializable {
+public class IternerneriKeys implements Serializable{
 
 	private long id;
 	private long day;

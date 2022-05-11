@@ -42,4 +42,9 @@ public class BudgetPackageSuggestService {
 		
 	}
 
+	public List<BudgetPackageSuggest> getAllByPrice(String range) {
+		List<BudgetPackageSuggest> lPackageSuggests=basedPackageRepository.findByBudget(range);
+		return lPackageSuggests;
+	}
+
 }

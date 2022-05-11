@@ -43,6 +43,11 @@ public class Offersthemecontroller {
 		return themefascade.getbyid(themeid);
 	}
 	
+	@GetMapping("/themename/{themename}")
+	public OffersThemePojo getid(@PathVariable String themename) {
+		return themefascade.getbyname(themename);
+	}
+	
 	@GetMapping("/getall")
 	public List<OffersThemePojo> getid() {
 		return themefascade.getall();

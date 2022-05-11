@@ -1,18 +1,5 @@
 package com.tourcoreservice.pojo.orders;
 
-import java.util.Date;
-import java.util.Set;
-
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-
-import org.springframework.data.annotation.CreatedBy;
-import org.springframework.data.annotation.CreatedDate;
-import org.springframework.data.annotation.LastModifiedBy;
-import org.springframework.data.annotation.LastModifiedDate;
-
-import com.tourcoreservice.entity.Approver;
-
 public class ApproverHirarchyPojo {
 
 	private long id;

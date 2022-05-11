@@ -10,11 +10,14 @@ import org.springframework.util.ObjectUtils;
 
 import com.tour.service.DurationPackageSuggestService;
 import com.tour.util.ObjectMapperUtils;
+import com.tourcoreservice.entity.BudgetPackageSuggest;
 import com.tourcoreservice.entity.DurationPackageSuggest;
 import com.tourcoreservice.exception.tourpackage.DataAlreadyExistException;
 import com.tourcoreservice.exception.tourpackage.DataDoesNotExistException;
 import com.tourcoreservice.pojo.generic.ResponseMessagePojo;
+import com.tourcoreservice.pojo.tourpackage.BudgetPackageSuggestPojo;
 import com.tourcoreservice.pojo.tourpackage.DurationPackageSuggestPojo;
+import com.tourcoreservice.response.tourpackage.BudgetPackageSuggestPojoListResponse;
 import com.tourcoreservice.response.tourpackage.DurationPackageSuggestPojoResponse;
 import com.tourcoreservice.response.tourpackage.DurationSuggestPackagePojoListResponse;
 
@@ -93,6 +96,15 @@ public class DurationPackageSuggestFacade {
 		duration = durationService.Update(duration);
 		durationPojo = ObjectMapperUtils.map(duration, DurationPackageSuggestPojo.class);
 		return createDeleteUpdateResponse(durationPojo, "Updated successfully");
+	}
+
+	public DurationSuggestPackagePojoListResponse findAllByDuration(String range) {
+		DurationSuggestPackagePojoListResponse budgetBasedPackagePojoListResponse = new DurationSuggestPackagePojoListResponse();
+		List<DurationPackageSuggest> durationPackageSuggests = durationService.getAllByDuration(range);
+		List<DurationPackageSuggestPojo> durationPojo = ObjectMapperUtils.mapAll(durationPackageSuggests,
+				DurationPackageSuggestPojo.class);
+		budgetBasedPackagePojoListResponse.setDurationPojo(durationPojo);;
+		return budgetBasedPackagePojoListResponse;
 	}
 
 	

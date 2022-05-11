@@ -47,4 +47,10 @@ public class OffersthemeFacade {
 		return OffersThemePojo;
 	}
 
+	public OffersThemePojo getbyname(String themename) {
+		Offerstheme offerstheme=offersthemeservice.getbyname(themename);
+		OffersThemePojo OffersThemePojo=ObjectMapperUtils.map(offerstheme, OffersThemePojo.class);
+		return OffersThemePojo;
+	}
+
 }

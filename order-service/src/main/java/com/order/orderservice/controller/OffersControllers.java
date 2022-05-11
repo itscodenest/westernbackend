@@ -13,8 +13,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.order.orderservice.facade.OffersFascade;
-import com.tourcoreservice.entity.Offerstheme;
 import com.tourcoreservice.pojo.orders.OffersPojo;
+import com.tourcoreservice.pojo.orders.OffersThemePojo;
 
 @RestController
 @RequestMapping("/Offers")
@@ -31,7 +31,6 @@ public class OffersControllers {
 	@DeleteMapping("/{travelid}")
 	public void deletetheme(@PathVariable long travelid) {
 		 offersFascade.delete(travelid);
-
 	}
 
 	@PutMapping("/{travelid}")
@@ -41,13 +40,17 @@ public class OffersControllers {
 
 	@PostMapping()
 	public OffersPojo save(@RequestBody OffersPojo offersPojo) {
-		Offerstheme offerstheme = offersPojo.getOfferstheme();
-		return offersFascade.save(offersPojo, offerstheme.getThemeid());
+		return offersFascade.save(offersPojo);
 	}
 
 	@GetMapping("/getall")
 	public List<OffersPojo> getalldetails() {
 		return offersFascade.getall();
+	}
+	
+	@GetMapping("/themename/{themename}")
+	public List<OffersPojo> getbyname(@PathVariable String themename) {
+		return offersFascade.getbyname(themename);
 	}
 
 }

@@ -1,7 +1,5 @@
 package com.tourcoreservice.entity;
 
-import java.util.Set;
-
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;

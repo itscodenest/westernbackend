@@ -34,4 +34,9 @@ public class SeasonPackageSuggestService {
 		return seasonRepository.save(season);
 	}
 
+	public List<SeasonPackageSuggest> getAllBySeason(String range) {
+		return seasonRepository.findBySeason(range);
+	}
+	
+
 }

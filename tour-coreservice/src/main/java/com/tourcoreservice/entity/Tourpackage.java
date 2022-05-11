@@ -15,6 +15,8 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 @Entity
 public class Tourpackage {
 	@Id
@@ -25,11 +27,12 @@ public class Tourpackage {
 	private String daynight;
 	private String duration;
 	
-	@ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.DETACH)
+	
+	@ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.DETACH)
 	@JoinTable(name = "tourpackages_places")
 	private Place place;
 	
-	@ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.DETACH)
+	@ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.DETACH)
 	@JoinTable(name = "tourpackages_themes")
 	private Theme theme;
 	
@@ -60,11 +63,11 @@ public class Tourpackage {
 	private String lastdayDiscription;
 	private String lastdayheading;
 	
-	@OneToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+	@OneToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
 	@JoinTable(name = "tourpackages_facilities")
 	private Facility facility;
 
-	@OneToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+	@OneToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
 	@JoinTable(name = "tourpackages_prices")
 	private Price price;
 	

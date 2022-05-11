@@ -10,11 +10,14 @@ import org.springframework.util.ObjectUtils;
 
 import com.tour.service.SeasonPackageSuggestService;
 import com.tour.util.ObjectMapperUtils;
+import com.tourcoreservice.entity.DurationPackageSuggest;
 import com.tourcoreservice.entity.SeasonPackageSuggest;
 import com.tourcoreservice.exception.tourpackage.DataAlreadyExistException;
 import com.tourcoreservice.exception.tourpackage.DataDoesNotExistException;
 import com.tourcoreservice.pojo.generic.ResponseMessagePojo;
+import com.tourcoreservice.pojo.tourpackage.DurationPackageSuggestPojo;
 import com.tourcoreservice.pojo.tourpackage.SeasonPackageSuggestPojo;
+import com.tourcoreservice.response.tourpackage.DurationSuggestPackagePojoListResponse;
 import com.tourcoreservice.response.tourpackage.SeasonPackageSuggestPojoListResponse;
 import com.tourcoreservice.response.tourpackage.SeasonPackageSuggestPojoResponse;
 
@@ -89,6 +92,15 @@ public class SeasonPackageSuggestFacade {
 		season = seasonService.Update(season);
 		seasonPojo = ObjectMapperUtils.map(season, SeasonPackageSuggestPojo.class);
 		return createDeleteUpdateResponse(seasonPojo, "Updated successfully");
+	}
+
+	public SeasonPackageSuggestPojoListResponse findAllBySeason(String range) {
+		SeasonPackageSuggestPojoListResponse seasonPackageSuggestPojoListResponse = new SeasonPackageSuggestPojoListResponse();
+		List<SeasonPackageSuggest> seasonPackageSuggests = seasonService.getAllBySeason(range);
+		List<SeasonPackageSuggestPojo> seasonPackageSuggestPojos = ObjectMapperUtils.mapAll(seasonPackageSuggests,
+				SeasonPackageSuggestPojo.class);
+		seasonPackageSuggestPojoListResponse.setSeasonPojo(seasonPackageSuggestPojos);
+		return seasonPackageSuggestPojoListResponse;
 	}
 
 	

@@ -47,5 +47,10 @@ public class DurationPackageSuggestController {
 		durationPojo.setId(id);
 		return durationFacade.update(durationPojo);
 	}
+	
+	@GetMapping("/byduration/{range}")
+	public DurationSuggestPackagePojoListResponse getAllbyprice(@PathVariable String range) {
+		return durationFacade.findAllByDuration(range);
+	}
 
 }

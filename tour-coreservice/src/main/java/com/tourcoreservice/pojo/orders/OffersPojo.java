@@ -10,7 +10,9 @@ public class OffersPojo {
 	private String couponcode;
 	private String referencelink;
 	private String description;
+	
 	private String image;
+
 	private Offerstheme offerstheme;
 	
 	

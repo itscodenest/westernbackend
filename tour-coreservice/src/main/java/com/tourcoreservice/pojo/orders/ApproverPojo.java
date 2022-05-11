@@ -1,7 +1,5 @@
 package com.tourcoreservice.pojo.orders;
 
-import java.util.Set;
-
 import com.tourcoreservice.entity.User;
 
 public class ApproverPojo {

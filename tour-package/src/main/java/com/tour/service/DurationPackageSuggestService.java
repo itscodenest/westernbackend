@@ -40,4 +40,9 @@ public class DurationPackageSuggestService {
 
 	}
 
+	public List<DurationPackageSuggest> getAllByDuration(String range) {
+		
+		return durationRepository.findByDuration(range);
+	}
+
 }

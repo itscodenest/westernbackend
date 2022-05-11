@@ -1,7 +1,5 @@
 package com.tourcoreservice.pojo.tourpackage;
 
-import java.util.Set;
-
 import com.tourcoreservice.entity.District;
 
 public class PlacePojo {

@@ -2,21 +2,22 @@ package com.tourcoreservice.entity;
 
 import java.util.Set;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.OneToMany;
 
 @Entity
 public class Offerstheme {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private long themeid;
+	@Column(unique = true)
 	private String themename;
 	
-	@OneToMany(mappedBy="offerstheme")
-    private Set<Offers> offers;
+	
+	
 	
 	
     
@@ -36,13 +37,7 @@ public class Offerstheme {
 		this.themename = themename;
 	}
 
-	public Set<Offers> getOffers() {
-		return offers;
-	}
-
-	public void setOffers(Set<Offers> offers) {
-		this.offers = offers;
-	}
+	
 	
 	
 

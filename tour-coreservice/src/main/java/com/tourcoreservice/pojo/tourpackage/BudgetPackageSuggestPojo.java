@@ -11,6 +11,7 @@ public class BudgetPackageSuggestPojo {
 	private long price;
 	private long maxprice;
 	private String imgcdn;
+	private long packId;
 	
 	public long getId() {
 		return id;
@@ -66,6 +67,14 @@ public class BudgetPackageSuggestPojo {
 	public void setImgcdn(String imgcdn) {
 		this.imgcdn = imgcdn;
 	}
+	public long getPackId() {
+		return packId;
+	}
+	public void setPackId(long packId) {
+		this.packId = packId;
+	}
+	
+	
 	
 	
 }

@@ -10,10 +10,24 @@ public class InterNatPackageSuggestPojo {
 	private long maxprice;
 	private int days;
 	private String imgcdn;
+	private long packId;
+	
 	
 	public int getDays() {
 		return days;
 	}
+	
+	
+	public long getPackId() {
+		return packId;
+	}
+
+
+	public void setPackId(long packId) {
+		this.packId = packId;
+	}
+
+
 	public void setDays(int days) {
 		this.days = days;
 	}

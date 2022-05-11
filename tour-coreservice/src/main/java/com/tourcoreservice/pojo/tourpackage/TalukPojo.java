@@ -1,7 +1,5 @@
 package com.tourcoreservice.pojo.tourpackage;
 
-import java.util.List;
-
 public class TalukPojo {
 	private long id;
 	private String name;

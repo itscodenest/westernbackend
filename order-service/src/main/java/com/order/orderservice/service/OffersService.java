@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 
 import com.order.orderservice.repository.OffersRepository;
 import com.tourcoreservice.entity.Offers;
+import com.tourcoreservice.entity.Offerstheme;
 
 @Service
 public class OffersService {
@@ -34,6 +35,12 @@ public class OffersService {
 	public List<Offers> getall(){
 		return offersRepository.findAll();
 	}
+
+	public List<Offers> getallBythemename(Offerstheme themename) {
+		return offersRepository.findAllByOfferstheme(themename);
+	}
+
+	
 	
 
 }

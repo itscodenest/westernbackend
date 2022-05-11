@@ -13,6 +13,8 @@ public class SeasonPackageSuggestPojo {
 	private int maxPrice;
 	private long days;
 	private String imgcdn;
+	private long packId;
+	
 	public long getId() {
 		return id;
 	}
@@ -66,6 +68,12 @@ public class SeasonPackageSuggestPojo {
 	}
 	public void setImgcdn(String imgcdn) {
 		this.imgcdn = imgcdn;
+	}
+	public long getPackId() {
+		return packId;
+	}
+	public void setPackId(long packId) {
+		this.packId = packId;
 	}
 	
 	

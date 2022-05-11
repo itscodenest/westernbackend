@@ -25,6 +25,7 @@ public class SeasonPackageSuggest {
 	private int maxPrice;
 	private long days;
 	private String imgcdn;
+	private long packId;
 	
 	public long getId() {
 		return id;
@@ -80,6 +81,12 @@ public class SeasonPackageSuggest {
 	}
 	public void setImgcdn(String imgcdn) {
 		this.imgcdn = imgcdn;
+	}
+	public long getPackId() {
+		return packId;
+	}
+	public void setPackId(long packId) {
+		this.packId = packId;
 	}
 	
 

@@ -38,5 +38,9 @@ public class Offersthemeservice {
 	public List<Offerstheme> getall(){
 		return offersthemerepository.findAll();
 	}
+
+	public Offerstheme getbyname(String themename) {
+		return offersthemerepository.findByThemename(themename);
+	}
 	
 }

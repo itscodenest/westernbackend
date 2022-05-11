@@ -12,6 +12,7 @@ public class DurationPackageSuggestPojo {
 	private int maxPrice;
 	private int days;
 	private String imgcdn;
+	private long packId;
 	
 	public long getId() {
 		return id;
@@ -66,6 +67,12 @@ public class DurationPackageSuggestPojo {
 	}
 	public void setImgcdn(String imgcdn) {
 		this.imgcdn = imgcdn;
+	}
+	public long getPackId() {
+		return packId;
+	}
+	public void setPackId(long packId) {
+		this.packId = packId;
 	}
 	
 	

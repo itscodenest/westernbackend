@@ -1,14 +1,12 @@
 package com.tourcoreservice.entity;
 
 import java.util.Date;
-import java.util.List;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.EntityListeners;
 import javax.persistence.FetchType;
-import javax.persistence.JoinTable;
 import javax.persistence.ManyToOne;
 
 import org.springframework.data.annotation.CreatedBy;

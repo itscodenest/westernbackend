@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.tour.facade.SeasonPackageSuggestFacade;
 import com.tourcoreservice.pojo.tourpackage.SeasonPackageSuggestPojo;
+import com.tourcoreservice.response.tourpackage.DurationSuggestPackagePojoListResponse;
 import com.tourcoreservice.response.tourpackage.SeasonPackageSuggestPojoListResponse;
 import com.tourcoreservice.response.tourpackage.SeasonPackageSuggestPojoResponse;
 
@@ -46,6 +47,11 @@ public class SeasonPackageSuggestController {
 	public SeasonPackageSuggestPojoResponse update(@RequestBody SeasonPackageSuggestPojo seasonPojo, @PathVariable("id") long id) {
 		seasonPojo.setId(id);
 		return seasonFacade.update(seasonPojo);
+	}
+	
+	@GetMapping("/byseason/{range}")
+	public SeasonPackageSuggestPojoListResponse getAllbyseason(@PathVariable String range) {
+		return seasonFacade.findAllBySeason(range);
 	}
 
 }

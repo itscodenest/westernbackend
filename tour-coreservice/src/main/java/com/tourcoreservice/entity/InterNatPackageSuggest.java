@@ -7,6 +7,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinTable;
+import javax.persistence.Lob;
 import javax.persistence.OneToOne;
 
 @Entity
@@ -22,7 +23,9 @@ public class InterNatPackageSuggest {
 	private String startFrom;
 	private long maxprice;
 	private int days;
+	@Lob
 	private String imgcdn;
+	private long packId;
 	
 	public int getDays() {
 		return days;
@@ -65,6 +68,12 @@ public class InterNatPackageSuggest {
 	}
 	public void setImgcdn(String imgcdn) {
 		this.imgcdn = imgcdn;
+	}
+	public long getPackId() {
+		return packId;
+	}
+	public void setPackId(long packId) {
+		this.packId = packId;
 	}
 	
 	

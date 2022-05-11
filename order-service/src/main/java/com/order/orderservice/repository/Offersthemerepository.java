@@ -12,6 +12,8 @@ public interface Offersthemerepository extends JpaRepository<Offerstheme, Long>{
 //	List<Offerstheme> findAllBythemeId(@Param("themeid") Long themeid);
 
 	Offerstheme findById(long themeid);
+
+	Offerstheme findByThemename(String themename);
 	
 	
 }

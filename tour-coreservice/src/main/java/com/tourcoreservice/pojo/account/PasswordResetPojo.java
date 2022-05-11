@@ -1,7 +1,5 @@
 package com.tourcoreservice.pojo.account;
 
-import com.tourcoreservice.entity.User;
-
 public class PasswordResetPojo {
 
 	private long id;

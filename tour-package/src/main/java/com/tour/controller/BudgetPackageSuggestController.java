@@ -49,5 +49,10 @@ public class BudgetPackageSuggestController {
 		budgetBasedPackagePojo.setId(id);
 		return budgetBasedPackageFacade.update(budgetBasedPackagePojo);
 	}
+	
+	@GetMapping("/byprice/{range}")
+	public BudgetPackageSuggestPojoListResponse getAllbyprice(@PathVariable String range) {
+		return budgetBasedPackageFacade.findAllByPrice(range);
+	}
 
 }

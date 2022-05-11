@@ -21,10 +21,9 @@ public class OffersFascade {
 	@Autowired
 	Offersthemeservice offersthemeservice;
 
-	public OffersPojo save(OffersPojo offersPojo, long themeid) {
+	public OffersPojo save(OffersPojo offersPojo) {
 		try {
-
-			Offerstheme offerstheme = offersthemeservice.getbyid(themeid);
+			Offerstheme offerstheme = offersthemeservice.getbyid(offersPojo.getOfferstheme().getThemeid());
 			offersPojo.setOfferstheme(offerstheme);
 			Offers offers = ObjectMapperUtils.map(offersPojo, Offers.class);
 			offers = offersService.save(offers);
@@ -61,6 +60,13 @@ public class OffersFascade {
 	public List<OffersPojo> getall() {
 
 		List<Offers> offers = offersService.getall();
+		List<OffersPojo> pojoOffers = ObjectMapperUtils.mapAll(offers, OffersPojo.class);
+		return pojoOffers;
+	}
+
+	public List<OffersPojo> getbyname(String themename) {
+		Offerstheme offerstheme = offersthemeservice.getbyname(themename);
+		List<Offers> offers = offersService.getallBythemename(offerstheme);
 		List<OffersPojo> pojoOffers = ObjectMapperUtils.mapAll(offers, OffersPojo.class);
 		return pojoOffers;
 	}
