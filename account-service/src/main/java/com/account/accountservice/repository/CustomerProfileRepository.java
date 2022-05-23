@@ -7,6 +7,8 @@ import org.springframework.stereotype.Repository;
 
 import com.tourcoreservice.entity.CustomerProfile;
 
+
+
 @Repository
 public interface CustomerProfileRepository extends JpaRepository<CustomerProfile,Long> {
 	CustomerProfile findById(long id);
